@@ -4,6 +4,13 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}   % si compilas con pdflatex
 \usepackage[T1]{fontenc}
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\large\bfseries}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection}{1em}{}
 
 % --- Márgenes (ajústalos a tu gusto) ---
 \usepackage[a4paper,
@@ -17,6 +24,7 @@
 \usepackage{subfig}
 \usepackage{physics}
 \usepackage{csquotes}
+\usepackage{float}
 
 % --- Dos columnas tipo paper (controlable por entorno) ---
 \usepackage{multicol}
@@ -71,22 +79,137 @@
 \begin{multicols}{2}
 
 \section{Introducción}
-Texto de contexto...
 
-\section{Marco teórico}
-Fundamentos, ecuaciones, conceptos...
+El péndulo simple es un sistema físico idealizado formado por una masa puntual suspendida de un hilo inextensible y de masa despreciable, que oscila bajo la acción del campo gravitatorio. A pesar de su simplicidad, constituye un modelo fundamental para el estudio de los movimientos oscilatorios y permite analizar con precisión el movimiento armónico simple en determinadas condiciones.
 
-\section{Objetivos}
+\bigskip
+Cuando el péndulo se separa ligeramente de su posición de equilibrio y se libera, la masa comienza a oscilar describiendo un movimiento periódico. La variable relevante para describir el sistema es el ángulo $\theta(t)$ que forma el hilo con la vertical. La fuerza responsable del movimiento es la componente tangencial del peso, que actúa como fuerza restauradora y tiende a devolver la masa a su posición de equilibrio.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\columnwidth]{imagenes/esquema_pendulo}
+\caption{Esquema del péndulo simple}
+\label{fig:pendulo}
+\end{figure}
+
+Para ángulos de oscilación pequeños, puede aplicarse la aproximación $\sin\theta \approx \theta$, lo que permite linealizar la ecuación de movimiento. Bajo esta hipótesis, el sistema se comporta como un oscilador armónico simple, cuya ecuación diferencial conduce a una solución periódica con un período independiente de la masa del cuerpo oscilante. En este régimen, el período de oscilación del péndulo viene dado únicamente por la longitud del hilo y la aceleración de la gravedad.
+
+\bigskip
+Esta relación teórica constituye la base del experimento, ya que permite determinar experimentalmente el valor de la aceleración de la gravedad a partir de la medida del período para distintas longitudes del péndulo. Además, el estudio del período en función de la longitud permite verificar la validez del modelo armónico y su dependencia funcional.
+
+\subsection{Marco teórico}
+
+Un movimiento armónico simple (MAS) es aquel caracterizado por la acción de una fuerza recuperadora proporcional y opuesta al desplazamiento respecto a la posición de equilibrio. Dicha fuerza puede expresarse como
+\begin{equation}
+F=-kx,
+\end{equation}
+donde $k$ es la constante recuperadora del sistema y $x$ el desplazamiento.
+
+\bigskip
+Aplicando la segunda ley de Newton, se obtiene una ecuación diferencial de segundo grado para la posición en función del tiempo:
+\begin{equation}
+\frac{d^{2}x(t)}{dt^{2}}+\omega^{2}x(t)=0,
+\end{equation}
+donde,
+\begin{equation}
+\omega=\sqrt{\frac{k}{m}}
+\end{equation}
+es la frecuencia angular natural del sistema. La solución general de esta ecuación es una función periódica del tiempo que puede escribirse como,
+\begin{equation}
+x(t)=A\sin(\omega t+\phi),
+\end{equation}
+siendo $A$ la amplitud del movimiento y $\phi$ la fase inicial. El período del movimiento armónico simple está relacionado con la frecuencia angular mediante,
+\begin{equation}
+T=\frac{2\pi}{\omega}.
+\end{equation}
+
+En el caso de un péndulo simple, el sistema está formado por una masa puntual suspendida de un hilo inextensible y de masa despreciable. La variable cinemática relevante es el ángulo $\theta(t)$ que forma el péndulo con respecto a la vertical. La componente tangencial del peso, responsable del movimiento oscilatorio, viene dada por,
+\begin{equation}
+P_x=-mg\sin\theta.
+\end{equation}
+
+Aplicando la segunda ley de Newton y teniendo en cuenta la relación entre el desplazamiento lineal y el ángulo, $x=L\theta$, se obtiene la ecuación diferencial que describe el movimiento del péndulo:
+\begin{equation}
+\frac{d^{2}\theta(t)}{dt^{2}}+\frac{g}{L}\sin\theta(t)=0.
+\end{equation}
+
+Esta ecuación es no lineal y no admite una solución analítica sencilla. Sin embargo, en el límite de ángulos pequeños, puede aplicarse la aproximación,
+\begin{equation}
+\sin\theta \approx \theta,
+\end{equation}
+con lo que la ecuación de movimiento se linealiza y describe un movimiento armónico simple. En este régimen, la frecuencia angular del péndulo viene dada por,
+\begin{equation}
+\omega=\sqrt{\frac{g}{L}},
+\end{equation}
+y el período de oscilación resulta,
+\begin{equation}
+T=2\pi\sqrt{\frac{L}{g}}.
+\end{equation}
+
+Esta expresión muestra que, para pequeñas amplitudes, el período del péndulo simple depende únicamente de la longitud del hilo y de la aceleración de la gravedad, siendo independiente de la masa del cuerpo oscilante. Esta relación constituye la base del estudio experimental realizado en la práctica.
+
+\bigskip
+
+En resumen, el péndulo simple permite estudiar de forma experimental el movimiento armónico simple y contrastar sus predicciones teóricas. La expresión del período obtenida bajo la aproximación de ángulos pequeños constituye la base para el análisis de los resultados y la determinación de la aceleración de la gravedad.
+
+\columnbreak
+
+\subsection{Objetivos}
+
+El objetivo principal de esta práctica es estudiar experimentalmente el comportamiento del péndulo simple y analizar su movimiento oscilatorio en el régimen de pequeñas amplitudes. A partir de la medida del período de oscilación para distintas longitudes del hilo, se pretende comprobar la validez del modelo teórico que describe al péndulo como un movimiento armónico simple y analizar la relación existente entre el período y la longitud del sistema.
+
+\bigskip
+Asimismo, se busca verificar experimentalmente la independencia del período de oscilación respecto a la masa del cuerpo suspendido y determinar un valor experimental de la aceleración de la gravedad a partir de los datos obtenidos. De manera complementaria, se estudiará la influencia de la amplitud angular inicial sobre el período de oscilación, con el fin de identificar las posibles desviaciones respecto al modelo ideal y evaluar los límites de validez de la aproximación armónica.
+
+\vspace{3 em}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\columnwidth]{imagenes/foto_pendulo}
+\caption{Péndulo simple}
+\label{fig:foto_pendulo}
+\end{figure}
+
+\newpage
+
+\section{Materiales}
+
+Para la realización de la práctica del péndulo simple se empleó un conjunto de materiales sencillos, seleccionados con el fin de garantizar un montaje experimental estable y permitir la realización de medidas precisas del período de oscilación y del ángulo inicial. El uso adecuado de estos elementos resulta fundamental para minimizar errores experimentales y asegurar la reproducibilidad de las medidas.
+
+\bigskip
+Los materiales utilizados fueron los siguientes:
 \begin{itemize}
-  \item Objetivo 1...
-  \item Objetivo 2...
+    \item Hilo de longitud variable.
+    \item Pesa metálica.
+    \item Cronómetro.
+    \item Soporte.
+    \item Transportador de ángulos.
 \end{itemize}
 
 \section{Procedimiento experimental}
-Montaje, materiales, pasos...
+
+El experimento se llevó a cabo con el objetivo de estudiar el comportamiento del péndulo simple y verificar experimentalmente las expresiones teóricas que describen su período de oscilación. Para ello, se realizó un conjunto de medidas en las que se varió de forma sistemática la longitud del hilo que sostenía la masa oscilante.
+
+\bigskip
+Para una determinada longitud del hilo y con una amplitud angular pequeña, se hizo oscilar la pesa y se midió el tiempo necesario para que el péndulo completara varias oscilaciones consecutivas, típicamente entre cinco y diez. A partir del tiempo total medido y del número de oscilaciones realizadas, se obtuvo el valor del período medio dividiendo ambos valores. Este procedimiento permite reducir la influencia de los errores asociados a la medida del tiempo.
+
+\bigskip
+El proceso se repitió para distintos valores de la longitud del hilo, razonablemente diferentes entre sí, obteniendo el período de oscilación correspondiente a cada longitud. Con el fin de mejorar la fiabilidad de los resultados, cada medida se repitió varias veces bajo las mismas condiciones experimentales, trabajando posteriormente con los valores promedio obtenidos.
+
+\bigskip
+Además del estudio de la dependencia del período con la longitud, se analizó la posible influencia de otras variables. Para algunas de las longitudes consideradas, se repitieron las medidas utilizando distintas masas suspendidas, con el objetivo de comprobar la independencia del período respecto a la masa. Asimismo, se realizaron medidas con diferentes amplitudes angulares iniciales, empleando valores mayores del ángulo de lanzamiento, con el fin de estudiar la aparición de efectos anarmónicos y analizar las desviaciones respecto al modelo armónico ideal.
+
+\bigskip
+Finalmente, los períodos obtenidos experimentalmente se compararon con las expresiones teóricas del péndulo simple, tanto en el régimen de pequeñas amplitudes como considerando las correcciones asociadas a oscilaciones de mayor amplitud, lo que permitió evaluar el grado de concordancia entre la teoría y los resultados experimentales.
+
+
+\newpage
 
 \section{Datos experimentales}
 Tablas, medidas, condiciones...
+
+
+\newpage
 
 \section{Cálculos y tratamiento de datos}
 Despejes, ajustes, gráficas, etc...

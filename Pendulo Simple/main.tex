@@ -232,6 +232,8 @@ Antes de proceder al análisis de los resultados experimentales, conviene señal
 
 Dado que la masa no interviene en el período, se concluye que este depende únicamente de la longitud del hilo y de la aceleración de la gravedad. Sobre esta base, se procederá al análisis de los datos experimentales con el fin de estudiar la relación entre el período de oscilación, la longitud del péndulo y el ángulo inicial.
 
+\section{Analisis y Discusión de datos}
+
 \bigskip
 A continuación se representa gráficamente el cuadrado del período de oscilación en función de la longitud del péndulo. De acuerdo con la expresión teórica correspondiente, se espera que los datos experimentales se ajusten a una relación lineal. Mediante un ajuste por mínimos cuadrados se obtiene la recta que mejor describe los datos, cuya pendiente permite determinar un valor experimental de la aceleración de la gravedad.
 
@@ -268,6 +270,92 @@ Para $\theta = 90^\circ$:
 \label{fig:tercera}
 \end{figure}
 
+Al analizar las representaciones gráficas de $T^2$ en función de la longitud del péndulo para los distintos valores del ángulo inicial, se observa que los valores de la aceleración de la gravedad obtenidos difieren entre sí. En particular, para cada ángulo de oscilación se obtiene una pendiente distinta en el ajuste lineal, lo que conduce a valores experimentales de $g$ diferentes.
+
+\bigskip
+La determinación de la aceleración de la gravedad se ha realizado a partir de la pendiente de la recta ajustada a los datos experimentales. De acuerdo con el modelo teórico del péndulo simple en el régimen de pequeñas amplitudes,
+\begin{equation}
+T^2 = \frac{4\pi^2}{g}\,L,
+\end{equation}
+por lo que la pendiente de la recta en la representación $T^2$ frente a $L$ viene dada por $b = 4\pi^2/g$. A partir de esta relación, el valor experimental de la aceleración de la gravedad se obtiene como $g = 4\pi^2/b$, propagando la incertidumbre asociada a la pendiente del ajuste.
+
+\bigskip
+Sin embargo, los valores de $g$ obtenidos resultan significativamente inferiores al valor esperado de la aceleración de la gravedad. Esta discrepancia puede atribuirse a varios factores. En primer lugar, la expresión teórica utilizada es válida únicamente en el límite de ángulos pequeños. Para ángulos grandes, como $60^\circ$ y $90^\circ$, el movimiento deja de ser estrictamente armónico simple y el período de oscilación aumenta respecto al valor predicho por el modelo ideal. Este aumento del período provoca una mayor pendiente en la gráfica $T^2$ frente a $L$, lo que conduce a una subestimación del valor de $g$.
+
+\bigskip
+Además, pueden intervenir otros factores experimentales, como errores sistemáticos en la medida del tiempo y de la longitud, la dificultad para definir con precisión el instante de paso por la posición de equilibrio, o la influencia del rozamiento con el aire y de la fricción en el punto de suspensión, que tienden a alargar el período de oscilación. Todos estos efectos contribuyen a que el valor experimental de la aceleración de la gravedad resulte inferior al valor teórico, siendo esta discrepancia más acusada cuanto mayor es la amplitud angular inicial.
+
+\bigskip
+Con el fin de profundizar en el análisis y comprobar de forma alternativa la validez de la relación teórica entre el período de oscilación y la longitud del péndulo, se repite la representación de los datos en escala logarítmica. En esta representación, la pendiente del ajuste lineal permite verificar la dependencia funcional entre el período y la longitud predicha por la ecuación~\eqref{eq:periodo}, mientras que la ordenada en el origen proporciona un valor experimental de la aceleración de la gravedad.
+
+\newpage
+
+\noindent
+Para $\theta = 30^\circ$:
+\vspace{-0.5 cm}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{imagenes/cuarta}
+\caption{ }
+\label{fig:cuarta}
+\end{figure}
+
+\noindent
+Para $\theta = 60^\circ$:
+\vspace{-0.5 cm}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{imagenes/quinta}
+\caption{ }
+\label{fig:quinta}
+\end{figure}
+
+\noindent
+Para $\theta = 90^\circ$:
+\vspace{-0.5 cm}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{imagenes/sexta}
+\caption{ }
+\label{fig:sexta}
+\end{figure}
+
+En las Figuras correspondientes a la representación logarítmica se ha representado $\ln(T)$ en función de $\ln(L)$ para $\theta = 30^\circ$, $60^\circ$ y $90^\circ$. Esta representación es útil porque, a partir de la expresión teórica del péndulo simple en el régimen armónico (10), puede escribirse en forma lineal aplicando logaritmos:
+\begin{equation}
+\ln(T) = \ln(2\pi) + \frac{1}{2}\ln(L) - \frac{1}{2}\ln(g).
+\end{equation}
+De este modo, si se ajusta experimentalmente una recta del tipo
+\begin{equation}
+\ln(T) = c_0 + n\,\ln(L),
+\end{equation}
+la pendiente $n$ debe aproximarse a $1/2$ si la dependencia funcional $T\propto \sqrt{L}$ se cumple. En los resultados obtenidos, las pendientes ajustadas se encuentran próximas a $0.5$, lo cual indica que la relación funcional entre período y longitud es coherente con el modelo ideal.
+
+\bigskip
+La aceleración de la gravedad se obtiene a partir de la ordenada en el origen $c_0$. Comparando las ecuaciones anteriores, se tiene
+\begin{equation}
+c_0 = \ln(2\pi) - \frac{1}{2}\ln(g),
+\end{equation}
+y, por tanto,
+\begin{equation}
+g = (2\pi)^2\,e^{-2c_0}.
+\end{equation}
+La incertidumbre de $g$ se ha calculado por propagación a partir del error del ajuste en $c_0$, de modo que
+\begin{equation}
+\Delta g = \left|\frac{dg}{dc_0}\right|\Delta c_0 = 2g\,\Delta c_0.
+\end{equation}
+
+A pesar de que la pendiente es compatible con el valor teórico esperado, los valores obtenidos de $g$ resultan significativamente inferiores al valor estándar ($g \approx 9.8\,\mathrm{m/s^2}$). Este hecho sugiere la presencia de un error sistemático dominante. La causa más probable es una discrepancia en la longitud efectiva utilizada: si la longitud $L$ introducida en el análisis es menor que la longitud real (por ejemplo, por usar una \emph{altura} o una distancia parcial en lugar de la distancia desde el punto de suspensión hasta el centro de masa), el ajuste produce una pendiente compatible con la tendencia $T\propto \sqrt{L}$, pero con un valor de $g$ artificialmente bajo. De hecho, para longitudes del orden de $0.09$--$0.15\,\mathrm{m}$ el modelo predice períodos claramente menores que los medidos; este desfase se traduce directamente en una subestimación de $g$ al despejarlo en la ecuación del período.
+
+\bigskip
+Además del posible error en la longitud efectiva, existen otros factores que tienden a aumentar el período medido y, por tanto, a reducir el valor estimado de $g$. Entre ellos destacan el tiempo de reacción al cronometrar, la fricción en el punto de suspensión, el rozamiento con el aire y el hecho de que para ángulos grandes ($60^\circ$ y $90^\circ$) el movimiento deja de ser estrictamente armónico simple, aumentando ligeramente el período respecto al valor ideal. No obstante, estas correcciones por amplitud y pérdidas disipativas suelen ser pequeñas frente a una discrepancia tan acusada, por lo que el efecto principal apunta a un error sistemático en la determinación de $L$ (o en su conversión/unidades) más que a una limitación intrínseca del modelo.
+
+\bigskip
+En conjunto, la representación logarítmica confirma la dependencia funcional esperada (pendiente cercana a $1/2$), pero también pone de manifiesto que la determinación absoluta de $g$ es muy sensible a errores sistemáticos en la longitud efectiva y en la medida del período, lo cual explica la desviación observada en los valores experimentales.
+
+\bigskip
+Una vez analizada la dependencia del período de oscilación con la longitud del péndulo y evaluada la validez del modelo teórico tanto en escala lineal como logarítmica, se procede a estudiar la influencia de la amplitud angular inicial en el período. Para ello, se representan gráficamente los períodos de oscilación en función del ángulo inicial, incluyendo en una misma gráfica las medidas correspondientes a las distintas longitudes analizadas. Este análisis permite comprobar si el período permanece constante al variar la amplitud angular y discutir las posibles desviaciones respecto al comportamiento ideal, así como su origen físico.
+
+
 
 
 
@@ -278,9 +366,6 @@ Para $\theta = 90^\circ$:
 
 
 \newpage
-
-\section{Cálculos y tratamiento de datos}
-Despejes, ajustes, gráficas, etc...
 
 \section{Análisis de errores e incertidumbres}
 Propagación de incertidumbres, error relativo, etc...

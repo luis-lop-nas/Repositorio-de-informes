@@ -4,6 +4,13 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}   % si compilas con pdflatex
 \usepackage[T1]{fontenc}
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\large\bfseries}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection}{1em}{}
 
 % --- Márgenes (ajústalos a tu gusto) ---
 \usepackage[a4paper,
@@ -12,11 +19,13 @@
   columnsep=0.7cm % separación entre columnas
 ]{geometry}
 
+
 % --- Gráficos, tablas, etc. ---
 \usepackage{graphicx}
 \usepackage{subfig}
 \usepackage{physics}
 \usepackage{csquotes}
+\usepackage{float}
 
 % --- Dos columnas tipo paper (controlable por entorno) ---
 \usepackage{multicol}
@@ -29,7 +38,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{Informe de Física}
+\lhead{Rueda de Maxwell}
 \rhead{\leftmark}
 \cfoot{\thepage}
 \setlength{\headheight}{14.5pt}
@@ -40,6 +49,7 @@
 
 % --- Para que no “salte” a páginas pares tipo libro ---
 \let\cleardoublepage\clearpage
+\raggedcolumns
 
 \begin{document}
 
@@ -49,15 +59,14 @@
 \begin{titlepage}
   \centering
   \vspace*{2cm}
-  {\LARGE \textbf{Título de la práctica}\par}
+  {\LARGE \textbf{Rueda de Maxwell}\par}
   \vspace{1cm}
-  {\large Asignatura: Física X\par}
+  {\large Asignatura: Física I\par}
   \vspace{0.5cm}
-  {\large Autor: Nombre Apellido\par}
-  {\large Grupo: ...\par}
-  {\large Fecha: \today\par}
+  {\large Autor: Luis López Nasser\par}
+  {\large Fecha: 18/12/2025\par}
   \vfill
-  {\large Universidad / Centro\par}
+  {\large Universidad Unie\par}
 \end{titlepage}
 
 % =========================
@@ -72,38 +81,112 @@
 \begin{multicols}{2}
 
 \section{Introducción}
-Texto de contexto...
 
-\section{Marco teórico}
-Fundamentos, ecuaciones, conceptos...
+La rueda de Maxwell es un dispositivo experimental clásico utilizado para el estudio del movimiento combinado de traslación y rotación en un sólido rígido. Consiste en una rueda o disco suspendido mediante uno o varios hilos enrollados alrededor de su eje. Al soltarse desde el reposo, la rueda desciende desenrollando los hilos mientras gira sobre su propio eje, de modo que la energía potencial gravitatoria se transforma simultáneamente en energía cinética de traslación y de rotación.
 
-\section{Objetivos}
-\begin{itemize}
-  \item Objetivo 1...
-  \item Objetivo 2...
-\end{itemize}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth]{imagenes/maxwell.png}
+    \caption{Rueda de Maxwell utilizada en el experimento}
+    \label{fig:maxwell}
+\end{figure}
 
-\section{Procedimiento experimental}
-Montaje, materiales, pasos...
+Este sistema se emplea habitualmente en prácticas de laboratorio de física porque permite ilustrar de forma clara y cuantitativa principios fundamentales de la mecánica clásica, como la conservación de la energía mecánica, la relación entre fuerzas y momentos de fuerza, y la influencia del momento de inercia en el movimiento de los cuerpos rígidos. A partir de medidas experimentales de posición, velocidad y tiempo, es posible determinar la aceleración del sistema y obtener una estimación experimental del momento de inercia de la rueda.
 
-\section{Datos experimentales}
-Tablas, medidas, condiciones...
+\bigskip
+En conjunto, la rueda de Maxwell constituye un ejemplo sencillo pero muy completo para analizar cómo se distribuyen y transforman las distintas formas de energía en un sistema físico real, así como para poner en práctica técnicas básicas de medida, análisis gráfico y tratamiento de datos experimentales.
 
-\section{Cálculos y tratamiento de datos}
-Despejes, ajustes, gráficas, etc...
+\subsection{Marco Teórico}
 
-\section{Análisis de errores e incertidumbres}
-Propagación de incertidumbres, error relativo, etc...
+Durante la caída de la rueda de Maxwell, el sistema está sometido a dos fuerzas principales: el peso de la rueda, $mg$, dirigido hacia abajo, y la tensión ejercida por los hilos, $T$, dirigida en sentido opuesto. Aplicando la segunda ley de Newton al movimiento de traslación del centro de masas se obtiene
 
-\section{Discusión de resultados}
-Interpretación física, comparación con teoría, limitaciones...
+\begin{equation}
+m a = m g - T .
+\end{equation}
 
-\section{Conclusiones}
-Puntos clave y cierre...
+La tensión de los hilos no solo afecta al movimiento traslacional, sino que también origina un momento de fuerza responsable de la rotación de la rueda. Dado que la fuerza es perpendicular al radio en el punto de aplicación, el módulo del torque viene dado por
+
+\begin{equation}
+\tau = T R ,
+\end{equation}
+
+donde $R$ es el radio de la rueda. De este modo, la segunda ley de Newton para el movimiento de rotación puede expresarse como
+
+\begin{equation}
+T R = I \alpha ,
+\end{equation}
+
+siendo $I$ el momento de inercia de la rueda respecto a su eje de rotación y $\alpha$ su aceleración angular. 
+
+\bigskip
+Suponiendo que no existe deslizamiento entre la rueda y los hilos, la aceleración lineal del centro de masas y la aceleración angular están relacionadas mediante la condición
+
+\begin{equation}
+a = \alpha R .
+\end{equation}
+
+A partir de esta relación, es posible expresar la tensión de la cuerda en función de la aceleración lineal como
+
+\begin{equation}
+T = \frac{I a}{R^{2}} .
+\end{equation}
+
+Sustituyendo esta expresión de la tensión en la ecuación del movimiento traslacional, se obtiene finalmente una expresión para la aceleración de caída de la rueda:
+
+\begin{equation}
+a = \frac{m g}{m + \frac{I}{R^{2}}} .
+\end{equation}
+
+De la expresión obtenida para la aceleración de la rueda se deduce que una medida experimental de dicha magnitud permite determinar su momento de inercia. Para ello, es necesario describir experimentalmente la evolución temporal de la posición y la velocidad del centro de masas. 
+
+\columnbreak
+
+Bajo la hipótesis de aceleración constante, estas magnitudes siguen las leyes del movimiento rectilíneo uniformemente acelerado:
+
+\begin{equation}
+x(t) = \frac{1}{2} a t^{2} ,
+\end{equation}
+
+\begin{equation}
+v(t) = a t .
+\end{equation}
+
+En estas expresiones se ha supuesto que la rueda se libera desde el reposo y que la posición inicial coincide con el origen de alturas.
+
+\bigskip
+Desde el punto de vista energético, durante la caída la rueda transforma progresivamente su energía potencial gravitatoria en energía cinética. La energía potencial del sistema puede expresarse como
+
+\begin{equation}
+E_{p} = - m g z ,
+\end{equation}
+
+donde $z$ representa la altura de la rueda respecto al origen elegido. La energía cinética total del sistema está compuesta por dos contribuciones: una asociada al movimiento de traslación del centro de masas y otra debida a la rotación de la rueda alrededor de su eje,
+
+\begin{equation}
+E_{c} = \frac{1}{2} m v^{2} + \frac{1}{2} I \omega^{2} .
+\end{equation}
+
+Imponiendo de nuevo la condición de no deslizamiento entre la rueda y los hilos, $v = \omega R$, es posible expresar la energía cinética únicamente en función de la velocidad lineal del centro de masas, obteniéndose
+
+\begin{equation}
+E_{c} = \frac{1}{2} \left( m + \frac{I}{R^{2}} \right) v^{2} .
+\end{equation}
+
+Dado que la rueda se libera desde el reposo y se toma el origen de alturas en su posición inicial, la energía mecánica del sistema en el instante inicial es nula. En estas condiciones, la conservación de la energía mecánica a lo largo del movimiento conduce a la relación
+
+\begin{equation}
+\frac{1}{2} \left( m + \frac{I}{R^{2}} \right) v^{2} - m g z = 0 .
+\end{equation}
+
+La medida experimental de la posición y la velocidad de la rueda en función del tiempo a lo largo de su trayectoria permite calcular las distintas contribuciones energéticas del sistema y verificar experimentalmente la conservación de la energía mecánica durante la caída.
+
+
+
+
+
+
+
 
 \end{multicols}
-
-% Bibliografía (normalmente va a 1 columna para legibilidad; si la quieres a 2, quita multicols antes)
-\printbibliography
 
 \end{document}

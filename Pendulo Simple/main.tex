@@ -19,6 +19,7 @@
   columnsep=0.7cm % separación entre columnas
 ]{geometry}
 
+
 % --- Gráficos, tablas, etc. ---
 \usepackage{graphicx}
 \usepackage{subfig}
@@ -37,7 +38,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{Informe de Física}
+\lhead{Péndulo Simple}
 \rhead{\leftmark}
 \cfoot{\thepage}
 \setlength{\headheight}{14.5pt}
@@ -48,6 +49,7 @@
 
 % --- Para que no “salte” a páginas pares tipo libro ---
 \let\cleardoublepage\clearpage
+\raggedcolumns
 
 \begin{document}
 
@@ -64,7 +66,7 @@
   {\large Autor: Luis López Nasser\par}
   {\large Fecha: 18/12/2025\par}
   \vfill
-  {\large Universidad / Universidad Unie\par}
+  {\large Universidad Unie\par}
 \end{titlepage}
 
 % =========================
@@ -206,7 +208,73 @@ Finalmente, los períodos obtenidos experimentalmente se compararon con las expr
 \newpage
 
 \section{Datos experimentales}
-Tablas, medidas, condiciones...
+
+En esta sección se presentan los datos obtenidos durante la realización del experimento del péndulo simple. A partir de las medidas del tiempo de oscilación para distintas longitudes del hilo, masas suspendidas y amplitudes angulares iniciales, se calcularon los períodos de oscilación correspondientes. Estos datos se muestran a continuación mediante tablas y representaciones gráficas, que permiten visualizar las tendencias experimentales y facilitan su posterior análisis y comparación con las predicciones teóricas.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{imagenes/datos_pendulo}
+\caption{Datos experimentales}
+\label{fig:datos_pendulo}
+\end{figure}
+
+A partir de los datos recogidos se observa una variación del período de oscilación con la longitud del péndulo, así como una ligera dependencia con la amplitud angular inicial para valores elevados del ángulo. 
+
+\bigskip
+Antes de proceder al análisis de los resultados experimentales, conviene señalar que el período de oscilación de un péndulo simple es independiente de la masa del cuerpo oscilante desde el punto de vista teórico, como se obserba en la ecuacion \eqref{eq:periodo}. Y puede comprobarse tanto desde el punto de vista experimental, al observar que distintas masas dan lugar a períodos prácticamente iguales, como se observa en la siguiente gráfica:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{imagenes/perido_masa}
+\caption{Período en función de la masa}
+\label{fig:periodo_masa}
+\end{figure}
+
+Dado que la masa no interviene en el período, se concluye que este depende únicamente de la longitud del hilo y de la aceleración de la gravedad. Sobre esta base, se procederá al análisis de los datos experimentales con el fin de estudiar la relación entre el período de oscilación, la longitud del péndulo y el ángulo inicial.
+
+\bigskip
+A continuación se representa gráficamente el cuadrado del período de oscilación en función de la longitud del péndulo. De acuerdo con la expresión teórica correspondiente, se espera que los datos experimentales se ajusten a una relación lineal. Mediante un ajuste por mínimos cuadrados se obtiene la recta que mejor describe los datos, cuya pendiente permite determinar un valor experimental de la aceleración de la gravedad.
+
+\bigskip
+\noindent
+Para $\theta = 30^\circ$:
+\vspace{-0.5 cm}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{imagenes/primera}
+\caption{ }
+\label{fig:primera}
+\end{figure}
+
+\columnbreak
+
+\noindent
+Para $\theta = 60^\circ$:
+\vspace{-0.5 cm}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{imagenes/segunda}
+\caption{ }
+\label{fig:segunda}
+\end{figure}
+
+\noindent
+Para $\theta = 90^\circ$:
+\vspace{-0.5 cm}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{imagenes/tercera}
+\caption{ }
+\label{fig:tercera}
+\end{figure}
+
+
+
+
+
+
+
+
 
 
 \newpage

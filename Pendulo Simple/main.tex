@@ -240,7 +240,7 @@ A continuación se representa gráficamente el cuadrado del período de oscilaci
 \bigskip
 \noindent
 Para $\theta = 30^\circ$:
-\vspace{-0.5 cm}
+\vspace{-0.4 cm}
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{imagenes/primera}
@@ -252,7 +252,7 @@ Para $\theta = 30^\circ$:
 
 \noindent
 Para $\theta = 60^\circ$:
-\vspace{-0.5 cm}
+\vspace{-0.4 cm}
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{imagenes/segunda}
@@ -262,7 +262,7 @@ Para $\theta = 60^\circ$:
 
 \noindent
 Para $\theta = 90^\circ$:
-\vspace{-0.5 cm}
+\vspace{-0.4 cm}
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{imagenes/tercera}
@@ -292,7 +292,7 @@ Con el fin de profundizar en el análisis y comprobar de forma alternativa la va
 
 \noindent
 Para $\theta = 30^\circ$:
-\vspace{-0.5 cm}
+\vspace{-0.4 cm}
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{imagenes/cuarta}
@@ -302,7 +302,7 @@ Para $\theta = 30^\circ$:
 
 \noindent
 Para $\theta = 60^\circ$:
-\vspace{-0.5 cm}
+\vspace{-0.4 cm}
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{imagenes/quinta}
@@ -312,7 +312,7 @@ Para $\theta = 60^\circ$:
 
 \noindent
 Para $\theta = 90^\circ$:
-\vspace{-0.5 cm}
+\vspace{-0.4 cm}
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{imagenes/sexta}
@@ -321,17 +321,22 @@ Para $\theta = 90^\circ$:
 \end{figure}
 
 En las Figuras correspondientes a la representación logarítmica se ha representado $\ln(T)$ en función de $\ln(L)$ para $\theta = 30^\circ$, $60^\circ$ y $90^\circ$. Esta representación es útil porque, a partir de la expresión teórica del péndulo simple en el régimen armónico (10), puede escribirse en forma lineal aplicando logaritmos:
+
+\columnbreak
+
 \begin{equation}
 \ln(T) = \ln(2\pi) + \frac{1}{2}\ln(L) - \frac{1}{2}\ln(g).
 \end{equation}
+
 De este modo, si se ajusta experimentalmente una recta del tipo
 \begin{equation}
 \ln(T) = c_0 + n\,\ln(L),
 \end{equation}
+
 la pendiente $n$ debe aproximarse a $1/2$ si la dependencia funcional $T\propto \sqrt{L}$ se cumple. En los resultados obtenidos, las pendientes ajustadas se encuentran próximas a $0.5$, lo cual indica que la relación funcional entre período y longitud es coherente con el modelo ideal.
 
 \bigskip
-La aceleración de la gravedad se obtiene a partir de la ordenada en el origen $c_0$. Comparando las ecuaciones anteriores, se tiene
+La aceleración de la gravedad se obtiene a partir de la ordenada en el origen $c_0$. 
 \begin{equation}
 c_0 = \ln(2\pi) - \frac{1}{2}\ln(g),
 \end{equation}
@@ -355,30 +360,45 @@ En conjunto, la representación logarítmica confirma la dependencia funcional e
 \bigskip
 Una vez analizada la dependencia del período de oscilación con la longitud del péndulo y evaluada la validez del modelo teórico tanto en escala lineal como logarítmica, se procede a estudiar la influencia de la amplitud angular inicial en el período. Para ello, se representan gráficamente los períodos de oscilación en función del ángulo inicial, incluyendo en una misma gráfica las medidas correspondientes a las distintas longitudes analizadas. Este análisis permite comprobar si el período permanece constante al variar la amplitud angular y discutir las posibles desviaciones respecto al comportamiento ideal, así como su origen físico.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{imagenes/ultima}
+\caption{ }
+\label{fig:ultima}
+\end{figure}
 
+En la Figura correspondiente se representa el período de oscilación en función de la amplitud angular inicial para las distintas longitudes analizadas. En una misma gráfica se han incluido todas las medidas experimentales, lo que permite estudiar de forma global la influencia del ángulo inicial sobre el período del péndulo.
 
+\bigskip
+A partir de los datos experimentales se observa que, para un mismo valor de la longitud, el período de oscilación aumenta ligeramente al incrementar la amplitud angular. Esta tendencia es común a todas las longitudes consideradas, lo que indica que el efecto observado no depende de la longitud del hilo, sino de la amplitud del desplazamiento angular inicial.
 
+\bigskip
+En el modelo ideal del péndulo simple, válido únicamente en el límite de ángulos pequeños, el período de oscilación viene dado por la ecuación (10), expresión que no depende de la amplitud angular. Sin embargo, cuando el ángulo inicial deja de ser pequeño, esta aproximación deja de ser válida. Para amplitudes grandes, el movimiento ya no es estrictamente armónico simple y el período real resulta mayor que el predicho por el modelo ideal. Este comportamiento se debe a que, a grandes ángulos, la componente restauradora de la fuerza gravitatoria deja de ser proporcional al desplazamiento angular, lo que ralentiza el movimiento y aumenta el tiempo necesario para completar una oscilación.
 
+Por tanto, los resultados experimentales muestran que el período sí varía con la amplitud angular, aumentando a medida que el ángulo inicial es mayor. Este efecto se hace especialmente evidente al comparar los valores correspondientes a $30^\circ$, $60^\circ$ y $90^\circ$. La coherencia de esta tendencia para todas las longitudes analizadas refuerza la interpretación física del fenómeno y pone de manifiesto una de las principales limitaciones del modelo del péndulo simple en su forma más básica.
 
-
-
-
-
-
-\newpage
-
-\section{Análisis de errores e incertidumbres}
-Propagación de incertidumbres, error relativo, etc...
-
-\section{Discusión de resultados}
-Interpretación física, comparación con teoría, limitaciones...
+\bigskip
+En consecuencia, el análisis confirma que la independencia del período respecto a la amplitud angular solo es válida en el régimen de pequeñas oscilaciones, mientras que para ángulos grandes deben considerarse correcciones anarmónicas para describir correctamente el movimiento.
 
 \section{Conclusiones}
-Puntos clave y cierre...
+
+En esta práctica se ha estudiado experimentalmente el comportamiento del péndulo simple con el objetivo de analizar la dependencia de su período de oscilación con la longitud del hilo y con la amplitud angular inicial, así como de evaluar la validez del modelo teórico en diferentes regímenes de oscilación.
+
+\bigskip
+En primer lugar, a partir de la representación del cuadrado del período en función de la longitud del péndulo y del correspondiente ajuste lineal por mínimos cuadrados, se ha comprobado que los datos experimentales siguen una relación aproximadamente lineal, en concordancia con la expresión teórica del período del péndulo simple para pequeñas amplitudes. Este resultado confirma la dependencia funcional $T \propto \sqrt{L}$ predicha por el modelo ideal.
+
+\bigskip
+La determinación experimental de la aceleración de la gravedad se ha realizado a partir de la pendiente de dichos ajustes, así como mediante la ordenada en el origen en la representación logarítmica $\ln(T)$ frente a $\ln(L)$. En ambos casos, aunque la tendencia funcional observada es coherente con la teoría, los valores obtenidos de $g$ resultan significativamente inferiores al valor tabulado. Esta discrepancia pone de manifiesto la fuerte sensibilidad del método a errores sistemáticos, especialmente en la determinación de la longitud efectiva del péndulo, así como a desviaciones del régimen ideal debido a rozamientos, fricción en el punto de suspensión y limitaciones en la medida del tiempo.
+
+\bigskip
+El análisis en escala logarítmica ha permitido, además, verificar de manera directa la relación de tipo potencial entre el período y la longitud. Las pendientes obtenidas en estas representaciones se encuentran próximas al valor teórico esperado de $1/2$, lo que refuerza la validez de la dependencia funcional, independientemente de la discrepancia en el valor absoluto de la aceleración de la gravedad.
+
+\bigskip
+Por otro lado, el estudio de la dependencia del período con la amplitud angular inicial ha mostrado que el período no permanece constante cuando se incrementa el ángulo de oscilación. Los resultados experimentales evidencian un aumento progresivo del período al pasar de $30^\circ$ a $60^\circ$ y $90^\circ$, para todas las longitudes analizadas. Este comportamiento confirma que la independencia del período respecto a la amplitud solo es válida en el límite de pequeñas oscilaciones, y que para ángulos grandes el movimiento deja de ser estrictamente armónico simple, siendo necesario considerar correcciones anarmónicas.
+
+\bigskip
+En conjunto, los resultados obtenidos permiten concluir que el péndulo simple constituye un modelo adecuado para describir el movimiento oscilatorio únicamente bajo condiciones ideales y de pequeñas amplitudes. La práctica ha puesto de manifiesto tanto la utilidad del modelo teórico como sus limitaciones, subrayando la importancia de los errores sistemáticos y de las aproximaciones empleadas en la interpretación de los datos experimentales.
 
 \end{multicols}
-
-% Bibliografía (normalmente va a 1 columna para legibilidad; si la quieres a 2, quita multicols antes)
-\printbibliography
 
 \end{document}

@@ -246,9 +246,15 @@ Para esta parte del estudio, se representarán gráficamente los momentos de fue
     \label{fig:torque_angulo}
 \end{figure}
 
-Se aprecia que el ajuste lineal obtenido describe muy bien el comportamiento de los datos experimentales. El valor de $R^2$, igual a 0.9977, indica que la recta de regresión explica prácticamente toda la variabilidad observada, lo que confirma la coherencia interna de las medidas realizadas. Atendiendo a la pendiente de dicha recta, que corresponde a la constante recuperadora del muelle, se obtiene un valor de \textbf{0.0404 N/º}. Para evaluar la fiabilidad de este resultado, procederemos a calcular las incertidumbres asociadas y analizar si la constante obtenida es representativa dentro del marco experimental.
-
+Se aprecia que el ajuste lineal obtenido describe muy bien el comportamiento de los datos experimentales. El valor de $R^2$, igual a 0.9977, indica que la recta de regresión explica prácticamente toda la variabilidad observada, lo que confirma la coherencia interna de las medidas realizadas. Atendiendo a la pendiente de dicha recta, que corresponde a la constante recuperadora del muelle, 
+se obtiene un valor de:
+\[
+\nu = (0{,}0326 \pm 0{,}0006)\ \text{N·m/rad}.
+\]
+Para evaluar la fiabilidad de este resultado, procederemos a calcular las incertidumbres asociadas 
+y analizar si la constante obtenida es representativa dentro del marco experimental.
 \bigskip
+
 En la determinación del momento de fuerza se han tenido en cuenta los errores instrumentales asociados a las magnitudes medidas. La distancia entre el punto de aplicación de la fuerza y el eje de giro se ha fijado en $r = 14\,\text{cm}$, con una incertidumbre de $\pm 0{,}05\,\text{cm}$ (error de $0{,}5\,\text{mm}$). La fuerza se ha medido con un dinamómetro con un alcance de $0$ a $2\,\text{N}$ y una resolución de $\pm 0{,}01\,\text{N}$, mientras que el ángulo de giro se ha leído en un disco graduado con una incertidumbre de $\pm 0{,}5^\circ$.
 
 \bigskip
@@ -256,7 +262,7 @@ El momento de fuerza se calcula como $\tau = F\,r$, de modo que su error absolut
 \[
 \sigma_\tau = \sqrt{(r\,\sigma_F)^2 + (F\,\sigma_r)^2},
 \]
-siendo $\sigma_F$ y $\sigma_r$ las incertidumbres en la fuerza y en la distancia, respectivamente. El error en el ángulo de giro no se ha incluido explícitamente en el ajuste lineal, pero se considera como una fuente adicional de dispersión en los datos y se tendrá en cuenta en la discusión de resultados.
+siendo $\sigma_F$ y $\sigma_r$ las incertidumbres en la fuerza y en la distancia, respectivamente. El error en el ángulo de giro no se ha incorporado de forma explícita en el ajuste estadístico; sin embargo, su efecto se ha representado gráficamente mediante barras de error horizontales, reflejando la incertidumbre instrumental asociada a la medida del ángulo.
 
 \bigskip
 En esta parte del análisis, el error más relevante es el asociado a la pendiente de la recta obtenida en el ajuste lineal, ya que de ella depende directamente el valor de la constante recuperadora $\nu$ del muelle. Aunque existen incertidumbres instrumentales en la medida del ángulo, de la fuerza y de la distancia, su contribución queda incorporada en la dispersión de los datos y, por tanto, en la calidad del ajuste lineal. Por ello, la incertidumbre más representativa es la que proporciona el propio ajuste estadístico.
@@ -266,7 +272,7 @@ El error de la pendiente se obtiene a partir de la matriz de covarianzas del mod
 \[
 \sigma_m = \sqrt{\mathrm{Var}(m)},
 \]
-Donde $\mathrm{Var}(m)$ es la varianza de la pendiente. Esta cantidad refleja cómo la dispersión de los datos afecta a la determinación de la constante $\nu$. En la práctica, este cálculo se realiza en \texttt{R} mediante la instrucción \texttt{sqrt(vcov(modelo)[2,2])}, que devuelve directamente el error estándar asociado a la pendiente.
+donde $\mathrm{Var}(m)$ es la varianza de la pendiente. Esta cantidad refleja cómo la dispersión de los datos afecta a la determinación de la constante $\nu$. En la práctica, este cálculo se realiza en \texttt{R} mediante la instrucción \texttt{sqrt(vcov(modelo)[2,2])}, que devuelve directamente el error estándar asociado a la pendiente.
 
 \begin{figure}[H]
     \centering
@@ -277,9 +283,8 @@ Donde $\mathrm{Var}(m)$ es la varianza de la pendiente. Esta cantidad refleja c�
 
 El valor obtenido para la constante recuperadora del muelle es
 \[
-\nu = (0.0326 \pm 0.0006)\ \text{N·m/rad},
+\nu = (0{,}0326 \pm 0{,}0006)\ \text{N·m/rad},
 \]
-
 lo que indica que la dispersión experimental es reducida y que la incertidumbre asociada a la medida es relativamente pequeña. Este resultado muestra que la relación entre el momento de fuerza aplicado y el ángulo de giro se ajusta correctamente al modelo lineal esperado para un muelle de torsión que trabaja dentro del régimen elástico.
 
 \bigskip
@@ -289,13 +294,7 @@ La incertidumbre relativa, de aproximadamente un \(1.8\%\), refleja que el proce
 En conjunto, el valor final de la constante recuperadora y su correspondiente error permiten concluir que las mediciones fueron consistentes y fiables, y que pueden emplearse con confianza en los cálculos posteriores de los momentos de inercia y en la verificación experimental del teorema de Steiner.
 
 \bigskip
-Una vez determinada la constante recuperadora del muelle con un nivel de precisión satisfactorio, es posible avanzar hacia la siguiente fase del análisis. Con el valor de 
-
-\[
-\nu = (0.0326 \pm 0.0006)\ \text{N·m/rad},
-\]
-
-junto con los periodos medios de oscilación obtenidos para cada uno de los sólidos analizados, puede aplicarse la ecuación (4) para calcular sus momentos de inercia experimentales. Paralelamente, a partir de la masa y dimensiones geométricas de cada objeto, es posible determinar sus momentos de inercia teóricos mediante las expresiones correspondientes.
+Una vez determinada la constante recuperadora del muelle con un nivel de precisión satisfactorio, es posible avanzar hacia la siguiente fase del análisis. Junto con los periodos medios de oscilación obtenidos para cada uno de los sólidos analizados, puede aplicarse la ecuación (4) para calcular sus momentos de inercia experimentales. Paralelamente, a partir de la masa y dimensiones geométricas de cada objeto, es posible determinar sus momentos de inercia teóricos mediante las expresiones correspondientes.
 
 \subsection{Momentos de inercia}
 
@@ -308,7 +307,7 @@ Una vez determinados los periodos medios de oscilación para cada uno de los só
     \label{fig:inercias}
 \end{figure}
 
-Una vez obtenidos los periodos medios de oscilación para cada uno de los cuerpos analizados, es posible avanzar hacia la determinación de sus momentos de inercia teóricos. Conociendo las dimensiones geométricas y las masas de cada objeto, y aplicando las expresiones correspondientes a su distribución de masa, podremos calcular los valores esperados de $I$ para la varilla, la esfera, el disco y el cilindro. Estos resultados servirán posteriormente para comparar de forma directa los valores teóricos con los momentos de inercia experimentales obtenidos a partir de los periodos, permitiendo evaluar la coherencia del modelo físico y la precisión de las medidas.
+Una vez obtenidos los periodos medios de oscilación para cada uno de los cuerpos analizados, es posible avanzar hacia la determinación de sus momentos de inercia teóricos. Conociendo las dimensiones geométricas y las masas de cada objeto, y aplicando las expresiones correspondientes a su distribución de masa, se calcularon los valores teóricos de $I$ para la varilla, la esfera, el disco y el cilindro. Estos resultados permiten realizar una comparación directa con los momentos de inercia experimentales obtenidos a partir de los periodos de oscilación.
 
 \begin{figure}[H]
     \centering
@@ -317,50 +316,46 @@ Una vez obtenidos los periodos medios de oscilación para cada uno de los cuerpo
     \label{fig:inercias_teoricas}
 \end{figure}
 
-Una vez calculados los momentos de inercia teóricos a partir de las dimensiones y masas de cada uno de los objetos, es posible compararlos con los valores experimentales obtenidos mediante la ecuación (4). 
+Una vez calculados los momentos de inercia teóricos a partir de las dimensiones y masas de cada uno de los objetos, es posible compararlos con los valores experimentales obtenidos mediante la ecuación (4).
 
 \bigskip
-Al confrontar estos valores con los momentos de inercia derivados experimentalmente de los periodos medios de oscilación, se observa en todos los casos un grado de concordancia razonable. Las diferencias encontradas entre los valores teóricos y experimentales se sitúan dentro de los márgenes de error asociados tanto a las incertidumbres instrumentales como al ajuste realizado para la determinación de la constante del muelle. Esto sugiere que el comportamiento dinámico del sistema responde adecuadamente al modelo físico empleado y que los sólidos utilizados pueden describirse de forma satisfactoria mediante las expresiones teóricas estándar de su momento de inercia.
+Al confrontar ambos conjuntos de resultados, se observa que los valores experimentales y teóricos presentan el mismo orden de magnitud en todos los casos, lo que indica que el comportamiento dinámico del sistema se describe correctamente de forma cualitativa. En particular, el cilindro muestra una concordancia muy buena entre el valor experimental y el teórico, siendo compatibles dentro de los márgenes de error estimados. En el caso del disco y de la esfera, las diferencias son más apreciables, aunque las discrepancias permanecen moderadas y no alteran la tendencia general esperada.
 
 \bigskip
-Las ligeras discrepancias presentes en algunos objetos pueden explicarse por diversas fuentes de error: pequeñas desviaciones geométricas respecto a los modelos ideales (por ejemplo, densidad no perfectamente uniforme o imperfecciones en la fabricación), errores de medición en las dimensiones o en la masa, y dispersiones en los periodos debidas a fricción interna en el sistema o a una posible no idealidad del muelle de torsión. A pesar de ello, el acuerdo general entre teoría y experimento confirma que el método empleado es fiable y que el modelo teórico describe correctamente la física del sistema.
+La varilla es el sólido para el cual se observa la mayor diferencia entre el valor experimental y el teórico. Este resultado es coherente con la mayor sensibilidad de un cuerpo alargado a errores geométricos y a pequeñas desviaciones en la posición del eje de giro, así como a posibles inhomogeneidades en la distribución de masa o a efectos de acoplamiento no ideal con el muelle de torsión.
 
 \bigskip
-En conjunto, los resultados permiten afirmar que los valores experimentales obtenidos para el momento de inercia se corresponden adecuadamente con los resultados teóricos, validando así tanto las expresiones utilizadas como la calidad de las mediciones realizadas.
+Las discrepancias observadas pueden atribuirse a diversas fuentes de error: incertidumbres en la medida de las dimensiones geométricas y de la masa de los sólidos, dispersiones en los periodos de oscilación debidas a fricción interna o amortiguamiento residual, y posibles desviaciones del comportamiento ideal del muelle de torsión. Asimismo, el procedimiento experimental supone que el sistema oscila de manera estrictamente armónica, hipótesis que puede no cumplirse perfectamente en todos los casos.
 
 \bigskip
-Tras comparar los valores teóricos y experimentales de los momentos de inercia y comprobar la coherencia general entre ambos, podemos pasar ahora a la fase final del estudio, centrada en la verificación directa del teorema de Steiner. Para ello, analizaremos cómo varía el periodo de oscilación de la varilla cuando el eje de giro se desplaza a diferentes distancias de su centro de masas.
+En conjunto, los resultados obtenidos permiten afirmar que los momentos de inercia experimentales reproducen adecuadamente la dependencia teórica con la geometría y la masa de los distintos sólidos. Aunque existen discrepancias cuantitativas en algunos casos, el acuerdo global es satisfactorio y valida el método experimental empleado, proporcionando una base sólida para la verificación posterior del teorema de Steiner.
+
+\bigskip
+Tras comparar los valores teóricos y experimentales de los momentos de inercia y analizar su grado de concordancia, procedemos a verificar el teorema de Steiner. 
 
 \subsection{Teorema de Steiner}
 
-En esta última parte, se representará el cuadrado del periodo de oscilación en función del cuadrado de la distancia entre el eje de giro y el centro de la varilla. La teoría establece que dicha relación debe ser lineal, y que la pendiente del ajuste está vinculada a la constante recuperadora del muelle según la ecuación (6). De este modo, a partir de la recta obtenida, es posible extraer nuevamente el valor de la constante del muelle y evaluar si coincide con el determinado en el primer apartado de la práctica.
+En esta última parte, se representará el cuadrado del periodo de oscilación en función del cuadrado de la distancia entre el eje de giro y el centro de masas. La teoría establece que dicha relación debe ser lineal, y que la pendiente del ajuste está vinculada a la constante recuperadora del muelle según la ecuación (6). De este modo, a partir de la recta obtenida, es posible extraer nuevamente el valor de la constante del muelle y evaluar si coincide con el determinado en el primer apartado de la práctica.
 
 \bigskip
 Este análisis permitirá comprobar de manera experimental la validez del teorema de Steiner y valorar si los resultados obtenidos son consistentes con el comportamiento esperado para un sistema oscilante regido por una distribución variable del momento de inercia.
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\columnwidth]{imagenes/steiner_varilla_corregida.png}
-    \caption{Ajuste de Steiner para la varilla}
+    \caption{Ajuste de Steiner para la varilla.}
     \label{fig:steiner_varilla}
-    \end{figure}
+\end{figure}
 
-\bigskip
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\columnwidth]{imagenes/steiner_disco_corregida.png}
-    \caption{Ajuste de Steiner para el disco}
+    \caption{Ajuste de Steiner para el disco.}
     \label{fig:steiner_disco}
 \end{figure}
 
-A partir de las representaciones gráficas de $T^2$ frente a $a^2$ para la varilla y para el disco, se procedió a realizar los ajustes lineales correspondientes, tal como establece la ecuación (6). Estos ajustes permiten extraer directamente la pendiente asociada a cada objeto, magnitud que está ligada a la constante recuperadora del muelle. A continuación se muestran los resultados numéricos obtenidos, junto con sus incertidumbres, que posteriormente serán comparados con la constante determinada en el primer apartado de la práctica.
+\columnbreak
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\columnwidth]{imagenes/datos_steiner_varilla_disco}
-    \caption{Datos experimentales utilizados para los ajustes de Steiner en la varilla y el disco.}
-    \label{fig:datos_steiner_varilla_disco}
-\end{figure}
+A partir de las representaciones gráficas de $T^2$ frente a $a^2$ para la varilla y para el disco, se procedió a realizar los ajustes lineales correspondientes, tal como establece la ecuación (6). En dichas representaciones se han incluido barras de error verticales, asociadas a la incertidumbre en la medida del periodo de oscilación, así como barras de error horizontales, correspondientes a la incertidumbre en la determinación de la posición del eje de giro. Estos ajustes permiten extraer directamente la pendiente asociada a cada objeto, magnitud que está ligada a la constante recuperadora del muelle.
 
 \bigskip
 Para comprobar experimentalmente el teorema de Steiner, se representaron los periodos de oscilación al cuadrado, $T^2$, en función del cuadrado de la distancia entre el eje de giro y el centro de masas, $a^2$, tanto para la varilla como para el disco. Según la ecuación (6), esta relación debe ser lineal, y la pendiente del ajuste está directamente ligada a la constante recuperadora del muelle a través de la expresión
@@ -368,41 +363,40 @@ Para comprobar experimentalmente el teorema de Steiner, se representaron los per
 T^2 = T_0^2 + \frac{4\pi^2 m}{\nu}\, a^2.
 \]
 
-En el caso de la varilla, el ajuste lineal ofrece una pendiente de 
+En el caso de la varilla, el ajuste lineal ofrece una pendiente de
 \[
-(284.50 \pm 4.22),
+(285 \pm 4),
+\]
+lo que conduce a un valor de la constante recuperadora del muelle
+\[
+\nu_{\text{Steiner, varilla}} = (0{,}0184 \pm 0{,}0003)\ \text{N·m/rad}.
 \]
 
-Lo que conduce a un valor de la constante recuperadora del muelle
+La linealidad del ajuste es elevada, lo que indica que la variación del periodo con la distancia al eje sigue adecuadamente el comportamiento predicho por el teorema de Steiner. Sin embargo, el valor de $\nu$ obtenido es sensiblemente menor que el determinado en la primera parte de la práctica,
 \[
-\nu_{\text{Steiner, varilla}} = 0.01836 \pm 0.00027.
+\nu = (0{,}0326 \pm 0{,}0006)\ \text{N·m/rad},
 \]
-
-La linealidad del ajuste es elevada, lo que indica que la variación del periodo con la distancia al eje sigue adecuadamente el comportamiento predicho por el teorema de Steiner. Sin embargo, el valor de $\nu$ obtenido es sensiblemente menor que el calculado en la primera parte de la práctica 
-\[
-\nu = 0.0404 \pm 0.0007,
-\]
-
-Lo que apunta a la presencia de errores sistemáticos, probablemente asociados a la dificultad de fijar con precisión la posición del eje y al aumento de fricción para desplazamientos grandes del punto de giro.
+lo que apunta a la presencia de errores sistemáticos. Estas discrepancias pueden atribuirse a la dificultad de fijar con precisión la posición del eje de giro en un sólido alargado como la varilla, así como a un aumento de la fricción y a posibles desviaciones geométricas respecto al modelo ideal para desplazamientos grandes del punto de giro.
 
 \bigskip
-Para el disco, la representación de $T^2$ frente a $a^2$ produce una pendiente de 
+Para el disco, la representación de $T^2$ frente a $a^2$ produce una pendiente de
 \[
-(592.37 \pm 27.82),
+(592 \pm 30),
+\]
+a partir de la cual se obtiene
+\[
+\nu_{\text{Steiner, disco}} = (0{,}037 \pm 0{,}002)\ \text{N·m/rad}.
 \]
 
-A partir de la cual se obtiene
-\[
-\nu_{\text{Steiner, disco}} = 0.03725 \pm 0.00175.
-\]
-
-En este caso, el valor de la constante recuperadora está mucho más próximo al determinado previamente, lo que indica que el disco se acopla al sistema de forma más estable y simétrica, reduciendo los errores sistemáticos relacionados con la alineación y la distribución de masa.
+En este caso, el valor de la constante recuperadora se encuentra próximo al determinado previamente mediante el ajuste del par frente al ángulo, lo que indica que el disco se acopla al sistema de forma más estable y simétrica, reduciendo la influencia de errores sistemáticos asociados a la alineación del eje de giro y a la distribución de masa del sólido.
 
 \bigskip
-En conjunto, puede afirmarse que los datos experimentales verifican la linealidad predicha por el teorema de Steiner, ya que tanto para la varilla como para el disco se obtiene una dependencia claramente lineal entre $T^2$ y $a^2$. No obstante, la concordancia con la constante recuperadora obtenida inicialmente es desigual: el disco arroja un valor compatible dentro de los márgenes de error, mientras que la varilla presenta una discrepancia apreciable. Esto sugiere que el comportamiento del sistema es más sensible a errores geométricos cuando el eje de giro se desplaza respecto al centro en un sólido alargado como la varilla.
+En conjunto, puede afirmarse que los datos experimentales verifican la linealidad predicha por el teorema de Steiner, ya que tanto para la varilla como para el disco se obtiene una dependencia claramente lineal entre $T^2$ y $a^2$. No obstante, la concordancia con el valor de la constante recuperadora del muelle obtenida inicialmente no es uniforme: mientras que el disco proporciona un valor compatible dentro de los márgenes de error, la varilla presenta una discrepancia apreciable.
 
 \bigskip
-A pesar de estas diferencias, el análisis global permite concluir que el teorema de Steiner se verifica cualitativamente en ambos casos y que, especialmente para el disco, la determinación de $\nu$ mediante el ajuste lineal resulta coherente con la obtenida en la primera parte de la práctica.
+A pesar de estas diferencias cuantitativas, el análisis global permite concluir que el teorema de Steiner se verifica de forma cualitativa en ambos casos. En particular, el disco ofrece una verificación más robusta del modelo teórico, mientras que los resultados obtenidos con la varilla ponen de manifiesto la mayor sensibilidad de los cuerpos alargados a errores geométricos y a desviaciones experimentales en la determinación del eje de giro.
+
+\columnbreak
 
 \section{Conclusión}
 

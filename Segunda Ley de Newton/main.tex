@@ -1,0 +1,221 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- Idioma y codificación ---
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}   % si compilas con pdflatex
+\usepackage[T1]{fontenc}
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\large\bfseries}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection}{1em}{}
+
+% --- Márgenes (ajústalos a tu gusto) ---
+\usepackage[a4paper,
+  top=2.5cm,bottom=2.5cm,
+  left=2.2cm,right=2.2cm,
+  columnsep=0.7cm % separación entre columnas
+]{geometry}
+
+
+% --- Gráficos, tablas, etc. ---
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{physics}
+\usepackage{csquotes}
+\usepackage{float}
+
+% --- Dos columnas tipo paper (controlable por entorno) ---
+\usepackage{multicol}
+
+% --- Índice y enlaces ---
+\usepackage[hidelinks]{hyperref}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+
+% --- Encabezados y pies (opcional, estilo paper) ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Segunda Ley de Newton}
+\rhead{\leftmark}
+\cfoot{\thepage}
+\setlength{\headheight}{14.5pt}
+
+% --- Bibliografía (usa SOLO una vez) ---
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{bibliografia.bib}
+
+% --- Para que no “salte” a páginas pares tipo libro ---
+\let\cleardoublepage\clearpage
+\raggedcolumns
+
+\begin{document}
+
+% =========================
+% Portada (1 columna)
+% =========================
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+  {\LARGE \textbf{Segunda Ley de Newton}\par}
+  \vspace{1cm}
+  {\large Asignatura: Mecánica y Ondas I\par}
+  \vspace{0.5cm}
+  {\large Autor: Luis López Nasser\par}
+  {\large Fecha: 18/12/2025\par}
+  \vfill
+  {\large Universidad Unie\par}
+\end{titlepage}
+
+% =========================
+% Índice (1 columna)
+% =========================
+\tableofcontents
+\clearpage
+
+% =========================
+% Contenido (2 columnas)
+% =========================
+\begin{multicols}{2}
+
+\section{Introducción}
+
+\subsection{Marco Teórico}
+
+La segunda ley de Newton relaciona la fuerza neta aplicada sobre un cuerpo de masa $m$ con la aceleración que adquiere, de acuerdo con la expresión
+
+\begin{equation}
+\vec{F} = m\vec{a}.
+\end{equation}
+
+En esta práctica se analizará un sistema similar al representado en la figura 1. Un carrito de masa $m_1$ se desplaza sobre un riel horizontal y está unido mediante un hilo a una polea. En el extremo libre del hilo cuelga un bloque de masa $m_2$, cuyo peso provoca el movimiento del carrito a lo largo del riel. Con el fin de simplificar el análisis, se desprecia tanto el rozamiento como la masa del hilo, el cual se considera inextensible.
+
+\bigskip
+Sobre el carrito de masa $m_1$ actúan la tensión del hilo $\vec{T}$, la fuerza normal $\vec{N}$ y su peso $\vec{P}_1$. Dado que la fuerza normal compensa al peso, la aceleración vertical es nula y el movimiento del carrito se produce únicamente en la dirección horizontal, tal como se indica en la figura 1.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/esquema}
+    \caption{Esquema del sistema estudiado}
+    \label{fig:esquema}
+\end{figure}
+
+La masa suspendida está sometida a la tensión ejercida por el hilo y a su propio peso $\vec{P}_2$. Dado que la longitud de la cuerda permanece constante, el desplazamiento del móvil de masa $m_1$ coincide con el desplazamiento de la masa colgante $m_2$. Por este motivo, el módulo de la aceleración de ambas masas es el mismo. Asimismo, al considerarse el hilo inextensible, la tensión que ejerce es igual sobre ambos cuerpos.
+
+\bigskip
+Al aplicar este razonamiento se obtiene el siguiente sistema de ecuaciones:
+\begin{equation}
+\begin{cases}
+T = m_1 \, a, \\
+m_2 \, g - T = m_2 \, a,
+\end{cases}
+\end{equation}
+del cual se deduce,
+\begin{equation}
+a = \dfrac{m_2}{m_1 + m_2}\, g.
+\end{equation}
+
+La aceleración depende de la masa de ambos cuerpos y no varía con el tiempo. En consecuencia, el movimiento del carrito es un movimiento rectilíneo uniformemente acelerado. Si tanto la posición inicial como la velocidad inicial del carrito son nulas, la ecuación del movimiento viene dada por
+
+La ecuación del movimiento queda entonces expresada como
+\begin{equation}
+x = \frac{1}{2}\, a\, t^2.
+\end{equation}
+
+En este tipo de movimiento, la velocidad instantánea crece de forma lineal con el tiempo, según
+\begin{equation}
+v = a\, t.
+\end{equation}
+
+Dado que la velocidad instantánea no es constante, en general no coincide con la velocidad media en un intervalo de tiempo $\Delta t$. No obstante, si dicho intervalo es lo suficientemente pequeño, la velocidad media puede aproximarse por la velocidad instantánea:
+\begin{equation}
+v(t) \simeq \frac{x(t+\Delta t)-x(t)}{\Delta t}.
+\end{equation}
+
+A partir de la ecuación (4) se obtiene entonces
+\begin{equation}
+v(t) \simeq a\left(t + \frac{\Delta t}{2}\right).
+\end{equation}
+
+En conjunto, este marco teórico proporciona las bases físicas necesarias para describir y analizar el comportamiento dinámico del sistema estudiado. Las expresiones obtenidas permiten relacionar las magnitudes fundamentales del movimiento con las propiedades de las masas involucradas, facilitando así la interpretación de los resultados experimentales y su comparación con el modelo ideal propuesto.
+
+\subsection{Objetivos}
+
+En esta práctica se estudiará experimentalmente un movimiento uniformemente acelerado mediante la determinación de las posiciones y velocidades de un móvil en función del tiempo. A partir de estas mediciones, se buscará verificar de forma empírica la validez de la segunda ley de Newton, analizando la relación entre la aceleración del sistema y las fuerzas que actúan sobre él. Para llevar a cabo el experimento, se utilizará un carro que se desplaza sobre un carril de baja fricción, junto con un contador de cuatro tiempos que permitirá registrar con precisión los intervalos temporales necesarios para el análisis del movimiento.
+
+\section{Materiales}
+
+Para la realización de la práctica se emplearon los siguientes materiales y equipos de laboratorio:
+
+\begin{itemize}
+    \item Disparador electromagnético (1).
+    \item Controlador del disparador (2).
+    \item Carrito (3).
+    \item Carril (4).
+    \item Hilo (5).
+    \item Célula fotoeléctrica (6).
+    \item Polea (7).
+    \item Contador de cuatro tiempos (8).
+    \item Polea con masa colgante (9).
+\end{itemize}
+
+\section{Procedimiento}
+
+Como pasos previos al inicio de la práctica, se debe comprobar que el carril se encuentre correctamente nivelado y que la longitud del hilo sea la adecuada, de modo que la masa colgante no alcance el suelo durante el movimiento. Asimismo, es necesario registrar los valores de ambas masas, así como la longitud de la bandera y su posición inicial respecto del origen de la escala milimétrica. Por último, deben medirse y anotarse las posiciones correspondientes a las cuatro células fotoeléctricas.
+
+\bigskip
+Para la primera parte de la práctica, se pone en funcionamiento el contador de cuatro tiempos en el modo de operación I, de manera que registre los intervalos temporales asociados a las posiciones de las células fotoeléctricas. Con estos datos se determina experimentalmente la posición del móvil en función del tiempo. El procedimiento se repite incrementando la masa del sistema, ya sea aumentando la masa colgante o la del carrito. Deben realizarse al menos cuatro configuraciones distintas de masa, incluyendo como mínimo una variación en la masa del carrito.
+
+\bigskip
+Para la segunda parte de la práctica, se configura el contador de cuatro tiempos en el modo de operación II, de forma que registre los intervalos de tiempo $\Delta t$ proporcionados por las células fotoeléctricas. Estas mediciones permiten estimar la velocidad instantánea del móvil en función del tiempo. Al igual que en la primera parte, el procedimiento debe repetirse para diferentes configuraciones de las masas involucradas en el sistema.
+
+\bigskip
+Además, se tomaron numerosos datos experimentales utilizando una amplia variedad de combinaciones de masas, con el objetivo de disponer de un conjunto de medidas suficientemente amplio y representativo. Este procedimiento permitió mejorar la fiabilidad de los resultados obtenidos, reducir la influencia de posibles errores experimentales y asegurar un análisis más preciso del comportamiento del sistema, garantizando así el correcto desarrollo de la práctica.
+
+\section{Análisis y Discusión}
+
+A partir de los datos obtenidos en la primera y segunda parte de la práctica, se procede al análisis experimental del movimiento del sistema. Las medidas de posición y de intervalos de tiempo permiten estudiar la evolución temporal del móvil, así como determinar su velocidad y aceleración para las distintas configuraciones de masas consideradas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/datos1}
+    \caption{Datos obtenidos en la primera parte de la práctica}
+    \label{fig:datos1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/datos2}
+    \caption{Datos obtenidos en la segunda parte de la práctica}
+    \label{fig:datos2}
+\end{figure}
+
+A continuación, partiendo de los datos obtenidos en la primera y segunda parte de la práctica, se realiza el tratamiento experimental de las medidas incorporando sus respectivas incertidumbres. Para ello, se consideran los errores asociados a las magnitudes registradas (posiciones, tiempos, masas y longitud de la bandera) y se aplican los procedimientos de propagación necesarios, con el fin de calcular de forma consistente las magnitudes derivadas y comparar los resultados con el modelo teórico.
+
+\bigskip
+Representar la posición de la bandera en función del tiempo utilizando escalas lineal y logarítmica. El ajuste lineal de la representación en escala logarítmica permite verificar que la distancia recorrida crece de manera cuadrática con el tiempo. Además, la ordenada en el origen del ajuste posibilita la determinación de la aceleración del sistema, de acuerdo con la ecuación (4). Este valor puede compararse con el resultado esperado desde el punto de vista teórico, obtenido a partir de la ecuación (3).
+
+\bigskip
+Repitiendo este procedimiento para las distintas configuraciones de masa consideradas, es posible representar la aceleración del sistema en función del cociente $m_2/(m_1+m_2)$. Mediante un ajuste lineal de estos puntos experimentales, se puede obtener una estimación del valor de la aceleración de la gravedad.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{multicols}
+
+\end{document}

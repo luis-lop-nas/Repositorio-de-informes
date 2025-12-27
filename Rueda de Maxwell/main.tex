@@ -176,7 +176,19 @@ La medida experimental de la posición y la velocidad de la rueda en función de
 
 \subsection{Objetivos}
 
-En esta práctica se analiza de forma experimental el movimiento de la rueda de Maxwell, un sólido rígido que desciende al desenrollarse de unos hilos fijos. Se estudia la evolución temporal de su posición y su velocidad durante la caída, con el objetivo de verificar la conservación de la energía mecánica. Asimismo, a partir de los datos experimentales obtenidos, se determina una estimación del momento de inercia de la rueda.
+El objetivo de esta práctica es estudiar experimentalmente el movimiento de la rueda de Maxwell, un sólido rígido que desciende al desenrollarse de unos hilos fijos bajo la acción de la gravedad. Se analizará la evolución de la posición y la velocidad de la rueda en función del tiempo durante la caída, con el fin de caracterizar su movimiento.
+
+\bigskip
+A partir de los datos experimentales obtenidos, se comprobará la conservación de la energía mecánica del sistema, estudiando la transformación de la energía potencial gravitatoria en energía cinética de traslación y rotación. Asimismo, el experimento permitirá obtener una estimación del momento de inercia de la rueda y evaluar la coherencia entre los resultados experimentales y el modelo teórico.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/esquemarueda}
+    \caption{Esquema del funcionamiento de la rueda de Maxwell}
+    \label{fig:esquemarueda}
+\end{figure}
+
+\columnbreak
 
 \section{Materiales}
 
@@ -191,22 +203,32 @@ Los materiales utilizados fueron los siguientes:
   \item Contador digital.
 \end{itemize}
 
-\section{Procedimiento Experimental}
+\section{Procedimiento experimental}
 
-Para la realización del experimento de la rueda de Maxwell se utilizó un conjunto de materiales y equipamiento cuidadosamente seleccionados, con el propósito de garantizar un montaje experimental robusto y un desarrollo adecuado de la práctica. La correcta disposición y utilización de estos elementos resulta esencial para asegurar la estabilidad del sistema durante el movimiento de la rueda y permitir la obtención de medidas fiables de las magnitudes físicas implicadas.
+Para la realización de la práctica se montó el sistema experimental de la rueda de Maxwell sobre su soporte, asegurando la correcta alineación de los hilos y la estabilidad del conjunto. Antes de iniciar las medidas, se enrolló completamente la rueda alrededor de los hilos y se midieron las magnitudes geométricas necesarias, como las alturas de caída, utilizando una regla graduada.
 
-\bigskip
-El montaje experimental está diseñado para facilitar el estudio del movimiento de caída de la rueda, así como la medición precisa de los tiempos asociados a distintas posiciones a lo largo de su trayectoria. De este modo, es posible analizar de manera rigurosa la evolución cinemática del sistema y comprobar experimentalmente los principios teóricos estudiados. Asimismo, la precisión de los instrumentos empleados contribuye a reducir los errores experimentales y a mejorar la reproducibilidad de los resultados obtenidos.
+\subsection{Posición en función del tiempo}
 
-\bigskip
-La velocidad de la rueda en función del tiempo se determina mediante el uso del contador digital configurado en modo 2. En este modo de funcionamiento, el dispositivo registra el intervalo de tiempo durante el cual la rueda atraviesa la barrera fotoeléctrica. A partir de este tiempo de paso y conociendo previamente el diámetro de la barra metálica solidaria a la rueda, es posible calcular la velocidad instantánea del sistema en el punto de medida.
+Con el objetivo de determinar la posición de la rueda en función del tiempo, se realizaron medidas del tiempo total de caída para distintas alturas. Para ello, se situó el soporte inicial de la rueda a diferentes posiciones verticales y, en cada caso, se dejó caer la rueda desde el reposo tras desenrollarla completamente. El tiempo de caída se midió mediante el contador digital configurado en modo 1, que registra el intervalo de tiempo transcurrido desde el inicio del movimiento hasta que la rueda atraviesa la barrera fotoeléctrica.
 
 \bigskip
-Cada valor de velocidad obtenido se asocia al instante de tiempo correspondiente a la posición de la barrera fotoeléctrica, cuya determinación se ha descrito en el apartado anterior. Este procedimiento permite reconstruir la evolución temporal de la velocidad de la rueda a lo largo de su trayectoria y analizar su comportamiento dinámico durante la caída.
+Este procedimiento permite obtener distintos pares de valores altura--tiempo, equivalentes a registrar la evolución de la posición de una única trayectoria en función del tiempo, sin necesidad de realizar un seguimiento continuo del movimiento. Repitiendo las medidas para varias alturas, se obtuvo un conjunto de datos suficiente para caracterizar la cinemática del sistema.
+
+\subsection{Velocidad en función del tiempo}
+
+La determinación de la velocidad de la rueda se llevó a cabo empleando el contador digital en modo 2. En este modo de funcionamiento, el dispositivo mide el tiempo que tarda la rueda en atravesar la barrera fotoeléctrica. Conociendo el diámetro de la barra metálica solidaria a la rueda, es posible calcular la velocidad instantánea del sistema en el punto donde se sitúa la barrera.
+
+\bigskip
+Para cada altura considerada en el apartado anterior, se registró el tiempo de paso por la barrera y se calculó la velocidad correspondiente. Cada valor de velocidad se asoció al instante de tiempo determinado previamente para esa posición. De este modo, se pudo reconstruir la evolución temporal de la velocidad de la rueda a lo largo de su caída.
+
+\bigskip
+Los datos obtenidos de posición y velocidad en función del tiempo se utilizaron posteriormente para realizar el análisis cinemático y energético del sistema, permitiendo verificar la conservación de la energía mecánica y obtener una estimación experimental del momento de inercia de la rueda.
+
+\columnbreak
 
 \section{Análisis y discusión de datos}
 
-En esta sección se presenta el análisis y la discusión de los datos experimentales obtenidos durante la práctica de la rueda de Maxwell. Con este fin, se representan las alturas desde las que se libera la rueda en función del tiempo de caída, tanto en escala lineal como en escala logarítmica. El estudio de estas representaciones gráficas permite analizar la relación entre la distancia recorrida y el tiempo.
+En esta sección se presenta el análisis y la discusión de los datos experimentales obtenidos durante la práctica. Con este fin, se representan las alturas desde las que se libera la rueda en función del tiempo de caída, tanto en escala lineal como en escala logarítmica. El estudio de estas representaciones gráficas permite analizar la relación entre la distancia recorrida y el tiempo.
 
 \begin{figure}[H]
 \centering
@@ -218,7 +240,7 @@ En esta sección se presenta el análisis y la discusión de los datos experimen
 Mediante un ajuste lineal de la representación en escala logarítmica se verifica que la distancia recorrida por la rueda es proporcional al cuadrado del tiempo, de acuerdo con el modelo teórico descrito. A partir de dicho ajuste se determina el valor de la aceleración del sistema, según la ecuación (6). Finalmente, utilizando el valor experimental de la aceleración obtenida, se calcula el momento de inercia de la rueda invirtiendo la ecuación (5).
 
 \bigskip
-En la Figura 1 se representa la altura recorrida por la rueda en función del tiempo de caída. Los puntos experimentales se ajustan mediante una recta de regresión.
+En la gráfica se aprecia una tendencia lineal clara de los puntos experimentales, siendo las barras de error prácticamente inapreciables debido a la baja incertidumbre de las medidas.
 
 \begin{figure}[H]
 \centering
@@ -227,7 +249,7 @@ En la Figura 1 se representa la altura recorrida por la rueda en función del ti
 \label{fig:grafica1}
 \end{figure}
 
-En la Figura 2 se muestra la representación logarítmica de la altura en función del tiempo de caída. El ajuste lineal obtenido en esta escala confirma la dependencia cuadrática de la distancia con el tiempo, característica de un movimiento uniformemente acelerado.
+En esta otra gráfica se muestra la representación logarítmica de la altura en función del tiempo de caída. El ajuste lineal obtenido en esta escala confirma la dependencia cuadrática de la distancia con el tiempo, característica de un movimiento uniformemente acelerado.
 
 \begin{figure}[H]
 \centering
@@ -245,24 +267,21 @@ A partir de los ajustes realizados sobre las representaciones gráficas de los d
 \label{fig:datosgrafica}
 \end{figure}
 
-El análisis de los datos experimentales muestra una buena concordancia con el modelo teórico del movimiento uniformemente acelerado. En la representación de la altura en función del tiempo se observa una tendencia creciente clara, mientras que la representación logarítmica de la altura frente al tiempo permite comprobar de forma más precisa la relación cuadrática entre ambas magnitudes.
+El análisis de los datos experimentales muestra una buena concordancia con el modelo teórico del M.R.U.A. En la representación de la altura en función del tiempo se observa una tendencia creciente clara, mientras que la representación logarítmica de la altura frente al tiempo permite comprobar de forma más precisa la relación cuadrática entre ambas magnitudes.
 
 \columnbreak
 
 \bigskip
-El ajuste lineal realizado en la representación log--log presenta un coeficiente de determinación elevado, lo que indica que el modelo teórico describe adecuadamente los datos experimentales. Aunque el valor de la pendiente obtenido no coincide exactamente con el valor teórico esperado de 2, la desviación observada es moderada y puede atribuirse a errores sistemáticos del experimento, como rozamientos no despreciables en el eje de la rueda, pérdidas de energía o pequeñas imprecisiones en la medida de los tiempos de caída.
+El ajuste lineal realizado sobre la representación en escala log--log muestra un coeficiente de determinación elevado, lo que indica una buena concordancia entre los datos experimentales y el modelo teórico propuesto. Aunque la pendiente obtenida no coincide exactamente con el valor teórico esperado de 2, la discrepancia observada es relativamente pequeña y puede atribuirse a diversos efectos no ideales del experimento, como la presencia de rozamientos en el eje de la rueda, pérdidas de energía durante el desenrollado de los hilos o pequeñas imprecisiones en la medición de los tiempos de caída.
 
 \bigskip
-Las barras de error asociadas a las medidas de altura y tiempo son tan pequeñas en comparación con la escala de las gráficas que apenas resultan visibles. Esto indica que las incertidumbres instrumentales son reducidas y que la dispersión de los datos está dominada principalmente por efectos sistemáticos más que por errores aleatorios.
+A partir del ajuste se obtuvo un valor de la aceleración de caída de la rueda que resulta compatible, dentro de su incertidumbre, con un sistema en el que coexisten el movimiento de traslación del centro de masas y la rotación del sólido rígido. El momento de inercia calculado a partir de este valor experimental presenta un orden de magnitud coherente con el esperado para la geometría de la rueda utilizada, y su incertidumbre relativa es reducida, lo que respalda la fiabilidad del procedimiento experimental seguido.
 
 \bigskip
-A partir del ajuste se obtuvo un valor de la aceleración de caída de la rueda compatible, dentro de su incertidumbre, con un sistema que combina movimiento de traslación y rotación. El valor experimental del momento de inercia calculado a partir de dicha aceleración presenta un orden de magnitud coherente con el esperado para una rueda maciza, y su incertidumbre relativa es pequeña, lo que refuerza la consistencia del procedimiento experimental y del análisis realizado.
+En conjunto, los resultados obtenidos presentan un comportamiento físicamente consistente y se encuentran en buen acuerdo con las predicciones teóricas dentro de los márgenes de error considerados. Esto permite validar tanto el planteamiento experimental como el método de análisis aplicado en esta práctica.
 
 \bigskip
-En conjunto, los resultados obtenidos tienen sentido físico y son compatibles con el modelo teórico dentro de los márgenes de error considerados, validando así el planteamiento experimental y el método de análisis empleado en esta práctica.
-
-\bigskip
-Una vez analizada la evolución de la posición de la rueda en función del tiempo, se procede a estudiar de forma independiente su comportamiento dinámico a través de la velocidad instantánea. Este segundo análisis permite obtener una determinación alternativa de la aceleración del sistema y, a partir de ella, del momento de inercia de la rueda.
+Una vez completado el estudio de la posición de la rueda en función del tiempo, se procede a analizar de manera independiente su comportamiento dinámico a través de la velocidad instantánea. Este segundo enfoque proporciona una determinación alternativa de la aceleración del sistema y, en consecuencia, del momento de inercia de la rueda, permitiendo comparar ambos métodos y evaluar su consistencia.
 
 \columnbreak
 

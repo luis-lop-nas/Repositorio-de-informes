@@ -628,6 +628,26 @@ v(t') = v_0 + a t'.
 \]
 Como mejora, se recomienda ajustar $v$ vs $t'$ permitiendo intercepto y, si es posible, incluir el punto de la celda 1 (con $t'=0$ y $v_1=L/\Delta t_1$) para estimar directamente $v_0$ y obtener un valor de $a$ más consistente con la parte 1.
 
+\section{conclusión}
+
+\begin{enumerate}
+\item Las gráficas de posición $x'(t')$ presentan un comportamiento parabólico en todas las configuraciones analizadas, lo que es coherente con un movimiento aproximadamente uniformemente acelerado y, por tanto, con el modelo básico derivado de la segunda ley de Newton.
+
+\item El análisis en escala logarítmica ($\log(x')$ vs $\log(t')$) muestra una relación aproximadamente lineal, confirmando una dependencia tipo ley potencial. No obstante, las pendientes obtenidas ($b_1 \simeq 1.6$) son sistemáticamente menores que el valor teórico 2, lo que indica la presencia de efectos sistemáticos y/o que el origen temporal escogido no corresponde a una condición inicial ideal ($v_0=0$).
+
+\item La representación global $a$ frente a $\frac{m_2}{m_1+m_2}$ confirma la tendencia lineal esperada por el modelo teórico. A partir del ajuste se obtuvo:
+\[
+g = (10.1 \pm 0.5)\ \text{m/s}^2,
+\]
+resultado compatible con el valor tabulado $g \simeq 9.81\ \text{m/s}^2$ dentro de la incertidumbre experimental.
+
+\item En el modo II, al calcular $v=L/\Delta t$ y ajustar $v$ en función de $t'$, se observa un aumento de la velocidad con el tiempo, consistente con un movimiento acelerado. Sin embargo, las aceleraciones obtenidas mediante el ajuste forzado $v=a t'$ resultan menores que las obtenidas a partir de $x(t)$, lo que sugiere que el modelo correcto debería incluir un término independiente ($v=v_0+at'$), ya que $t'=0$ se define en el paso por la primera fotocélula y no necesariamente coincide con velocidad nula.
+
+\item Las principales fuentes de discrepancia se atribuyen a efectos sistemáticos: rozamiento del carro y la polea, posible inercia rotacional de la polea, incertidumbre en masas efectivas (incluyendo soporte/hilo) y el hecho de trabajar con pocos puntos por configuración (tres puntos útiles en las escalas logarítmicas y en el ajuste de $v(t')$).
+\end{enumerate}
+
+En conjunto, los resultados apoyan cualitativamente la validez del modelo de la segunda ley de Newton para el sistema estudiado y permiten obtener una estimación razonable de $g$, aunque la precisión queda limitada por los efectos sistemáticos mencionados. Como mejora, se recomienda realizar ajustes que incluyan condiciones iniciales ($x'=v_0t'+\tfrac12 at'^2$ y $v=v_0+at'$), aumentar el número de medidas y minimizar el rozamiento para obtener estimaciones más consistentes de la aceleración.
+
 
 \end{multicols}
 

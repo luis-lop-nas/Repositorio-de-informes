@@ -200,20 +200,433 @@ Representar la posición de la bandera en función del tiempo utilizando escalas
 \bigskip
 Repitiendo este procedimiento para las distintas configuraciones de masa consideradas, es posible representar la aceleración del sistema en función del cociente $m_2/(m_1+m_2)$. Mediante un ajuste lineal de estos puntos experimentales, se puede obtener una estimación del valor de la aceleración de la gravedad.
 
+\bigskip
+A continuación se muestran las gráficas obtenidas a partir de los datos registrados.
 
+\columnbreak
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/conf1.png}
+    \caption{Configuración 1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/conf5.png}
+    \caption{Configuración 5}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/conf8.png}
+    \caption{Configuración 8}
+\end{figure}
+\columnbreak
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/conf21.png}
+    \caption{Configuración 21}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/conf22.png}
+    \caption{Configuración 22}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/conf23.png}
+    \caption{Configuración 23}
+  \end{figure}
 
+\newpage
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/datconf1.png}
+    \caption{Datos Configuración 1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/datconf5.png}
+    \caption{Datos Configuración 5}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/datconf8.png}
+    \caption{Datos Configuración 8}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/datconf21.png}
+    \caption{Datos Configuración 21}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/datconf22.png}
+    \caption{Datos Configuración 22}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/datconf23.png}
+    \caption{Datos Configuración 23}
+\end{figure}
 
+En las configuraciones analizadas (1, 5, 8, 21, 22 y 23) las representaciones de la posición desplazada $x'(t')$ muestran una tendencia claramente parabólica, consistente con el modelo de movimiento uniformemente acelerado (MUA):
+\begin{equation}
+x'(t') \approx \tfrac{1}{2}\,a\,t'^2.
+\end{equation}
+Por tanto, cualitativamente, el experimento reproduce el comportamiento esperado para un sistema carro--masa colgante gobernado por la segunda ley de Newton.
 
+\bigskip
+Aunque la forma global de las curvas es correcta, al calcular la aceleración punto a punto mediante
+\begin{equation}
+a_i = \frac{2x'}{t'^2},
+\end{equation}
+se observa que los valores $a_i$ no son constantes dentro de una misma configuración, sino que tienden a disminuir al considerar fotocélulas más alejadas (mayores $t'$). Este patrón se repite en varias configuraciones, por ejemplo:
+\begin{itemize}
+\item Configuración 1: $a_2 > a_3 > a_4$ (de $\sim 0.26$ a $\sim 0.21$ m/s$^2$),
+\item Configuración 5: $a_2 > a_3 > a_4$ (de $\sim 1.90$ a $\sim 1.43$ m/s$^2$),
+\item Configuración 8: $a_2 > a_3 > a_4$ (de $\sim 3.52$ a $\sim 2.66$ m/s$^2$),
+\end{itemize}
+y de forma análoga en las configuraciones 21 y 22. Al no tratarse de fluctuaciones aleatorias, esta tendencia sugiere la presencia de efectos sistemáticos o que el modelo empleado para obtener $a$ es una simplificación insuficiente.
 
+\bigskip
+Las incertidumbres obtenidas por propagación e impresas por el cálculo resultan muy pequeñas en comparación con la dispersión real entre los valores $a_2$, $a_3$ y $a_4$ dentro de una misma configuración. Esto indica que el error total no está dominado por el error instrumental introducido en la propagación (por ejemplo, en $t$ o $x$), sino por efectos sistemáticos. En consecuencia, el error final reportado por la media ponderada debe interpretarse como una cota asociada al modelo asumido, mientras que la incertidumbre real del experimento es mayor.
 
+\bigskip
+Las causas más plausibles que explican la variación de $a_i$ con el tiempo son:
 
+\begin{enumerate}
+\item \textbf{Rozamiento del sistema (carro--carril y/o polea).} El modelo ideal supone fuerza neta constante. En la práctica, el rozamiento reduce la fuerza efectiva, pudiendo modelarse como
+\begin{equation}
+F_{\text{net}} \approx m_2 g - f,
+\end{equation}
+lo que modifica la aceleración y puede introducir desviaciones acumulativas a medida que aumenta la velocidad o cambia la tensión del hilo.
 
+\item \textbf{Condición inicial no nula ($v_0\neq 0$).} Al definir $t' = t - t_1$ se asume implícitamente que el movimiento parte del reposo cuando el carrito pasa por la primera fotocélula. Sin embargo, si el carrito ya presenta una velocidad inicial pequeña al cruzar la primera célula, el modelo correcto es
+\begin{equation}
+x' = v_0 t' + \tfrac{1}{2} a t'^2,
+\end{equation}
+y no únicamente $x'=\tfrac{1}{2}at'^2$. Ignorar $v_0$ sesga el cálculo de $a$ obtenido a partir de $2x'/t'^2$ y puede producir una variación sistemática de $a_i$ entre puntos.
 
+\item \textbf{Incertidumbre en la posición efectiva de las fotocélulas.} Pequeños errores de medida o de colocación en $x$ (del orden de milímetros) se amplifican al calcular $a$ con una dependencia $a\propto x/t^2$, especialmente en los primeros intervalos temporales.
+\end{enumerate}
 
+\bigskip
+En conjunto, las gráficas apoyan la validez del modelo cualitativo de MUA y permiten comparar tendencias entre configuraciones: al aumentar $m_2$ (masa colgante) o aumentar la masa total del sistema de forma que disminuya el cociente $\frac{m_2}{m_1+m_2}$, se espera una variación sistemática de la aceleración acorde con la teoría. No obstante, la no constancia interna de $a_i$ y la discrepancia entre dispersión y error propagado indican que la limitación principal del experimento no es la resolución instrumental, sino los efectos sistemáticos descritos.
 
+\bigskip
+Para reducir sesgos y obtener una estimación más robusta de $a$, sería recomendable:
+\begin{itemize}
+\item ajustar los datos con el modelo completo $x' = v_0 t' + \tfrac{1}{2} a t'^2$ en lugar de forzar $v_0=0$;
+\item registrar más puntos (más fotocélulas o más medidas) para estabilizar el ajuste;
+\item minimizar rozamiento (nivelación del carril, verificación de la polea e hilo) y asegurar condiciones iniciales reproducibles.
+\end{itemize}
+
+En conclusión, los resultados son satisfactorios a nivel cualitativo y muestran el comportamiento esperado, pero la precisión cuantitativa está limitada por efectos sistemáticos, por lo que la incertidumbre real debe considerarse mayor que la obtenida únicamente por propagación instrumental.
+
+\bigskip
+En esta sección se presentan las gráficas y los datos correspondientes a la \textbf{Gráfica 2}, donde se representa $\log(x')$ en función de $\log(t')$ para las configuraciones seleccionadas. A partir de estas representaciones se evalúa la validez de la relación teórica $x' \propto t'^2$, ya que en escala logarítmica dicha dependencia se traduce en una relación lineal. Además, el ajuste lineal de cada conjunto de datos permite obtener la pendiente (esperada cercana a 2) y estimar la aceleración a partir del término independiente, comparando así el comportamiento experimental con el modelo de movimiento uniformemente acelerado.
+\newpage
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/2conf1.png}
+    \caption{Configuración 1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/2conf5.png}
+    \caption{Configuración 5}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/2conf8.png}
+    \caption{Configuración 8}
+\end{figure}
+\columnbreak
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/2conf21.png}
+    \caption{Configuración 21}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/2conf22.png}
+    \caption{Configuración 22}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/2conf23.png}
+    \caption{Configuración 23}
+\end{figure}
+
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/2datconf1.png}
+    \caption{Datos Configuración 1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/2datconf5.png}
+    \caption{Datos Configuración 5}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/2datconf8.png}
+    \caption{Datos Configuración 8}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/2datconf21.png}
+    \caption{Datos Configuración 21}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/2datconf22.png}
+    \caption{Datos Configuración 22}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/2datconf23.png}
+    \caption{Datos Configuración 23}
+\end{figure}
+
+En esta parte se ha representado $\log(x')$ en función de $\log(t')$ para las configuraciones seleccionadas. Si el movimiento fuese estrictamente uniformemente acelerado y con condición inicial ideal ($v_0=0$ en $t'=0$), se espera:
+\begin{equation}
+x'=\tfrac{1}{2}at'^2
+\quad\Rightarrow\quad
+\log(x')=\log\!\left(\tfrac{a}{2}\right)+2\log(t').
+\end{equation}
+Por tanto, en escala logarítmica debería obtenerse una recta con pendiente cercana a $2$ y cuya ordenada en el origen permitiría estimar $a$.
+
+\bigskip
+Las gráficas muestran una relación aproximadamente lineal (lo cual es coherente con una ley potencial), sin embargo las pendientes ajustadas resultan sistemáticamente menores que el valor teórico 2: para todas las configuraciones analizadas se obtiene $b_1 \simeq 1.58$--$1.63$ (con incertidumbres del orden de $0.01$--$0.02$). La diferencia con $2$ es muy superior a las incertidumbres del ajuste, lo que indica que no se trata de fluctuaciones aleatorias sino de un \textbf{sesgo sistemático} o de que el modelo utilizado para interpretar la pendiente es incompleto.
+
+\bigskip
+A partir de la intersección $b_0$ se ha calculado una aceleración usando la expresión $a = 2e^{b_0}$, obteniéndose valores como $a\approx 0.278$ m/s$^2$ (config. 1), $1.35$ m/s$^2$ (config. 5), $2.22$ m/s$^2$ (config. 8), $0.559$ m/s$^2$ (config. 21), $0.449$ m/s$^2$ (config. 22) y $0.287$ m/s$^2$ (config. 23). No obstante, debe remarcarse que esta estimación sólo es estrictamente válida si $b_1\simeq 2$; si la pendiente se aleja de 2, el término independiente deja de poder interpretarse directamente como $\log(a/2)$.
+
+\bigskip
+La desviación sistemática de la pendiente respecto a 2 puede explicarse por varios factores:
+
+\begin{enumerate}
+\item \textbf{Condición inicial no ideal ($v_0\neq 0$).}
+Al definir $t'=t-t_1$ y $x'=x-x_1$, el instante $t'=0$ no coincide necesariamente con el inicio del movimiento desde el reposo, sino con el paso por la primera fotocélula. Si el carro ya posee una velocidad inicial pequeña al cruzar dicha célula, el modelo correcto es:
+\begin{equation}
+x' = v_0 t' + \tfrac{1}{2} a t'^2.
+\end{equation}
+En este caso, para tiempos pequeños domina el término lineal $v_0t'$, y el comportamiento efectivo se parece más a $x'\propto t'$ que a $x'\propto t'^2$. Al ajustar en escala logarítmica una mezcla de términos (lineal + cuadrático), la pendiente obtenida puede quedar entre 1 y 2, lo que es compatible con los valores observados ($\sim 1.6$).
+
+\item \textbf{Errores en ambas variables y sesgo de regresión.}
+En la representación $\log(x')$--$\log(t')$ existen incertidumbres apreciables tanto en el eje vertical (por $\sigma_{x'}$) como en el horizontal (por $\sigma_{t'}$). El ajuste lineal ordinario (OLS) asume, en primera aproximación, que el error del eje $x$ es despreciable; cuando no lo es, aparece un sesgo conocido como \emph{attenuation bias} que tiende a \textbf{subestimar la pendiente}. Esto favorece obtener $b_1<2$ incluso si la relación física subyacente fuese más cercana a la ideal.
+
+\item \textbf{Rozamiento y no constancia de la aceleración.}
+La presencia de rozamiento en el carril/polea reduce la fuerza neta efectiva y puede hacer que la aceleración no sea estrictamente constante durante el recorrido. Cualquier desviación del modelo $x'\propto t'^2$ se refleja en una pendiente logarítmica distinta de 2.
+\end{enumerate}
+
+Debido a que $t'_1=0$ y $x'_1=0$, el primer punto no puede representarse en escala logarítmica ($\log 0$ no existe). Por ello cada ajuste se realiza con \textbf{sólo 3 puntos} (celdas 2, 3 y 4). Esto tiene dos consecuencias:
+\begin{itemize}
+\item La linealidad visual es poco exigente: con tres puntos es fácil obtener una recta aparente.
+\item Las incertidumbres del ajuste pueden resultar optimistas, mientras que los efectos sistemáticos (por ejemplo $v_0\neq 0$ o rozamiento) dominan la discrepancia con la teoría.
+\end{itemize}
+
+Las gráficas $\log(x')$--$\log(t')$ muestran una relación aproximadamente lineal, lo que respalda que la dinámica puede describirse de forma aproximada mediante una ley potencial. Sin embargo, las pendientes $b_1\simeq 1.6$ son \textbf{incompatibles} con el valor teórico $2$ dentro de la incertidumbre, lo que sugiere la influencia de efectos sistemáticos (especialmente una condición inicial no nula y errores en ambas variables) y/o desviaciones del modelo ideal. En consecuencia, la aceleración calculada exclusivamente a partir de $b_0$ debe interpretarse con cautela, y resulta más robusto estimar $a$ mediante un ajuste directo en escala lineal que permita incluir un término $v_0$ (esto es, ajustar $x'=v_0t'+\tfrac12 at'^2$) o mediante métodos ponderados que tengan en cuenta incertidumbres en ambos ejes.
+
+\bigskip
+Una vez obtenida una estimación de la aceleración $a$ para cada configuración mediante el análisis de las gráficas anteriores, el siguiente paso consiste en comprobar de forma global la relación teórica prevista para el sistema carro--masa colgante. Para ello, en la \textbf{Gráfica 3} se representa la aceleración experimental en función del cociente de masas $\frac{m_2}{m_1+m_2}$, ya que idealmente se cumple:
+\begin{equation}
+a = \frac{m_2}{m_1+m_2}\,g.
+\end{equation}
+De este modo, el ajuste lineal de $a$ frente a $\frac{m_2}{m_1+m_2}$ permite evaluar la consistencia del modelo y obtener una estimación experimental de $g$ a partir de la pendiente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/grafica3.png}
+    \caption{Estimación de la gravedad}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/datgrafica3.png}
+    \caption{Estimación de la gravedad}
+\end{figure}
+
+En la \textbf{Gráfica 3} se representa la aceleración experimental $a$ obtenida para distintas configuraciones en función del cociente de masas $\frac{m_2}{m_1+m_2}$. En el modelo ideal del sistema carro--masa colgante (sin rozamiento ni inercias adicionales) se cumple:
+\begin{equation}
+a = \frac{m_2}{m_1+m_2}\,g,
+\end{equation}
+por lo que se espera una relación lineal que pase por el origen, siendo la pendiente una estimación directa de $g$.
+
+\bigskip
+El ajuste lineal forzado al origen proporciona:
+\begin{equation}
+g = (10.1 \pm 0.5)\ \text{m/s}^2.
+\end{equation}
+Este valor es compatible con el valor tabulado $g \simeq 9.81\ \text{m/s}^2$ dentro de la incertidumbre experimental, ya que la diferencia relativa es pequeña y queda dentro del intervalo de error del ajuste. En este sentido, el experimento reproduce de forma global la dependencia prevista por la segunda ley de Newton.
+
+\bigskip
+La nube de puntos presenta una tendencia claramente creciente (coherente con la teoría), pero también se aprecia una dispersión apreciable alrededor de la recta. Además, visualmente muchos puntos quedan \textbf{por encima} de la recta ajustada, especialmente para valores grandes de $\frac{m_2}{m_1+m_2}$. Esto sugiere que la dispersión no es puramente aleatoria y que pueden existir errores sistemáticos en la obtención de $a$ o en el cálculo del cociente de masas.
+
+\bigskip
+Un aspecto importante es que el ajuste se ha realizado imponiendo intercepto nulo, tal como predice el modelo ideal. Sin embargo, en un sistema real suelen aparecer términos adicionales. Por ejemplo, si existe una fuerza de rozamiento aproximadamente constante $f$, el modelo se modifica a:
+\begin{equation}
+a \approx g\frac{m_2}{m_1+m_2} - \frac{f}{m_1+m_2},
+\end{equation}
+lo que introduce un intercepto negativo (o, en general, una corrección que depende de la masa total). En tal caso, forzar el ajuste a pasar por el origen puede producir un sesgo en la pendiente y empeorar la descripción global de los datos.
+
+\bigskip
+Las desviaciones observadas pueden explicarse por varios efectos:
+
+\begin{enumerate}
+\item \textbf{Estimación de $a$ a partir de pocas medidas.}
+La aceleración se obtiene a partir de tiempos en cuatro fotocélulas (y, en algunos tratamientos, con sólo tres puntos útiles), lo cual amplifica el efecto de pequeñas incertidumbres temporales y puede introducir sesgos si el modelo utilizado no incluye condiciones iniciales (por ejemplo $v_0\neq 0$).
+
+\item \textbf{Rozamiento y pérdidas en la polea/hilo.}
+El rozamiento reduce la aceleración real respecto al caso ideal y, si varía con la velocidad o la tensión, puede generar una dispersión adicional. Además, la inercia rotacional de la polea y la masa efectiva del hilo también modifican la dinámica, haciendo que el modelo $a=g\,\frac{m_2}{m_1+m_2}$ sea una aproximación.
+
+\item \textbf{Incertidumbre en masas efectivas.}
+Pequeñas desviaciones al contabilizar masas (incluyendo soporte, gancho, hilo, etc.) afectan al cociente $\frac{m_2}{m_1+m_2}$. Si dicho cociente queda subestimado de forma sistemática, la pendiente ajustada tiende a sobreestimar $g$.
+
+\item \textbf{Modelo de ajuste (errores en ambos ejes).}
+En la gráfica existe incertidumbre tanto en $a$ como en $\frac{m_2}{m_1+m_2}$. Un ajuste lineal ordinario (o incluso ponderado sólo en $a$) no corrige completamente el efecto de errores en el eje $x$, lo que puede introducir sesgos en la pendiente.
+\end{enumerate}
+
+La gráfica $a$ vs $\frac{m_2}{m_1+m_2}$ confirma la tendencia lineal esperada por el modelo teórico y permite estimar $g$ con un resultado globalmente consistente:
+\[
+g = (10.1 \pm 0.5)\ \text{m/s}^2.
+\]
+No obstante, la dispersión de los puntos y su desviación sistemática respecto a la recta sugieren que el error total está dominado por efectos sistemáticos (rozamiento, condiciones iniciales no ideales e incertidumbre en masas efectivas). Para mejorar la estimación sería recomendable, primero permitir un intercepto libre para evaluar un posible término de rozamiento, segundo aumentar el número de medidas/puntos por configuración y tercero emplear un método de ajuste que tenga en cuenta incertidumbres en ambos ejes.
+
+Tras comprobar en la Gráfica 3 que la aceleración obtenida a partir del análisis de posición presenta la tendencia lineal esperada con el cociente $\frac{m_2}{m_1+m_2}$, resulta conveniente realizar una verificación independiente de $a$ utilizando una magnitud distinta. Por ello, en la \textbf{Gráfica 4} se estudia la evolución de la \textbf{velocidad} en función del tiempo, calculando $v$ a partir del modo II mediante
+\begin{equation}
+v = \frac{L}{\Delta t},
+\end{equation}
+donde $L$ es la longitud de la bandera y $\Delta t$ el tiempo de paso por cada fotocélula. Al representar $v$ frente a $t'$ se espera, para un movimiento uniformemente acelerado,
+\begin{equation}
+v(t') = v_0 + a t',
+\end{equation}
+de modo que el ajuste lineal permite obtener una nueva estimación de la aceleración y compararla con la obtenida previamente a partir de $x(t)$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/4conf1.png}
+    \caption{Configuración 1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/4conf5.png}
+    \caption{Configuración 5}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/4conf8.png}
+    \caption{Configuración 8}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/4conf21.png}
+    \caption{Configuración 21}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/4conf22.png}
+    \caption{Configuración 22}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\columnwidth]{imagenes/4conf23.png}
+    \caption{Configuración 23}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/4datconf1.png}
+    \caption{Datos Configuración 1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/4datconf5.png}
+    \caption{Datos Configuración 5}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/4datconf8.png}
+    \caption{Datos Configuración 8}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/4datconf21.png}
+    \caption{Datos Configuración 21}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/4datconf22.png}
+    \caption{Datos Configuración 22}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{imagenes/4datconf23.png}
+    \caption{Datos Configuración 23}
+\end{figure}
+
+En esta parte se ha calculado la velocidad instantánea al paso por cada fotocélula a partir de la longitud de la bandera $L$ y del tiempo de ocultación $\Delta t$ medido por la fotopuerta:
+\begin{equation}
+v=\frac{L}{\Delta t},
+\end{equation}
+con $L=(5.00\pm0.05)\,\text{cm}$. La incertidumbre de $v$ se ha obtenido por propagación:
+\begin{equation}
+\sigma_v=\sqrt{\left(\frac{\sigma_L}{\Delta t}\right)^2+\left(\frac{L}{\Delta t^2}\sigma_{\Delta t}\right)^2}.
+\end{equation}
+Cada valor de $v$ se asocia al instante $t'$ correspondiente (definido como $t'=t-t_1$).
+
+\bigskip
+Para todas las configuraciones analizadas (1, 5, 8, 21, 22 y 23) se observa que la velocidad aumenta con el tiempo, lo cual es consistente con un movimiento acelerado. Por ejemplo:
+\begin{itemize}
+\item Config. 1: $v$ pasa de $0.132$ a $0.208$ m/s al aumentar $t'$ de $1.169$ a $2.314$ s.
+\item Config. 5: $v$ pasa de $0.342$ a $0.538$ m/s al aumentar $t'$ de $0.435$ a $0.878$ s.
+\item Config. 8: $v$ pasa de $0.472$ a $0.75$ m/s al aumentar $t'$ de $0.320$ a $0.643$ s.
+\end{itemize}
+Las incertidumbres relativas en $v$ son pequeñas (del orden del $1$--$2\%$), dominadas principalmente por la incertidumbre de $L$ (1\% relativa) y, en menor medida, por $\sigma_{\Delta t}$.
+
+\bigskip
+Se ha ajustado $v$ frente a $t'$ imponiendo el modelo:
+\begin{equation}
+v = a\,t'.
+\end{equation}
+De este ajuste se obtienen las siguientes aceleraciones:
+\begin{align*}
+\text{Config. 1:}\quad & a=(0.099\pm0.007)\,\text{m/s}^2 \\
+\text{Config. 5:}\quad & a=(0.69\pm0.05)\,\text{m/s}^2 \\
+\text{Config. 8:}\quad & a=(1.30\pm0.09)\,\text{m/s}^2 \\
+\text{Config. 21:}\quad & a=(0.23\pm0.02)\,\text{m/s}^2 \\
+\text{Config. 22:}\quad & a=(0.17\pm0.01)\,\text{m/s}^2 \\
+\text{Config. 23:}\quad & a=(0.098\pm0.007)\,\text{m/s}^2
+\end{align*}
+La tendencia es físicamente razonable: configuraciones con mayor “tracción” (por ejemplo la 8) dan aceleraciones mayores que configuraciones con menor tracción (por ejemplo 1, 23).
+
+\bigskip
+Aunque la tendencia cualitativa es correcta, las aceleraciones obtenidas con $v(t')$ resultan \textbf{sensiblemente menores} que las obtenidas a partir de $x(t)$ en la parte 1. Esta discrepancia puede explicarse principalmente por la forma del ajuste empleado:
+
+\begin{enumerate}
+\item \textbf{Forzar el ajuste a pasar por el origen ($v=at'$) no es consistente con el experimento.}
+Al definir $t'=t-t_1$, el instante $t'=0$ corresponde al paso por la primera fotocélula, pero en ese instante el carrito \textbf{no tiene por qué tener velocidad nula}. En general, el modelo correcto es:
+\begin{equation}
+v(t') = v_0 + a\,t',
+\end{equation}
+donde $v_0$ es la velocidad al cruzar la primera célula. Si se impone $v_0=0$ cuando en realidad $v_0>0$, la pendiente (y por tanto $a$) queda \textbf{subestimada}. Esto es coherente con que los valores de $a$ salgan demasiado bajos.
+
+\item \textbf{Sólo se ajustan 3 puntos por configuración.}
+Al excluir el punto de la celda 1 (en el que $t'=0$), el ajuste se realiza con tres puntos (celdas 2, 3 y 4). Con tan pocos datos, cualquier sesgo sistemático (por ejemplo $v_0\neq 0$, rozamiento o pequeñas desviaciones en $\Delta t$) afecta de manera notable al valor final de $a$.
+
+\item \textbf{Rozamiento e inercias no modeladas.}
+El rozamiento del carro y las pérdidas en la polea reducen la aceleración real respecto al caso ideal. Además, la inercia de la polea y la masa efectiva del hilo pueden modificar la relación entre fuerza motriz y aceleración. Estos efectos actúan como sistemáticos adicionales.
+\end{enumerate}
+
+Los resultados de $v(t')$ confirman cualitativamente un comportamiento acelerado (velocidad creciente y aproximadamente lineal con el tiempo). Sin embargo, las aceleraciones obtenidas al imponer $v=at'$ son menores de lo esperado y muestran una discrepancia sistemática con el método basado en $x(t)$. La causa más probable es que el origen temporal elegido ($t'=0$ en la primera fotocélula) no implica $v=0$, por lo que el ajuste debería realizarse con un modelo con intercepto:
+\[
+v(t') = v_0 + a t'.
+\]
+Como mejora, se recomienda ajustar $v$ vs $t'$ permitiendo intercepto y, si es posible, incluir el punto de la celda 1 (con $t'=0$ y $v_1=L/\Delta t_1$) para estimar directamente $v_0$ y obtener un valor de $a$ más consistente con la parte 1.
 
 
 \end{multicols}

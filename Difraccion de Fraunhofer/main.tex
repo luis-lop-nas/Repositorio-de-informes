@@ -1,0 +1,377 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- Idioma y codificación ---
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\large\bfseries}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection}{1em}{}
+
+% --- Márgenes ---
+\usepackage[a4paper,
+  top=2.5cm,bottom=2.5cm,
+  left=2.2cm,right=2.2cm,
+  columnsep=0.7cm
+]{geometry}
+
+% --- Gráficos, tablas, etc. ---
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{physics}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{array}
+
+% --- Dos columnas tipo paper ---
+\usepackage{multicol}
+
+% --- Índice y enlaces ---
+\usepackage[hidelinks]{hyperref}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+
+% --- Encabezados y pies ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Difracción de Fraunhofer}
+\rhead{\leftmark}
+\cfoot{\thepage}
+\setlength{\headheight}{14.62pt}
+\addtolength{\topmargin}{-0.12pt}
+
+% --- Bibliografía ---
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{bibliografia.bib}
+
+\let\cleardoublepage\clearpage
+\raggedcolumns
+
+\begin{document}
+
+% =========================
+% Portada (1 columna)
+% =========================
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+  {\LARGE \textbf{Difracción de Fraunhofer}\par}
+  \vspace{1cm}
+  {\large Asignatura: Laboratorio de Óptica\par}
+  \vspace{0.5cm}
+  {\large Autor: Luis López Nasser\par}
+  {\large Fecha: 21/04/2026\par}
+  \vfill
+  {\large Universidad Unie\par}
+\end{titlepage}
+
+% =========================
+% Índice (1 columna)
+% =========================
+\tableofcontents
+\clearpage
+
+% =========================
+% Contenido (2 columnas)
+% =========================
+\begin{multicols}{2}
+
+\section{Introducción}
+
+\subsection{Marco Teórico}
+
+Cuando un haz de luz monocromático atraviesa una rendija perpendicularmente, se observa una redistribución no homogénea de la intensidad luminosa: los haces que atraviesan la abertura dejan de propagarse en la dirección original y se desvían en direcciones preferentes, generando un patrón de franjas claras y oscuras. Este fenómeno se conoce como difracción de la luz.
+
+\bigskip
+La difracción puede describirse en dos regímenes según la distancia de observación a la abertura: régimen de Fresnel (campo cercano) y régimen de Fraunhofer (campo lejano). En esta práctica se trabaja en la aproximación de campo lejano, que permite relacionar directamente las dimensiones de la abertura con el patrón observado.
+
+\subsubsection{\texorpdfstring{Rendija de anchura $2a$}{Rendija de anchura 2a}}
+
+Para una rendija de semianchura $a$, la distribución de intensidad en régimen de Fraunhofer es
+
+\begin{equation}
+  I = I_0 \left[\frac{\sin(ka\sin\Psi)}{ka\sin\Psi}\right]^2,
+  \label{eq:rendija}
+\end{equation}
+
+donde $\Psi$ es el ángulo entre la dirección de observación y la de incidencia, $I_0$ la intensidad máxima y $k = 2\pi/\lambda$ el número de onda. En la aproximación paraxial ($\Psi$ pequeño) se cumple $\sin\Psi \approx x/z$, donde $z$ es la distancia a la pantalla y $x$ la posición lateral en dicha pantalla.
+
+\bigskip
+Los mínimos de intensidad se producen cuando $ka\sin\Psi = n\pi$ ($n \in \mathbb{Z},\, n\neq 0$), es decir:
+
+\begin{equation}
+  \sin\Psi_n = \frac{n\lambda}{2a} \approx \frac{x_n}{z}.
+  \label{eq:minimos_rendija}
+\end{equation}
+
+La separación entre el mínimo de orden $+n$ y el de orden $-n$ en el plano de observación es
+
+\begin{equation}
+  p_n - p_{-n} = 2x_n = \frac{2n\lambda z}{2a},
+  \label{eq:separacion_rendija}
+\end{equation}
+
+de modo que representando $p_n - p_{-n}$ frente a $n$ se obtiene una recta de pendiente $\lambda z / a$, lo que permite determinar $2a$.
+
+\subsubsection{\texorpdfstring{Orificio circular de diámetro $2a$}{Orificio circular de diámetro 2a}}
+
+Para una abertura circular de radio $a$, la distribución de intensidad en régimen de Fraunhofer es
+
+\begin{equation}
+  I = I_0 \left[\frac{J_1(ka\sin\Psi)}{ka\sin\Psi}\right]^2,
+  \label{eq:circular}
+\end{equation}
+
+donde $J_1(y)$ es la función de Bessel de primera especie y orden 1. Los mínimos de $J_1(y)$ ocurren en $y = \alpha_n$, con
+
+\begin{align}
+  \alpha_1 &= 1{,}220\pi, \quad \alpha_2 = 2{,}333\pi, \quad \alpha_3 = 3{,}238\pi, \nonumber\\
+  \alpha_n &\approx \left(0{,}24 + n\right)\pi \quad (n \geq 4).
+\end{align}
+
+La posición del mínimo de orden $n$ en la pantalla satisface
+
+\begin{equation}
+  x_n = \frac{\alpha_n \lambda z}{2\pi a},
+  \label{eq:minimos_circular}
+\end{equation}
+
+y la separación simétrica $P_n - P_{-n} = 2x_n$ permite, mediante un ajuste lineal de $x_n$ frente a $\alpha_n$, obtener el radio $a$ y por tanto el diámetro $2a$.
+
+\subsubsection{Principio de Babinet}
+
+El principio de Babinet establece que una abertura y su obstáculo complementario producen, en la aproximación de Fraunhofer, patrones de difracción de igual intensidad (salvo en el máximo central). Es decir, la suma de los campos difractados por la abertura y su obstáculo es igual al campo incidente total.
+
+\subsection{Objetivos}
+
+\begin{itemize}
+  \item Comprender el fenómeno de difracción en campo lejano analizando patrones de distintas aberturas.
+  \item Determinar la anchura $2a$ de una rendija a partir de su patrón de difracción para tres distancias distintas.
+  \item Determinar el diámetro $2a$ de un orificio circular a partir de su patrón de difracción.
+  \item Comparar cualitativamente los patrones de aberturas con sus obstáculos complementarios (principio de Babinet).
+\end{itemize}
+
+\section{Materiales}
+
+\begin{itemize}
+  \item Fuente de luz láser ($\lambda = \SI{532}{\nano\meter}$).
+  \item Soporte con rendijas y aberturas circulares.
+  \item Banco óptico con detector de intensidad.
+  \item Papel milimétrico para registro del patrón.
+\end{itemize}
+
+\section{Procedimiento}
+
+Se monta el banco óptico con el láser alineado sobre la pantalla de observación. Para cada abertura se procede como sigue:
+
+\begin{enumerate}
+  \item Centrar la abertura de modo que el haz incida perpendicularmente.
+  \item Situar la pantalla a una distancia $z$ conocida y registrar el patrón en papel milimétrico.
+  \item Medir $p_n - p_{-n}$ para el mayor número de órdenes posible.
+  \item Representar $p_n - p_{-n}$ frente a $n$ y ajustar linealmente para obtener $2a$.
+  \item Repetir para tres distancias $z$ distintas, verificando la condición de campo lejano.
+  \item Ponderar los tres valores de $2a$ para obtener el resultado final con su incertidumbre.
+  \item Comparar cualitativamente el patrón de cada abertura con el de su obstáculo complementario.
+\end{enumerate}
+
+\section{Análisis y Discusión}
+
+\subsection{\texorpdfstring{Determinación de $2a$ de la rendija}{Determinación de 2a de la rendija}}
+
+% TODO: anotar los valores de z utilizados.
+
+\subsubsection*{\texorpdfstring{Distancia $z_1$}{Distancia z1}}
+
+% TODO: rellenar tabla con los datos experimentales.
+
+\begin{table}[H]
+  \centering
+  \caption{Separación $p_n - p_{-n}$ (mm) para $z_1$.}
+  \label{tab:rendija_z1}
+  \small
+  \begin{tabular}{ccccc}
+    \toprule
+    $n$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ \\
+    \midrule
+    $p_n-p_{-n}$ & & & & \\
+    \midrule
+    $n$ & $\pm5$ & $\pm6$ & $\pm7$ & $\pm8$ \\
+    \midrule
+    $p_n-p_{-n}$ & & & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsubsection*{\texorpdfstring{Distancia $z_2$}{Distancia z2}}
+
+\begin{table}[H]
+  \centering
+  \caption{Separación $p_n - p_{-n}$ (mm) para $z_2$.}
+  \label{tab:rendija_z2}
+  \small
+  \begin{tabular}{ccccc}
+    \toprule
+    $n$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ \\
+    \midrule
+    $p_n-p_{-n}$ & & & & \\
+    \midrule
+    $n$ & $\pm5$ & $\pm6$ & $\pm7$ & $\pm8$ \\
+    \midrule
+    $p_n-p_{-n}$ & & & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsubsection*{\texorpdfstring{Distancia $z_3$}{Distancia z3}}
+
+\begin{table}[H]
+  \centering
+  \caption{Separación $p_n - p_{-n}$ (mm) para $z_3$.}
+  \label{tab:rendija_z3}
+  \small
+  \begin{tabular}{ccccc}
+    \toprule
+    $n$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ \\
+    \midrule
+    $p_n-p_{-n}$ & & & & \\
+    \midrule
+    $n$ & $\pm5$ & $\pm6$ & $\pm7$ & $\pm8$ \\
+    \midrule
+    $p_n-p_{-n}$ & & & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Según la ecuación~(\ref{eq:separacion_rendija}), la representación de $p_n - p_{-n}$ frente a $n$ es una recta de pendiente
+
+\begin{equation}
+  m = \frac{\lambda z}{a} = \frac{2\lambda z}{2a},
+\end{equation}
+
+de donde se obtiene
+
+\begin{equation}
+  2a = \frac{2\lambda z}{m}.
+  \label{eq:2a_rendija}
+\end{equation}
+
+% TODO: insertar gráfica del ajuste lineal para las tres distancias.
+
+\begin{figure}[H]
+  \centering
+  % \includegraphics[width=1\columnwidth]{imagenes/ajuste_rendija}
+  \caption{Ajuste lineal de $p_n-p_{-n}$ frente a $n$ para las tres distancias (rendija).}
+  \label{fig:ajuste_rendija}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Resultados del ajuste para la rendija.}
+  \label{tab:resultados_rendija}
+  \small
+  \begin{tabular}{ccc}
+    \toprule
+    $z \pm \Delta z$ & Pendiente $m$ & $2a \pm \Delta 2a$ \\
+    \midrule
+     & & \\
+     & & \\
+     & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+La ponderación de los tres valores proporciona el resultado final:
+
+\begin{equation*}
+  2a \pm \Delta 2a = \quad \text{(valor ponderado)}
+\end{equation*}
+
+% TODO: desarrollar el cálculo del error propagado.
+
+\subsection{\texorpdfstring{Determinación de $2a$ del orificio circular}{Determinación de 2a del orificio circular}}
+
+Para el orificio circular la posición del mínimo de orden $n$ satisface $P_n - P_{-n} = 2\alpha_n \lambda z / (2\pi a)$, es decir, la representación de $P_n - P_{-n}$ frente a $\alpha_n$ es una recta de pendiente
+
+\begin{equation}
+  m' = \frac{\lambda z}{\pi a},
+  \label{eq:pendiente_circular}
+\end{equation}
+
+de donde $2a = 2\lambda z / (\pi m')$.
+
+% TODO: rellenar las tablas análogas a las de la rendija para las tres distancias z.
+
+\begin{table}[H]
+  \centering
+  \caption{Resultados del ajuste para el orificio circular.}
+  \label{tab:resultados_circular}
+  \small
+  \begin{tabular}{ccc}
+    \toprule
+    $z \pm \Delta z$ & Pendiente $m'$ & $2a \pm \Delta 2a$ \\
+    \midrule
+     & & \\
+     & & \\
+     & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{equation*}
+  2a \pm \Delta 2a = \quad \text{(valor ponderado)}
+\end{equation*}
+
+\subsection{Comparación con valores teóricos}
+
+% TODO: anotar los valores nominales de la rendija y del orificio e insertar tabla comparativa.
+
+\begin{table}[H]
+  \centering
+  \caption{Comparación experimental vs.\ teórico.}
+  \label{tab:comparacion}
+  \small
+  \begin{tabular}{lcc}
+    \toprule
+    Abertura & $2a_{\text{exp}}$ & $2a_{\text{teo}}$ \\
+    \midrule
+    Rendija & & \\
+    Orificio & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% TODO: discutir si los resultados son razonables y comentar las posibles fuentes de error.
+
+\subsection{Principio de Babinet}
+
+% TODO: describir cualitativamente la comparación entre el patrón de cada abertura y el de su obstáculo complementario.
+
+El principio de Babinet predice que, en la aproximación de Fraunhofer, la intensidad difractada por un obstáculo es igual a la de su abertura complementaria. De forma cualitativa, se espera observar el mismo patrón de franjas (mínimos en las mismas posiciones) tanto para la rendija como para el hilo complementario, y tanto para el orificio como para el disco opaco del mismo tamaño.
+
+\section{Conclusión}
+
+% TODO: redactar conclusiones con los valores numéricos obtenidos.
+
+\begin{enumerate}
+  \item Se ha determinado la anchura de la rendija mediante el análisis del patrón de difracción de Fraunhofer para tres distancias distintas. El ajuste lineal de $p_n - p_{-n}$ frente a $n$ proporciona resultados consistentes entre sí, con un valor ponderado final de $2a \pm \Delta 2a$.
+
+  \item Análogamente, se ha determinado el diámetro del orificio circular ajustando $P_n - P_{-n}$ frente a $\alpha_n$. El valor obtenido es $2a \pm \Delta 2a$.
+
+  \item Los resultados experimentales son compatibles con los valores nominales dentro de la incertidumbre, siendo las principales fuentes de error la resolución en la medida de posiciones en el papel milimétrico y la incertidumbre en la distancia $z$.
+
+  \item La comparación cualitativa de los patrones de las aberturas con sus obstáculos complementarios es consistente con el principio de Babinet: ambos producen distribuciones de mínimos en las mismas posiciones.
+\end{enumerate}
+
+\end{multicols}
+
+\printbibliography
+
+\end{document}

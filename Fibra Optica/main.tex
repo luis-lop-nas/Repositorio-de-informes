@@ -1,0 +1,331 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- Idioma y codificación ---
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\large\bfseries}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection}{1em}{}
+
+% --- Márgenes ---
+\usepackage[a4paper,
+  top=2.5cm,bottom=2.5cm,
+  left=2.2cm,right=2.2cm,
+  columnsep=0.7cm
+]{geometry}
+
+% --- Gráficos, tablas, etc. ---
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{physics}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{array}
+
+% --- Dos columnas tipo paper ---
+\usepackage{multicol}
+
+% --- Índice y enlaces ---
+\usepackage[hidelinks]{hyperref}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+
+% --- Encabezados y pies ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Transmisión de señales en fibra óptica}
+\rhead{\leftmark}
+\cfoot{\thepage}
+\setlength{\headheight}{14.62pt}
+\addtolength{\topmargin}{-0.12pt}
+
+% --- Bibliografía ---
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{bibliografia.bib}
+
+\let\cleardoublepage\clearpage
+\raggedcolumns
+
+\begin{document}
+
+% =========================
+% Portada
+% =========================
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+  {\LARGE \textbf{Transmisión de señales en fibra óptica}\par}
+  \vspace{1cm}
+  {\large Asignatura: Laboratorio de Electromagnetismo II\par}
+  \vspace{0.5cm}
+  {\large Autor: Luis López Nasser\par}
+  {\large Fecha: 21/04/2026\par}
+  \vfill
+  {\large Universidad Unie\par}
+\end{titlepage}
+
+% =========================
+% Índice
+% =========================
+\tableofcontents
+\clearpage
+
+% =========================
+% Contenido (2 columnas)
+% =========================
+\begin{multicols}{2}
+
+\section{Introducción}
+
+\subsection{Marco Teórico}
+
+La fibra óptica es un medio de transmisión que guía ondas electromagnéticas a través de un núcleo de vidrio o plástico rodeado de un revestimiento de menor índice de refracción. Su funcionamiento se basa en la \textbf{Reflexión Interna Total} (RIT): cuando la luz incide sobre la interfaz núcleo-revestimiento con un ángulo mayor al ángulo crítico $\theta_c$, definido por
+
+\begin{equation}
+  \sin\theta_c = \frac{n_2}{n_1},
+  \label{eq:angulo_critico}
+\end{equation}
+
+la luz queda confinada en el núcleo y se propaga sin escapar. Si el ángulo de incidencia es menor que $\theta_c$, parte de la señal se transmite al revestimiento y se pierde.
+
+\subsubsection{Tipos de pérdidas}
+
+En la práctica la señal se atenúa por cuatro mecanismos principales:
+
+\begin{enumerate}
+  \item \textbf{Pérdidas intrínsecas}: absorción por impurezas del material y dispersión de Rayleigh.
+  \item \textbf{Pérdidas por curvatura}: al doblar la fibra más allá del radio crítico, los rayos inciden con ángulo menor a $\theta_c$ y escapan del núcleo.
+  \item \textbf{Pérdidas por acoplamiento}: desalineación lateral, separación longitudinal (huecos de aire) o suciedad en los conectores.
+  \item \textbf{Conversión de señales}: transformación de ondas mecánicas en pulsos de luz (modulación de intensidad).
+\end{enumerate}
+
+\subsubsection{Atenuación en decibelios}
+
+En ingeniería de comunicaciones la pérdida de potencia sigue una degradación exponencial con la distancia o el número de perturbaciones. Por ello se expresa en escala logarítmica mediante el \textbf{decibelio (dB)}:
+
+\begin{equation}
+  A\,(\text{dB}) = 10\cdot\log_{10}\!\left(\frac{V_x}{V_0}\right),
+  \label{eq:atenuacion}
+\end{equation}
+
+donde $V_0$ es el voltaje de referencia (sin perturbación) y $V_x$ el voltaje medido en cada condición. Un valor negativo de $A$ indica pérdida de señal. La incertidumbre de la atenuación se obtiene por propagación:
+
+\begin{equation}
+  \Delta A = \frac{10}{\ln 10}\sqrt{\left(\frac{\Delta V_x}{V_x}\right)^2 + \left(\frac{\Delta V_0}{V_0}\right)^2}.
+  \label{eq:delta_A}
+\end{equation}
+
+\subsubsection{Conversión acústico-óptica}
+
+La cadena de conversión para transmitir audio por fibra óptica es:
+
+\begin{enumerate}
+  \item \textbf{Acústico $\to$ eléctrico}: el micrófono (MIC.AMP) convierte las variaciones de presión en voltaje analógico.
+  \item \textbf{Eléctrico $\to$ óptico}: el transmisor (ANAL.TX) modula la intensidad del LED en proporción a la señal eléctrica.
+  \item \textbf{Propagación}: los fotones viajan por la fibra.
+  \item \textbf{Óptico $\to$ eléctrico}: el fotodiodo (ANAL.RX) reconvierte la luz en corriente eléctrica.
+  \item \textbf{Eléctrico $\to$ acústico}: el amplificador (LF.AMP) aumenta la señal hasta mover la membrana del altavoz.
+\end{enumerate}
+
+\subsection{Objetivos}
+
+\begin{itemize}
+  \item Medir la atenuación en función del número de vueltas de torsión de la fibra alrededor de un cilindro (pérdidas por curvatura).
+  \item Medir la atenuación en función de la separación longitudinal entre los terminales de dos fibras (pérdidas por acoplamiento).
+  \item Representar gráficamente ambas atenuaciones y discutir los resultados.
+  \item Demostrar la transmisión de una señal de audio a través de fibra óptica.
+\end{itemize}
+
+\section{Materiales}
+
+\begin{itemize}
+  \item Paneles de generación (TX) y recepción (RX) de señales.
+  \item Módulo potenciómetro (POT), transmisor analógico (ANAL.TX) y receptor analógico (ANAL.RX).
+  \item Micrófono (MIC.AMP) y amplificador de baja frecuencia (LF.AMP).
+  \item Fibras de diferentes longitudes y cilindros de torsión.
+  \item Calibre para medir la separación entre terminales.
+  \item Multímetro.
+\end{itemize}
+
+\section{Procedimiento}
+
+\subsection{Atenuación por torsión}
+
+Se conecta la salida del potenciómetro al transmisor analógico (ANAL.TX) y la fibra une TX con el receptor (ANAL.RX). Con la fibra recta se ajusta el potenciómetro hasta obtener un voltaje de referencia $V_0$ claro en el multímetro. A continuación se enrolla la fibra alrededor del cilindro añadiendo vueltas de una en una (0 a 5 vueltas) y se registra $V_x$ en cada caso. La medida se repite seis veces para obtener un valor medio y su incertidumbre estadística.
+
+\subsection{Atenuación por separación entre terminales}
+
+Con los dos terminales en contacto ($l = 0$) se registra $V_0$. Usando el calibre se separan los extremos de 1 mm en 1 mm hasta \SI{10}{\milli\meter}, anotando $V_x$ en cada posición. La medida se repite seis veces por punto.
+
+\subsection{Transmisión de audio}
+
+Se sustituye el potenciómetro por el micrófono (MIC.AMP) en el slot del transmisor y se añade el amplificador LF.AMP en el receptor. Se habla o se reproduce música cerca del micrófono y se escucha la señal recuperada en el altavoz conectado al LF.AMP.
+
+\section{Análisis y Discusión}
+
+\subsection{Atenuación por torsión}
+
+% TODO: rellenar con los datos experimentales (seis repeticiones por vuelta).
+
+\begin{table}[H]
+  \centering
+  \caption{Voltajes medidos (V) por número de vueltas y repetición.}
+  \label{tab:torsion_raw}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{ccccccc}
+    \toprule
+    Vueltas & $V_1$ & $V_2$ & $V_3$ & $V_4$ & $V_5$ & $V_6$ \\
+    \midrule
+    0 & & & & & & \\
+    1 & & & & & & \\
+    2 & & & & & & \\
+    3 & & & & & & \\
+    4 & & & & & & \\
+    5 & & & & & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Voltaje medio y atenuación por torsión.}
+  \label{tab:torsion_media}
+  \small
+  \begin{tabular}{cccc}
+    \toprule
+    Vueltas & $\bar{V} \pm \Delta V$ (V) & $A \pm \Delta A$ (dB) \\
+    \midrule
+    0 & & \\
+    1 & & \\
+    2 & & \\
+    3 & & \\
+    4 & & \\
+    5 & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+La atenuación se calcula con la ecuación~(\ref{eq:atenuacion}) tomando $V_0$ como el valor de 0 vueltas, y su incertidumbre con la ecuación~(\ref{eq:delta_A}).
+
+% TODO: insertar gráfica de A vs. número de vueltas.
+
+\begin{figure}[H]
+  \centering
+  % \includegraphics[width=1\columnwidth]{imagenes/atenuacion_torsion}
+  \caption{Atenuación (dB) frente al número de vueltas de torsión.}
+  \label{fig:torsion}
+\end{figure}
+
+% TODO: comentar la tendencia observada y relacionarla con las pérdidas por curvatura.
+
+\subsection{Atenuación por separación entre terminales}
+
+% TODO: rellenar con los datos experimentales.
+
+\begin{table}[H]
+  \centering
+  \caption{Voltajes medidos (V) por separación $l$ (mm).}
+  \label{tab:separacion_raw}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{ccccccc}
+    \toprule
+    $l$ (mm) & $V_1$ & $V_2$ & $V_3$ & $V_4$ & $V_5$ & $V_6$ \\
+    \midrule
+    1  & & & & & & \\
+    2  & & & & & & \\
+    3  & & & & & & \\
+    4  & & & & & & \\
+    5  & & & & & & \\
+    6  & & & & & & \\
+    7  & & & & & & \\
+    8  & & & & & & \\
+    9  & & & & & & \\
+    10 & & & & & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Voltaje medio y atenuación por separación ($l = 0$--$5$ mm).}
+  \label{tab:sep_media1}
+  \small
+  \begin{tabular}{ccc}
+    \toprule
+    $l \pm \Delta l$ (mm) & $\bar{V} \pm \Delta V$ (V) & $A \pm \Delta A$ (dB) \\
+    \midrule
+    0 & & \\
+    1 & & \\
+    2 & & \\
+    3 & & \\
+    4 & & \\
+    5 & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Voltaje medio y atenuación por separación ($l = 6$--$10$ mm).}
+  \label{tab:sep_media2}
+  \small
+  \begin{tabular}{ccc}
+    \toprule
+    $l \pm \Delta l$ (mm) & $\bar{V} \pm \Delta V$ (V) & $A \pm \Delta A$ (dB) \\
+    \midrule
+    6  & & \\
+    7  & & \\
+    8  & & \\
+    9  & & \\
+    10 & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% TODO: insertar gráfica de A vs. separación l.
+
+\begin{figure}[H]
+  \centering
+  % \includegraphics[width=1\columnwidth]{imagenes/atenuacion_separacion}
+  \caption{Atenuación (dB) frente a la separación entre terminales.}
+  \label{fig:separacion}
+\end{figure}
+
+% TODO: comentar si la atenuación crece de forma aproximadamente lineal en dB (exponencial en V) y relacionarla con la expansión cónica del haz.
+
+Al separar los terminales, el haz que emerge de la fibra emisora se expande cónicamente, de modo que la fracción de potencia capturada por la fibra receptora disminuye. En escala dB se espera una relación aproximadamente lineal con $l$, equivalente a una caída exponencial de $V_x$.
+
+\subsection{Transmisión de audio}
+
+% TODO: describir las observaciones del laboratorio (calidad del audio, efectos del ruido, etc.).
+
+La cadena de conversión acústico-óptico-acústica permite verificar experimentalmente que la fibra puede transmitir señales analógicas de banda de audio. Se debe comentar la calidad de la señal recibida, la presencia de distorsión o ruido y cómo varía la fidelidad al modificar la longitud de la fibra o la posición del micrófono.
+
+\section{Conclusión}
+
+% TODO: completar con los valores numéricos obtenidos.
+
+\begin{enumerate}
+  \item La atenuación debida a la curvatura crece con el número de vueltas, en coherencia con el mecanismo de pérdida de la RIT al reducirse el ángulo de incidencia. Los valores obtenidos muestran una tendencia creciente (más negativa en dB) al aumentar el número de vueltas.
+
+  \item La atenuación por separación longitudinal aumenta con la distancia entre terminales, lo que refleja la expansión cónica del haz y la consiguiente reducción de la fracción de potencia capturada. La dependencia es aproximadamente lineal en escala dB, coherente con un decaimiento exponencial de la potencia.
+
+  \item La transmisión de audio a través de la fibra ha permitido verificar la cadena completa de conversión acústico-eléctrico-óptico-eléctrico-acústica, demostrando el principio de funcionamiento de las telecomunicaciones por fibra óptica.
+\end{enumerate}
+
+\end{multicols}
+
+\printbibliography
+
+\end{document}

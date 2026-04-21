@@ -1,0 +1,328 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- Idioma y codificación ---
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\large\bfseries}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection}{1em}{}
+
+% --- Márgenes ---
+\usepackage[a4paper,
+  top=2.5cm,bottom=2.5cm,
+  left=2.2cm,right=2.2cm,
+  columnsep=0.7cm
+]{geometry}
+
+% --- Gráficos, tablas, etc. ---
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{physics}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+
+% --- Dos columnas tipo paper ---
+\usepackage{multicol}
+
+% --- Índice y enlaces ---
+\usepackage[hidelinks]{hyperref}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+
+% --- Encabezados y pies ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Manejo del osciloscopio y figuras de Lissajous}
+\rhead{\leftmark}
+\cfoot{\thepage}
+\setlength{\headheight}{14.62pt}
+\addtolength{\topmargin}{-0.12pt}
+
+% --- Bibliografía ---
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{bibliografia.bib}
+
+\let\cleardoublepage\clearpage
+\raggedcolumns
+
+\begin{document}
+
+% =========================
+% Portada
+% =========================
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+  {\LARGE \textbf{Manejo del osciloscopio y figuras de Lissajous}\par}
+  \vspace{1cm}
+  {\large Asignatura: Laboratorio de Electromagnetismo II\par}
+  \vspace{0.5cm}
+  {\large Autor: Luis López Nasser\par}
+  {\large Fecha: 21/04/2026\par}
+  \vfill
+  {\large Universidad Unie\par}
+\end{titlepage}
+
+% =========================
+% Índice
+% =========================
+\tableofcontents
+\clearpage
+
+% =========================
+% Contenido (2 columnas)
+% =========================
+\begin{multicols}{2}
+
+\section{Introducción}
+
+\subsection{Marco Teórico}
+
+\subsubsection{El osciloscopio}
+
+El osciloscopio es un instrumento que permite visualizar y registrar señales eléctricas de diferencia de potencial en función del tiempo. A diferencia de otros instrumentos de medida, es especialmente adecuado para el análisis de señales alternas, transitorias o poco repetitivas.
+
+\bigskip
+Los osciloscopios digitales modernos incorporan un conversor analógico-digital (CAD) que transforma la señal en datos digitales, permitiendo procesarla, visualizarla con mayor flexibilidad y almacenarla para análisis posteriores.
+
+\bigskip
+Para caracterizar una señal sinusoidal existen tres métodos, ordenados de menor a mayor precisión:
+
+\begin{enumerate}
+  \item \textbf{Rejilla}: lectura directa contando divisiones y multiplicando por la escala (V/div o s/div).
+  \item \textbf{Cursores}: reducen el error de paralaje; el osciloscopio muestra $\Delta V$ y $\Delta t$ directamente.
+  \item \textbf{Medida automática}: el procesador interno calcula $V_{pp}$, periodo y frecuencia.
+\end{enumerate}
+
+Las relaciones entre las magnitudes de una señal sinusoidal son:
+
+\begin{align}
+  V_p     &= \frac{V_{pp}}{2}, \label{eq:vp} \\
+  V_{ef}  &= \frac{V_p}{\sqrt{2}}, \label{eq:vef} \\
+  f       &= \frac{1}{T}. \label{eq:freq}
+\end{align}
+
+La incertidumbre del periodo medido por rejilla es $\Delta T = E_{t} \cdot \Delta_{\text{div}}$, donde $E_t$ es la escala temporal (s/div) y $\Delta_{\text{div}}$ es la apreciación en divisiones. La incertidumbre de la frecuencia se obtiene por propagación:
+
+\begin{equation}
+  \Delta f = \frac{\Delta T}{T^2}.
+  \label{eq:deltaf}
+\end{equation}
+
+\subsubsection{Figuras de Lissajous}
+
+Las figuras de Lissajous resultan de componer dos movimientos armónicos simples en direcciones perpendiculares. Si las señales son
+
+\begin{align}
+  X &= A\sin(\omega_1 t), \label{eq:X} \\
+  Y &= B\sin(\omega_2 t + \phi), \label{eq:Y}
+\end{align}
+
+la curva paramétrica trazada en el plano XY adopta formas características que dependen de la relación de frecuencias $\omega_1/\omega_2$ y del desfase $\phi$.
+
+\bigskip
+Las figuras estables y reconocibles aparecen cuando la relación es un cociente de enteros pequeños:
+
+\begin{equation}
+  \frac{\nu_1}{\nu_2} = \frac{\omega_1}{\omega_2} = \frac{p}{q}, \quad p,q \in \mathbb{N}.
+  \label{eq:relacion}
+\end{equation}
+
+La Tabla~\ref{tab:lissajous_formas} resume las formas esperadas para las relaciones estudiadas en esta práctica.
+
+\begin{table}[H]
+  \centering
+  \caption{Formas de las figuras de Lissajous.}
+  \label{tab:lissajous_formas}
+  \small
+  \begin{tabular}{cll}
+    \toprule
+    $\nu_1/\nu_2$ & $\phi = 0$ & $\phi = \pi/2$ \\
+    \midrule
+    $1:1$ & Línea recta & Elipse/círculo \\
+    $1:2$ & Ocho tumbado & Parábola \\
+    $1:3$ & Tres lóbulos & Figura-S \\
+    $2:3$ & Figura compleja & Figura compleja \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Para que la figura sea una \textbf{circunferencia} deben cumplirse simultáneamente tres condiciones: igualdad de frecuencias ($\nu_1 = \nu_2$), igualdad de amplitudes ($A = B$) y desfase de $\phi = \pi/2$.
+
+\subsection{Objetivos}
+
+\begin{itemize}
+  \item Familiarizarse con el manejo del osciloscopio (rejilla, cursores y medida automática).
+  \item Medir $T$, $f$, $V_{pp}$, $V_p$ y $V_{ef}$ para cinco frecuencias nominales (50, 100, 200, 800 y 3000 Hz) y comparar los tres métodos de medida.
+  \item Visualizar figuras de Lissajous para las relaciones $1:1$, $1:2$, $1:3$ y $2:3$ y determinar las frecuencias que las generan.
+  \item Establecer las condiciones para obtener una circunferencia.
+\end{itemize}
+
+\section{Materiales}
+
+\begin{itemize}
+  \item Osciloscopio digital.
+  \item 2 generadores de señales sinusoidales.
+  \item Cables de conexión coaxial.
+\end{itemize}
+
+\section{Procedimiento}
+
+\subsection{Modo X-T: caracterización de la señal}
+
+Se conecta la salida de un generador al canal CH1 del osciloscopio en modo X-T. Para cada frecuencia nominal se ajusta la escala de tiempo y voltaje manualmente para que la señal ocupe la mayor parte de la pantalla sin saturarse, y se estabiliza con el nivel de TRIGGER. Las medidas se realizan con los tres métodos descritos en el marco teórico.
+
+\subsection{Modo X-Y: figuras de Lissajous}
+
+Se conectan los dos generadores a CH1 y CH2 respectivamente. Se activa el modo X-Y desde el menú Horizontal $\to$ Time Base $\to$ X-Y. Se varía la frecuencia del segundo generador manteniendo fija la del primero hasta observar cada figura estable; dado que el desfase $\phi$ no se controla, la figura evoluciona lentamente.
+
+\section{Análisis y Discusión}
+
+\subsection{Medidas de tiempo y voltaje}
+
+% TODO: rellenar con los datos experimentales obtenidos en el laboratorio.
+
+\begin{table}[H]
+  \centering
+  \caption{Resultados de tiempo y voltaje para las cinco frecuencias.}
+  \label{tab:medidas}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{lcc cc cc}
+    \toprule
+    Magnitud & \multicolumn{2}{c}{50 Hz} & \multicolumn{2}{c}{100 Hz} & \multicolumn{2}{c}{200 Hz} \\
+    \midrule
+    $\nu_{\text{nom}} \pm \Delta\nu$ & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
+    Escala $t$ (s/div) & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
+    Divisiones & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
+    $T \pm \Delta T$ (s) & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
+    $\nu \pm \Delta\nu$ rejilla & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
+    $\nu \pm \Delta\nu$ cursores & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
+    $\nu \pm \Delta\nu$ auto & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
+    \midrule
+    Escala $V$ (V/div) & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
+    Divisiones & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
+    $V_{pp} \pm \Delta V_{pp}$ & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
+    $V_p \pm \Delta V_p$ & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
+    $V_{ef} \pm \Delta V_{ef}$ & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Resultados para 800 Hz y 3000 Hz.}
+  \label{tab:medidas2}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{lcc}
+    \toprule
+    Magnitud & 800 Hz & 3000 Hz \\
+    \midrule
+    $\nu_{\text{nom}} \pm \Delta\nu$ & & \\
+    Escala $t$ (s/div) & & \\
+    Divisiones & & \\
+    $T \pm \Delta T$ (s) & & \\
+    $\nu \pm \Delta\nu$ rejilla & & \\
+    $\nu \pm \Delta\nu$ cursores & & \\
+    $\nu \pm \Delta\nu$ auto & & \\
+    \midrule
+    Escala $V$ (V/div) & & \\
+    Divisiones & & \\
+    $V_{pp} \pm \Delta V_{pp}$ & & \\
+    $V_p \pm \Delta V_p$ & & \\
+    $V_{ef} \pm \Delta V_{ef}$ & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Comparación de los tres métodos}
+
+% TODO: discutir la compatibilidad entre métodos dentro de sus incertidumbres.
+
+Los tres métodos deben proporcionar valores compatibles dentro de sus incertidumbres si el instrumento funciona correctamente. En general se espera que la medida automática sea la más precisa, pero su incertidumbre declarada (última cifra significativa) puede ser optimista si el número de ciclos promediados es pequeño o si la señal no está perfectamente estabilizada.
+
+\bigskip
+% TODO: comentar si la amplitud varía con la frecuencia y a qué puede atribuirse.
+
+\subsection{\texorpdfstring{Voltajes $V_p$ y $V_{ef}$}{Voltajes Vp y Vef}}
+
+A partir de $V_{pp}$ se obtienen, mediante las ecuaciones~(\ref{eq:vp}) y (\ref{eq:vef}):
+
+\begin{equation}
+  \Delta V_p = \frac{\Delta V_{pp}}{2}, \qquad
+  \Delta V_{ef} = \frac{\Delta V_p}{\sqrt{2}}.
+\end{equation}
+
+% TODO: los valores ya aparecen en las tablas anteriores; aquí se puede añadir un comentario sobre la consistencia.
+
+\subsection{Figuras de Lissajous}
+
+% TODO: insertar capturas o esquemas de las figuras observadas.
+
+\begin{table}[H]
+  \centering
+  \caption{Figuras de Lissajous observadas.}
+  \label{tab:lissajous}
+  \small
+  \begin{tabular}{cccc}
+    \toprule
+    Relación & $\nu_1$ (Hz) & $\nu_2$ (Hz) & Figura observada \\
+    \midrule
+    $1:1$ & & & \\
+    $1:2$ & & & \\
+    $1:3$ & & & \\
+    $2:3$ & & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  % \includegraphics[width=1\columnwidth]{imagenes/lissajous}
+  \caption{Figuras de Lissajous obtenidas para las cuatro relaciones de frecuencia.}
+  \label{fig:lissajous}
+\end{figure}
+
+\subsection{Condición para obtener una circunferencia}
+
+Para que la composición de las dos señales (\ref{eq:X})--(\ref{eq:Y}) describa una circunferencia en el plano XY deben cumplirse simultáneamente:
+
+\begin{enumerate}
+  \item \textbf{Igualdad de frecuencias}: $\nu_1 = \nu_2$ (misma $\omega$).
+  \item \textbf{Igualdad de amplitudes}: $A = B$.
+  \item \textbf{Desfase de} $\phi = \pi/2$ (90°).
+\end{enumerate}
+
+Bajo estas condiciones, $X = A\sin(\omega t)$ e $Y = A\cos(\omega t)$, de modo que $X^2 + Y^2 = A^2$, que es la ecuación de una circunferencia de radio $A$.
+
+\section{Conclusión}
+
+% TODO: completar con los valores numéricos obtenidos.
+
+\begin{enumerate}
+  \item Los tres métodos de medida del osciloscopio (rejilla, cursores y automático) proporcionan valores de frecuencia compatibles entre sí dentro de sus incertidumbres para todas las frecuencias estudiadas. La medida automática es la más precisa, pero asumir como incertidumbre su última cifra significativa puede ser insuficiente a frecuencias bajas donde el número de ciclos promediados es reducido.
+
+  \item La amplitud de la señal se mantiene aproximadamente constante al variar la frecuencia en el rango estudiado, lo que confirma que los generadores son fuentes de tensión con buena regulación en banda.
+
+  \item Se han observado figuras de Lissajous estables para las relaciones $1:1$, $1:2$, $1:3$ y $2:3$, verificando que la forma de cada figura depende tanto de la relación de frecuencias como del desfase $\phi$, que evoluciona lentamente al no estar sincronizados los dos generadores.
+
+  \item La figura de Lissajous es una circunferencia cuando $\nu_1 = \nu_2$, $A = B$ y $\phi = \pi/2$.
+\end{enumerate}
+
+\end{multicols}
+
+\printbibliography
+
+\end{document}

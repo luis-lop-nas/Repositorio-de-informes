@@ -1,0 +1,346 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- Idioma y codificación ---
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\large\bfseries}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection}{1em}{}
+
+% --- Márgenes ---
+\usepackage[a4paper,
+  top=2.5cm,bottom=2.5cm,
+  left=2.2cm,right=2.2cm,
+  columnsep=0.7cm
+]{geometry}
+
+% --- Gráficos, tablas, etc. ---
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{physics}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{siunitx}
+
+% --- Dos columnas tipo paper ---
+\usepackage{multicol}
+
+% --- Índice y enlaces ---
+\usepackage[hidelinks]{hyperref}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+
+% --- Encabezados y pies ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Vibración y velocidad de ondas estacionarias}
+\rhead{\leftmark}
+\cfoot{\thepage}
+\setlength{\headheight}{14.62pt}
+\addtolength{\topmargin}{-0.12pt}
+
+% --- Bibliografía ---
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{bibliografia.bib}
+
+\let\cleardoublepage\clearpage
+\raggedcolumns
+
+\begin{document}
+
+% =========================
+% Portada (1 columna)
+% =========================
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+  {\LARGE \textbf{Vibración y velocidad de ondas estacionarias}\par}
+  \vspace{1cm}
+  {\large Asignatura: Mecánica y Ondas I\par}
+  \vspace{0.5cm}
+  {\large Autor: Luis López Nasser\par}
+  {\large Fecha: 21/04/2026\par}
+  \vfill
+  {\large Universidad Unie\par}
+\end{titlepage}
+
+% =========================
+% Índice (1 columna)
+% =========================
+\tableofcontents
+\clearpage
+
+% =========================
+% Contenido (2 columnas)
+% =========================
+\begin{multicols}{2}
+
+\section{Introducción}
+
+\subsection{Marco Teórico}
+
+Los fenómenos ondulatorios aparecen en ámbitos muy diversos de la física, desde la propagación de vibraciones en medios materiales (sólidos, líquidos o gases) hasta la transmisión de ondas electromagnéticas y los niveles cuantizados de la mecánica cuántica. A pesar de su diversidad, todas las ondas comparten características comunes que permiten emplear sistemas sencillos como modelo para entender otros más complejos.
+
+\bigskip
+En esta práctica se estudia una cuerda tensa con extremos fijos como modelo de onda estacionaria. Una onda estacionaria queda confinada en una región del espacio de modo que sus extremos presentan amplitud nula. Cuando una onda viajera alcanza la frontera del medio, sufre una reflexión con un desfase de $\pi$ radianes; la superposición de la onda incidente con su reflexión produce un perfil estacionario en el que los máximos y mínimos de amplitud permanecen fijos.
+
+\bigskip
+Considerando un elemento diferencial $dx$ de la cuerda de densidad lineal $\mu = \rho A$ y tensión $F = T$, la aplicación de la segunda ley de Newton en la dirección transversal conduce, en la aproximación de ángulos pequeños, a la ecuación de ondas unidimensional:
+
+\begin{equation}
+  \frac{\partial^2 y}{\partial x^2} = \frac{1}{v^2}\frac{\partial^2 y}{\partial t^2},
+  \label{eq:ondas}
+\end{equation}
+
+donde la velocidad de fase vale
+
+\begin{equation}
+  v = \sqrt{\frac{F}{\mu}} = \sqrt{\frac{F}{\rho A}}.
+  \label{eq:velocidad}
+\end{equation}
+
+La solución general de la ecuación~(\ref{eq:ondas}) es una superposición de modos:
+
+\begin{equation}
+  y(x,t) = \sum_{n=1}^{N} A_n \cos(k_n x \pm \omega_n t + \varphi_n),
+  \label{eq:solucion}
+\end{equation}
+
+donde $k = 2\pi/\lambda$ es el número de onda y $\omega = 2\pi f$ la frecuencia angular. Para que (\ref{eq:solucion}) sea solución de (\ref{eq:ondas}) debe satisfacerse la \emph{relación de dispersión}:
+
+\begin{equation}
+  \frac{\omega_n}{k_n} = v.
+  \label{eq:dispersion}
+\end{equation}
+
+Una onda estacionaria resulta de superponer dos ondas viajeras de igual frecuencia y amplitud propagándose en sentidos opuestos con un desfase de $\pi$:
+
+\begin{multline}
+  y(x,t) = A\cos(kx+\omega t) \\
+  + A\cos(kx-\omega t+\pi).
+\end{multline}
+
+Aplicando identidades trigonométricas se obtiene la forma canónica de la onda estacionaria:
+
+\begin{equation}
+  \boxed{y(x,t) = 2A\sin(kx)\sin(\omega t).}
+  \label{eq:estacionaria}
+\end{equation}
+
+El factor $\sin(\omega t)$ recoge la dependencia temporal, mientras que $2A\sin(kx)$ fija la amplitud de cada punto según su posición. A diferencia de las ondas viajeras, el perfil no se desplaza con el tiempo.
+
+\bigskip
+La condición de contorno de extremos fijos impone que la amplitud sea nula en $x=0$ y $x=L$:
+
+\begin{equation}
+  y(0,t) = y(L,t) = 2A\sin(kL)\sin(\omega t) = 0.
+  \label{eq:contorno}
+\end{equation}
+
+Para que (\ref{eq:contorno}) se cumpla para cualquier $t$, es necesario que $k = n\pi/L$ con $n \in \mathbb{N}$, es decir, la longitud de onda debe satisfacer $\lambda = 2L/n$. Combinando con la relación de dispersión (\ref{eq:dispersion}) se obtiene
+
+\begin{equation}
+  \omega_n = v\,k_n = v\,\frac{\pi n}{L},
+\end{equation}
+
+y, recordando que $\omega = 2\pi f$, las frecuencias de los modos normales son:
+
+\begin{equation}
+  \boxed{f_n = \frac{n}{2L}\,v = \frac{n}{2L}\sqrt{\frac{F}{\mu}}.}
+  \label{eq:modos}
+\end{equation}
+
+Cada valor entero $n$ define un modo de oscilación. El número de vientres (máximos de amplitud) coincide con $n$, mientras que el número de nodos (puntos de amplitud nula) es $n-1$.
+
+\bigskip
+La expresión (\ref{eq:modos}) muestra que $f_n$ crece linealmente con el modo $n$ y con la pendiente $v/2L$. En consecuencia, representando $f$ frente a $n$ para una tensión fija se obtiene una recta cuya pendiente permite determinar experimentalmente la velocidad de fase.
+
+\subsection{Objetivos}
+
+El objetivo de esta práctica es determinar los modos de vibración y la velocidad de fase de ondas estacionarias generadas en una cuerda sujeta por sus extremos, en función de la tensión aplicada. Para ello se estudiarán los cuatro primeros modos normales para cuatro valores distintos de tensión, se obtendrá la velocidad de fase a partir de la expresión teórica y de ajustes lineales, y se comparará con el valor teórico predicho por la ecuación~(\ref{eq:velocidad}).
+
+\section{Materiales}
+
+Para la realización de la práctica se emplearon los siguientes materiales:
+
+\begin{itemize}
+  \item Generador de frecuencias conectado a un oscilador.
+  \item Cuerda elástica.
+  \item Dos poleas.
+  \item Soporte portapesas y pesas de \SI{50}{\gram} cada una.
+  \item Soporte ajustable en altura para el oscilador.
+  \item Varilla de soporte de acero inoxidable de \SI{500}{\milli\meter}.
+\end{itemize}
+
+Los parámetros fijos de la instalación son:
+\begin{itemize}
+  \item Longitud de la cuerda entre el vibrador y la polea: $L = \SI{58}{\centi\meter}$.
+  \item Longitud total de la cuerda: $L_T = \SI{82}{\centi\meter}$.
+\end{itemize}
+
+\section{Procedimiento}
+
+La cuerda está sujeta en un extremo a la lengüeta del oscilador y en el otro a un soporte portapesas, pasando por una polea. El oscilador es alimentado por el generador de frecuencias, que permite variar continuamente la frecuencia de vibración de la cuerda.
+
+\bigskip
+Para cada configuración de tensión se varía la frecuencia del generador hasta observar la formación de los cuatro primeros modos normales ($n = 1, 2, 3, 4$), anotando la frecuencia $f_n$ a la que se produce cada modo. Se parte sin pesas adicionales (solo el soporte) y se añaden sucesivamente pesas de \SI{50}{\gram}, obteniendo un total de cuatro valores de tensión.
+
+\bigskip
+La tensión de la cuerda en cada configuración se calcula como $F = M\,g$, donde $M$ es la masa total colgada (soporte más pesas adicionales) y $g \approx \SI{9.81}{\meter\per\second\squared}$.
+
+\section{Análisis y Discusión}
+
+\subsection{Tensiones aplicadas}
+
+% TODO: anotar la masa del soporte portapesas y calcular F = Mg para cada configuración.
+
+\begin{table}[H]
+  \centering
+  \caption{Tensiones según la masa colgada.}
+  \label{tab:tensiones}
+  \small
+  \begin{tabular}{cccc}
+    \toprule
+    Config. & Pesas & $M$ (kg) & $F$ (N) \\
+    \midrule
+    0 & 0 & --- & --- \\
+    1 & 1 & --- & --- \\
+    2 & 2 & --- & --- \\
+    3 & 3 & --- & --- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Frecuencias de los modos normales}
+
+% TODO: completar con los datos experimentales.
+
+\begin{table}[H]
+  \centering
+  \caption{Frecuencia $f_n$ (Hz) de los cuatro primeros modos para cada tensión.}
+  \label{tab:frecuencias}
+  \begin{tabular}{ccccc}
+    \toprule
+    $n$ & $F_0$ (N) & $F_1$ (N) & $F_2$ (N) & $F_3$ (N) \\
+    \midrule
+    1 & & & & \\
+    2 & & & & \\
+    3 & & & & \\
+    4 & & & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Velocidad de fase a partir de la expresión teórica}
+
+A partir de la ecuación~(\ref{eq:modos}), despejando $v$:
+
+\begin{equation}
+  v = \frac{2L\,f_n}{n}.
+  \label{eq:v_experimental}
+\end{equation}
+
+% TODO: calcular v para cada modo y cada tensión y presentar los resultados en una tabla.
+
+\subsection{\texorpdfstring{Ajuste lineal $f$ frente a $n$}{Ajuste lineal f frente a n}}
+
+Según la ecuación~(\ref{eq:modos}), la frecuencia crece linealmente con el modo:
+\begin{equation}
+  f_n = \frac{v}{2L}\,n,
+\end{equation}
+por lo que la representación de $f$ frente a $n$ debe dar una recta de pendiente $v/2L$ que pase por el origen.
+
+% TODO: insertar gráfica de f vs n para las cuatro tensiones con sus ajustes lineales.
+
+\begin{figure}[H]
+  \centering
+  % \includegraphics[width=1\columnwidth]{imagenes/f_vs_n}
+  \caption{Frecuencia frente al número de modo para cada tensión aplicada.}
+  \label{fig:f_vs_n}
+\end{figure}
+
+% TODO: completar tabla con pendientes y velocidades obtenidas de los ajustes.
+
+\begin{table}[H]
+  \centering
+  \caption{Velocidad de fase obtenida por ajuste lineal ($v = 2L \times \text{pendiente}$).}
+  \label{tab:v_ajuste}
+  \begin{tabular}{ccc}
+    \toprule
+    Config. & Pendiente (Hz) & $v$ (m/s) \\
+    \midrule
+    0 & & \\
+    1 & & \\
+    2 & & \\
+    3 & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Velocidad de fase teórica}
+
+La velocidad de fase predicha por la ecuación~(\ref{eq:velocidad}) es
+
+\begin{equation}
+  v_{\text{teo}} = \sqrt{\frac{F}{\mu}},
+\end{equation}
+
+donde $\mu = M_{\text{cuerda}}/L_T$ es la densidad lineal de la cuerda.
+
+% TODO: medir la masa total de la cuerda para calcular μ y obtener v_teo para cada tensión.
+
+\begin{table}[H]
+  \centering
+  \caption{Comparación de velocidades de fase (m/s).}
+  \label{tab:comparacion}
+  \begin{tabular}{cccc}
+    \toprule
+    Config. & $v_{\text{ec.}(16)}$ & $v_{\text{ajuste}}$ & $v_{\text{teo}}$ \\
+    \midrule
+    0 & & & \\
+    1 & & & \\
+    2 & & & \\
+    3 & & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% TODO: discutir diferencias entre los tres métodos. Comentar si v aumenta con la tensión según la predicción v ∝ √F.
+
+\subsection{Efecto de doblar la longitud de la cuerda}
+
+Si la longitud de la cuerda fuera $2L$ en lugar de $L$, la expresión de los modos normales (\ref{eq:modos}) se convierte en
+
+\begin{equation}
+  f_n' = \frac{n}{2(2L)}\,v = \frac{f_n}{2}.
+\end{equation}
+
+Es decir, todas las frecuencias se reducirían a la mitad respecto a las obtenidas con la longitud original $L$, manteniendo la misma relación de proporcionalidad entre modos consecutivos. Esto es una consecuencia directa de la condición de nodo en los extremos: al duplicar la longitud se necesita el doble de longitud de onda (o la mitad de frecuencia) para que quepan los mismos nodos entre los extremos fijos.
+
+\section{Conclusión}
+
+% TODO: redactar conclusiones una vez obtenidos los datos experimentales.
+
+\begin{enumerate}
+  \item Se han identificado los cuatro primeros modos normales de vibración de la cuerda para cuatro valores de tensión distintos, observando que la frecuencia de cada modo aumenta con la tensión aplicada, en acuerdo con la expresión $f_n \propto \sqrt{F}$.
+
+  \item La representación de $f$ frente a $n$ para cada tensión muestra una dependencia lineal, confirmando el modelo teórico. Las velocidades de fase obtenidas por ajuste lineal son consistentes con las calculadas directamente mediante la ecuación~(\ref{eq:modos}).
+
+  \item La comparación con los valores teóricos de la velocidad de fase muestra un buen acuerdo, siendo las desviaciones atribuibles principalmente a la incertidumbre en la medida de la densidad lineal de la cuerda y al ensanchamiento de las resonancias.
+
+  \item Al duplicar la longitud de la cuerda las frecuencias de los modos normales se reducen a la mitad, consecuencia directa de la condición de contorno de extremos fijos.
+\end{enumerate}
+
+\end{multicols}
+
+\printbibliography
+
+\end{document}

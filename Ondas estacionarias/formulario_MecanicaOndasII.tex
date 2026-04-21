@@ -1,0 +1,116 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{top=1.8cm,bottom=1.8cm,left=2cm,right=2cm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\sisetup{output-decimal-marker={,}}
+\usepackage{multicol}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+\begin{document}
+
+\begin{center}
+  {\large\textbf{Formulario — Mecánica y Ondas II (Laboratorio)}}\\[2pt]
+  {\small Luis López Nasser · Universidad UNIE · Curso 2025--26}
+\end{center}
+
+\hrule\vspace{6pt}
+
+\begin{multicols}{2}
+
+% ─────────────────────────────────────────────────────────
+\section*{Práctica: Ondas estacionarias en una cuerda}
+% ─────────────────────────────────────────────────────────
+
+\subsection*{Ecuación de ondas}
+\begin{equation*}
+  \frac{\partial^2 y}{\partial x^2} = \frac{1}{v^2}\frac{\partial^2 y}{\partial t^2}
+\end{equation*}
+Válida para perturbaciones de pequeña amplitud ($\alpha \ll 1$).
+
+\subsection*{Velocidad de fase}
+\begin{equation*}
+  v = \sqrt{\frac{T}{\mu}}, \qquad \mu = \frac{m_c}{L_T}
+\end{equation*}
+$T$: tensión (N); $\mu$: densidad lineal (\si{\kg\per\m}).
+
+\subsection*{Onda estacionaria}
+\begin{equation*}
+  y(x,t) = 2A\sin(kx)\sin(\omega t)
+\end{equation*}
+Superposición de dos viajeras opuestas con desfase $\pi$.
+
+\subsection*{Modos normales (extremos fijos)}
+\begin{equation*}
+  \boxed{f_n = \frac{n\,v}{2L} = \frac{n}{2L}\sqrt{\frac{T}{\mu}}}, \quad n = 1,2,3,\ldots
+\end{equation*}
+Modo $n$: $n$ vientres, $n-1$ nodos interiores.
+
+\subsection*{Velocidad directa (un modo)}
+\begin{equation*}
+  v = \frac{2L\,f_n}{n}
+\end{equation*}
+
+\subsection*{Velocidad por ajuste lineal}
+Ajuste $f_n = an + b$ $\Rightarrow$ $v_a = 2La$.
+\begin{equation*}
+  \delta v_a = 2L\,\delta a
+\end{equation*}
+donde $\delta a$ es el error estándar de la pendiente del ajuste.
+
+\subsection*{Propagación de incertidumbre en $v$}
+\begin{equation*}
+  \delta v = \frac{2}{n}\sqrt{(f_n\,\delta L)^2 + (L\,\delta f)^2}
+\end{equation*}
+El término dominante es $(L\,\delta f)^2$.
+
+\subsection*{Tensión aplicada}
+\begin{equation*}
+  T_i = (m_s + 0{,}010\cdot i)\,g, \quad \delta T = g\,\delta m
+\end{equation*}
+$m_s$: masa del soporte; $g = \SI{9.81}{\m\per\s\squared}$.
+
+\subsection*{Efecto de doblar la longitud}
+\begin{equation*}
+  L \to 2L \implies f_n' = \frac{f_n}{2}
+\end{equation*}
+$v$ no cambia; $\lambda_n$ se duplica; $f_n$ se divide entre dos.
+
+\subsection*{Datos del experimento}
+\begin{center}
+  \small
+  \begin{tabular}{ll}
+    \toprule
+    Longitud útil $L$   & \SI{0.1315}{\m} \\
+    Longitud total $L_T$& \SI{0.82}{\m}   \\
+    $\delta L$          & \SI{0.5}{\mm}   \\
+    $\delta f$          & \SI{0.5}{\Hz}   \\
+    Modos medidos       & $n = 3$ a $8$   \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\subsection*{Resultados principales}
+\begin{center}
+  \small
+  \begin{tabular}{lcc}
+    \toprule
+    Tensión & $\bar{v}$ (m/s) & $v_a \pm \delta v_a$ (m/s) \\
+    \midrule
+    $T_0 = \SI{0.098}{\N}$ & 0,791 & $0{,}885\pm0{,}059$ \\
+    $T_1 = \SI{0.196}{\N}$ & 0,927 & $1{,}105\pm0{,}102$ \\
+    $T_2 = \SI{0.294}{\N}$ & 1,149 & $1{,}207\pm0{,}039$ \\
+    $T_3 = \SI{0.392}{\N}$ & 1,264 & $1{,}268\pm0{,}018$ \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\end{multicols}
+
+\end{document}

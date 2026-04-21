@@ -1,328 +1,349 @@
 \documentclass[12pt,a4paper]{article}
 
-% --- Idioma y codificación ---
-\usepackage[spanish]{babel}
+% --- Idioma y codificacion ---
+\usepackage[spanish,es-nodecimaldot]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+
+% --- Maquetacion y estilo ---
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.2cm,right=2.2cm,columnsep=0.7cm]{geometry}
+\usepackage{setspace}
 \usepackage{titlesec}
-\titleformat{\section}
-  {\normalfont\large\bfseries}
-  {\thesection}{1em}{}
-\titleformat{\subsection}
-  {\normalfont\normalsize\bfseries}
-  {\thesubsection}{1em}{}
-
-% --- Márgenes ---
-\usepackage[a4paper,
-  top=2.5cm,bottom=2.5cm,
-  left=2.2cm,right=2.2cm,
-  columnsep=0.7cm
-]{geometry}
-
-% --- Gráficos, tablas, etc. ---
-\usepackage{graphicx}
-\usepackage{subfig}
-\usepackage{physics}
-\usepackage{csquotes}
-\usepackage{float}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{booktabs}
-\usepackage{siunitx}
-\usepackage{array}
-\usepackage{multirow}
-
-% --- Dos columnas tipo paper ---
-\usepackage{multicol}
-
-% --- Índice y enlaces ---
 \usepackage[hidelinks]{hyperref}
-\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
-
-% --- Encabezados y pies ---
 \usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{xcolor}
+
+% --- Ciencia y tablas ---
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{float}
+
+\sisetup{output-decimal-marker={,}}
+\setstretch{1.15}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\renewcommand{\arraystretch}{1.15}
+\setlength{\abovedisplayskip}{6pt}
+\setlength{\belowdisplayskip}{6pt}
+\setlength{\abovedisplayshortskip}{4pt}
+\setlength{\belowdisplayshortskip}{4pt}
+\setlength{\emergencystretch}{3em}
+
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\hypersetup{hypertexnames=false}
+
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{Manejo del osciloscopio y figuras de Lissajous}
-\rhead{\leftmark}
+\lhead{Práctica 2: Osciloscopio y Lissajous}
+\rhead{Electromagnetismo II}
 \cfoot{\thepage}
-\setlength{\headheight}{14.62pt}
-\addtolength{\topmargin}{-0.12pt}
+\setlength{\headheight}{14.5pt}
 
-% --- Bibliografía ---
-\usepackage[backend=biber,style=ieee]{biblatex}
-\addbibresource{bibliografia.bib}
-
-\let\cleardoublepage\clearpage
-\raggedcolumns
+\newcommand{\pend}{\textbf{--}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
 
 \begin{document}
 
-% =========================
-% Portada
-% =========================
 \begin{titlepage}
-  \centering
-  \vspace*{2cm}
-  {\LARGE \textbf{Manejo del osciloscopio y figuras de Lissajous}\par}
-  \vspace{1cm}
-  {\large Asignatura: Laboratorio de Electromagnetismo II\par}
-  \vspace{0.5cm}
-  {\large Autor: Luis López Nasser\par}
-  {\large Fecha: 21/04/2026\par}
-  \vfill
-  {\large Universidad Unie\par}
+    \centering
+    \vspace*{3cm}
+    {\LARGE\bfseries Caracterización de señales sinusoidales con osciloscopio \\
+    mediante técnicas X--T y análisis de figuras de Lissajous en modo X--Y\par}
+    \vspace{1.5cm}
+    {\large Asignatura: Electromagnetismo II\par}
+    \vspace{0.5cm}
+    {\large Autor: Luis López Nasser\par}
+    {\large Fecha: 21/04/2026\par}
+    {\large Universidad UNIE\par}
+    \vfill
 \end{titlepage}
 
-% =========================
-% Índice
-% =========================
 \tableofcontents
 \clearpage
 
-% =========================
-% Contenido (2 columnas)
-% =========================
 \begin{multicols}{2}
 
 \section{Introducción}
 
-\subsection{Marco Teórico}
+\subsection{Marco teórico}
 
-\subsubsection{El osciloscopio}
+El osciloscopio digital permite observar la evolución temporal de una señal y cuantificar parámetros eléctricos con resolución definida por la escala vertical y horizontal. En modo X--T, la representación es tensión-tiempo; en modo X--Y, la base de tiempos se desactiva y la pantalla representa una señal frente a otra, lo que permite analizar de forma directa relaciones de fase y frecuencia entre dos canales. Esta descripción coincide con la documentación técnica de fabricantes de instrumentación y con la teoría clásica de curvas de Lissajous (fuentes verificadas en el anexo final).
 
-El osciloscopio es un instrumento que permite visualizar y registrar señales eléctricas de diferencia de potencial en función del tiempo. A diferencia de otros instrumentos de medida, es especialmente adecuado para el análisis de señales alternas, transitorias o poco repetitivas.
-
-\bigskip
-Los osciloscopios digitales modernos incorporan un conversor analógico-digital (CAD) que transforma la señal en datos digitales, permitiendo procesarla, visualizarla con mayor flexibilidad y almacenarla para análisis posteriores.
-
-\bigskip
-Para caracterizar una señal sinusoidal existen tres métodos, ordenados de menor a mayor precisión:
-
-\begin{enumerate}
-  \item \textbf{Rejilla}: lectura directa contando divisiones y multiplicando por la escala (V/div o s/div).
-  \item \textbf{Cursores}: reducen el error de paralaje; el osciloscopio muestra $\Delta V$ y $\Delta t$ directamente.
-  \item \textbf{Medida automática}: el procesador interno calcula $V_{pp}$, periodo y frecuencia.
-\end{enumerate}
-
-Las relaciones entre las magnitudes de una señal sinusoidal son:
-
-\begin{align}
-  V_p     &= \frac{V_{pp}}{2}, \label{eq:vp} \\
-  V_{ef}  &= \frac{V_p}{\sqrt{2}}, \label{eq:vef} \\
-  f       &= \frac{1}{T}. \label{eq:freq}
-\end{align}
-
-La incertidumbre del periodo medido por rejilla es $\Delta T = E_{t} \cdot \Delta_{\text{div}}$, donde $E_t$ es la escala temporal (s/div) y $\Delta_{\text{div}}$ es la apreciación en divisiones. La incertidumbre de la frecuencia se obtiene por propagación:
-
+Para una señal sinusoidal, la lectura por rejilla del osciloscopio conduce a las expresiones
 \begin{equation}
-  \Delta f = \frac{\Delta T}{T^2}.
-  \label{eq:deltaf}
+V_{pp}=n_V\,(\mathrm{V/div}),
+\label{eq:vpp_rejilla}
 \end{equation}
-
-\subsubsection{Figuras de Lissajous}
-
-Las figuras de Lissajous resultan de componer dos movimientos armónicos simples en direcciones perpendiculares. Si las señales son
-
-\begin{align}
-  X &= A\sin(\omega_1 t), \label{eq:X} \\
-  Y &= B\sin(\omega_2 t + \phi), \label{eq:Y}
-\end{align}
-
-la curva paramétrica trazada en el plano XY adopta formas características que dependen de la relación de frecuencias $\omega_1/\omega_2$ y del desfase $\phi$.
-
-\bigskip
-Las figuras estables y reconocibles aparecen cuando la relación es un cociente de enteros pequeños:
-
 \begin{equation}
-  \frac{\nu_1}{\nu_2} = \frac{\omega_1}{\omega_2} = \frac{p}{q}, \quad p,q \in \mathbb{N}.
-  \label{eq:relacion}
+T=n_T\,(\mathrm{s/div}),
+\label{eq:T_rejilla}
 \end{equation}
+\begin{equation}
+f=\frac{1}{T},
+\label{eq:frec_def}
+\end{equation}
+\begin{equation}
+V_p=\frac{V_{pp}}{2},
+\label{eq:vp_def}
+\end{equation}
+\begin{equation}
+V_{ef}=\frac{V_p}{\sqrt{2}}=\frac{V_{pp}}{2\sqrt{2}},
+\label{eq:vef_def}
+\end{equation}
+siendo $n_V$ y $n_T$ el número de divisiones verticales y horizontales leídas en pantalla. Para ondas sinusoidales, la relación $V_{ef}=V_p/\sqrt{2}$ está establecida en textos universitarios de electromagnetismo y circuitos en alterna (véase anexo de fuentes).
 
-La Tabla~\ref{tab:lissajous_formas} resume las formas esperadas para las relaciones estudiadas en esta práctica.
+Las medidas directas se tratan con incertidumbre tipo B según
+\begin{equation}
+\delta x=\frac{\text{resolución}}{2}.
+\label{eq:tipoB}
+\end{equation}
+Para magnitudes calculadas se emplea propagación de primer orden,
+\begin{equation}
+\delta f=\sqrt{\sum_i \left(\frac{\partial f}{\partial x_i}\,\delta x_i\right)^2}.
+\label{eq:propagacion_general}
+\end{equation}
+Aplicado a la frecuencia obtenida desde el periodo, con \eqref{eq:frec_def}, se obtiene
+\begin{equation}
+\delta f=\left|\frac{\partial}{\partial T}\left(\frac{1}{T}\right)\right|\delta T=\frac{\delta T}{T^2}.
+\label{eq:df_desdeT}
+\end{equation}
+Análogamente, desde \eqref{eq:vp_def} y \eqref{eq:vef_def}:
+\begin{equation}
+\delta V_p=\frac{\delta V_{pp}}{2},
+\label{eq:dvp}
+\end{equation}
+\begin{equation}
+\delta V_{ef}=\frac{\delta V_{pp}}{2\sqrt{2}}.
+\label{eq:dvef}
+\end{equation}
+El esquema de evaluación tipo B y la combinación de incertidumbres por suma cuadrática se fundamentan en la guía metrológica de NIST (TN 1297), que formaliza la ley de propagación de incertidumbres para magnitudes derivadas (anexo de fuentes).
 
-\begin{table}[H]
-  \centering
-  \caption{Formas de las figuras de Lissajous.}
-  \label{tab:lissajous_formas}
-  \small
-  \begin{tabular}{cll}
-    \toprule
-    $\nu_1/\nu_2$ & $\phi = 0$ & $\phi = \pi/2$ \\
-    \midrule
-    $1:1$ & Línea recta & Elipse/círculo \\
-    $1:2$ & Ocho tumbado & Parábola \\
-    $1:3$ & Tres lóbulos & Figura-S \\
-    $2:3$ & Figura compleja & Figura compleja \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+En modo X--Y se superponen dos señales sinusoidales ortogonales,
+\begin{equation}
+X(t)=A\sin(\omega_1 t),
+\label{eq:liss_param_x}
+\end{equation}
+\begin{equation}
+Y(t)=B\sin(\omega_2 t+\phi),
+\label{eq:liss_param}
+\end{equation}
+donde $A$ y $B$ son amplitudes, $\omega_1=2\pi\nu_1$, $\omega_2=2\pi\nu_2$ y $\phi$ es el desfase relativo. La curva de Lissajous se cierra si y solo si la razón $\nu_1/\nu_2$ es racional; por ello, relaciones sencillas como $1:1$, $1:2$, $1:3$ y $2:3$ producen figuras estables y reconocibles en pantalla.
 
-Para que la figura sea una \textbf{circunferencia} deben cumplirse simultáneamente tres condiciones: igualdad de frecuencias ($\nu_1 = \nu_2$), igualdad de amplitudes ($A = B$) y desfase de $\phi = \pi/2$.
+Para obtener una circunferencia, deben cumplirse simultáneamente tres condiciones: misma frecuencia en ambos canales ($\nu_1=\nu_2$), misma amplitud efectiva ($A=B$ considerando la escala de cada canal) y desfase en cuadratura $\phi=\pm\pi/2+2k\pi$ con $k\in\mathbb{Z}$.
 
 \subsection{Objetivos}
 
-\begin{itemize}
-  \item Familiarizarse con el manejo del osciloscopio (rejilla, cursores y medida automática).
-  \item Medir $T$, $f$, $V_{pp}$, $V_p$ y $V_{ef}$ para cinco frecuencias nominales (50, 100, 200, 800 y 3000 Hz) y comparar los tres métodos de medida.
-  \item Visualizar figuras de Lissajous para las relaciones $1:1$, $1:2$, $1:3$ y $2:3$ y determinar las frecuencias que las generan.
-  \item Establecer las condiciones para obtener una circunferencia.
-\end{itemize}
+El objetivo de la práctica es caracterizar una señal sinusoidal en modo X--T y estudiar relaciones de frecuencia en modo X--Y mediante figuras de Lissajous. En concreto, se busca medir periodo, frecuencia, voltaje pico a pico, voltaje de pico y voltaje eficaz para un barrido de frecuencias nominales, comparar la consistencia de tres métodos de medida de frecuencia (rejilla, cursores y medida automática) y registrar al menos ocho figuras de Lissajous para relaciones predefinidas entre generadores.
 
 \section{Materiales}
 
-\begin{itemize}
-  \item Osciloscopio digital.
-  \item 2 generadores de señales sinusoidales.
-  \item Cables de conexión coaxial.
-\end{itemize}
-
-\section{Procedimiento}
-
-\subsection{Modo X-T: caracterización de la señal}
-
-Se conecta la salida de un generador al canal CH1 del osciloscopio en modo X-T. Para cada frecuencia nominal se ajusta la escala de tiempo y voltaje manualmente para que la señal ocupe la mayor parte de la pantalla sin saturarse, y se estabiliza con el nivel de TRIGGER. Las medidas se realizan con los tres métodos descritos en el marco teórico.
-
-\subsection{Modo X-Y: figuras de Lissajous}
-
-Se conectan los dos generadores a CH1 y CH2 respectivamente. Se activa el modo X-Y desde el menú Horizontal $\to$ Time Base $\to$ X-Y. Se varía la frecuencia del segundo generador manteniendo fija la del primero hasta observar cada figura estable; dado que el desfase $\phi$ no se controla, la figura evoluciona lentamente.
-
-\section{Análisis y Discusión}
-
-\subsection{Medidas de tiempo y voltaje}
-
-% TODO: rellenar con los datos experimentales obtenidos en el laboratorio.
+Se emplearon un osciloscopio digital de dos canales, dos generadores de funciones sinusoidales y cables coaxiales de conexión. Para cerrar correctamente el análisis metrológico deben anotarse en laboratorio las resoluciones reales de cada instrumento y el rango de medida usado en cada lectura, ya que la incertidumbre tipo B depende de la configuración activa del equipo en el momento de la medida.
 
 \begin{table}[H]
-  \centering
-  \caption{Resultados de tiempo y voltaje para las cinco frecuencias.}
-  \label{tab:medidas}
-  \small
-  \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{lcc cc cc}
-    \toprule
-    Magnitud & \multicolumn{2}{c}{50 Hz} & \multicolumn{2}{c}{100 Hz} & \multicolumn{2}{c}{200 Hz} \\
-    \midrule
-    $\nu_{\text{nom}} \pm \Delta\nu$ & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
-    Escala $t$ (s/div) & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
-    Divisiones & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
-    $T \pm \Delta T$ (s) & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
-    $\nu \pm \Delta\nu$ rejilla & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
-    $\nu \pm \Delta\nu$ cursores & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
-    $\nu \pm \Delta\nu$ auto & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
-    \midrule
-    Escala $V$ (V/div) & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
-    Divisiones & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
-    $V_{pp} \pm \Delta V_{pp}$ & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
-    $V_p \pm \Delta V_p$ & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
-    $V_{ef} \pm \Delta V_{ef}$ & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} & \multicolumn{2}{c}{} \\
-    \bottomrule
-  \end{tabular}
+\centering
+\caption{Instrumentación y estimación de incertidumbre tipo B.}
+\small
+\begin{tabularx}{\columnwidth}{>{\raggedright\arraybackslash}p{0.42\columnwidth}YY}
+\toprule
+Magnitud medida & Resolución & $\delta x=\text{resolución}/2$ \\
+\midrule
+Frecuencia nominal del generador $f_{nom}$ & \pend & \pend \\
+Periodo por rejilla $T_{rej}$ & \pend & \pend \\
+Voltaje pico a pico por rejilla $V_{pp}$ & \pend & \pend \\
+Frecuencia por cursores $f_{cur}$ & \pend & \pend \\
+Frecuencia automática $f_{auto}$ & \pend & \pend \\
+\bottomrule
+\end{tabularx}
 \end{table}
 
-\begin{table}[H]
-  \centering
-  \caption{Resultados para 800 Hz y 3000 Hz.}
-  \label{tab:medidas2}
-  \small
-  \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{lcc}
-    \toprule
-    Magnitud & 800 Hz & 3000 Hz \\
-    \midrule
-    $\nu_{\text{nom}} \pm \Delta\nu$ & & \\
-    Escala $t$ (s/div) & & \\
-    Divisiones & & \\
-    $T \pm \Delta T$ (s) & & \\
-    $\nu \pm \Delta\nu$ rejilla & & \\
-    $\nu \pm \Delta\nu$ cursores & & \\
-    $\nu \pm \Delta\nu$ auto & & \\
-    \midrule
-    Escala $V$ (V/div) & & \\
-    Divisiones & & \\
-    $V_{pp} \pm \Delta V_{pp}$ & & \\
-    $V_p \pm \Delta V_p$ & & \\
-    $V_{ef} \pm \Delta V_{ef}$ & & \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+\section{Procedimiento experimental}
 
-\subsection{Comparación de los tres métodos}
+Con amplitud fija en el generador principal, se efectuó un barrido de frecuencias nominales de \SIlist{50;100;200;800;3000}{\hertz}. Para cada ajuste, la señal se visualizó en modo X--T y se midieron el periodo y el voltaje pico a pico por lectura de rejilla, ajustando previamente las escalas vertical y horizontal para ocupar la mayor parte de la pantalla sin recorte de picos. Se centró la traza y se estabilizó mediante el sistema de disparo (trigger), de modo que la lectura por divisiones fuera repetible.
 
-% TODO: discutir la compatibilidad entre métodos dentro de sus incertidumbres.
+A continuación, sobre la misma señal, se repitió la medida de frecuencia con cursores y se registró la medida automática del osciloscopio. En medidas automáticas, algunos equipos determinan periodo y frecuencia a partir de cruces por umbral (habitualmente al 50\,\%) entre flancos equivalentes; por eso se verificó que al menos un ciclo completo estuviera claramente visible antes de aceptar la lectura.
 
-Los tres métodos deben proporcionar valores compatibles dentro de sus incertidumbres si el instrumento funciona correctamente. En general se espera que la medida automática sea la más precisa, pero su incertidumbre declarada (última cifra significativa) puede ser optimista si el número de ciclos promediados es pequeño o si la señal no está perfectamente estabilizada.
-
-\bigskip
-% TODO: comentar si la amplitud varía con la frecuencia y a qué puede atribuirse.
-
-\subsection{\texorpdfstring{Voltajes $V_p$ y $V_{ef}$}{Voltajes Vp y Vef}}
-
-A partir de $V_{pp}$ se obtienen, mediante las ecuaciones~(\ref{eq:vp}) y (\ref{eq:vef}):
-
-\begin{equation}
-  \Delta V_p = \frac{\Delta V_{pp}}{2}, \qquad
-  \Delta V_{ef} = \frac{\Delta V_p}{\sqrt{2}}.
-\end{equation}
-
-% TODO: los valores ya aparecen en las tablas anteriores; aquí se puede añadir un comentario sobre la consistencia.
-
-\subsection{Figuras de Lissajous}
-
-% TODO: insertar capturas o esquemas de las figuras observadas.
-
-\begin{table}[H]
-  \centering
-  \caption{Figuras de Lissajous observadas.}
-  \label{tab:lissajous}
-  \small
-  \begin{tabular}{cccc}
-    \toprule
-    Relación & $\nu_1$ (Hz) & $\nu_2$ (Hz) & Figura observada \\
-    \midrule
-    $1:1$ & & & \\
-    $1:2$ & & & \\
-    $1:3$ & & & \\
-    $2:3$ & & & \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\begin{figure}[H]
-  \centering
-  % \includegraphics[width=1\columnwidth]{imagenes/lissajous}
-  \caption{Figuras de Lissajous obtenidas para las cuatro relaciones de frecuencia.}
-  \label{fig:lissajous}
-\end{figure}
-
-\subsection{Condición para obtener una circunferencia}
-
-Para que la composición de las dos señales (\ref{eq:X})--(\ref{eq:Y}) describa una circunferencia en el plano XY deben cumplirse simultáneamente:
-
-\begin{enumerate}
-  \item \textbf{Igualdad de frecuencias}: $\nu_1 = \nu_2$ (misma $\omega$).
-  \item \textbf{Igualdad de amplitudes}: $A = B$.
-  \item \textbf{Desfase de} $\phi = \pi/2$ (90°).
-\end{enumerate}
-
-Bajo estas condiciones, $X = A\sin(\omega t)$ e $Y = A\cos(\omega t)$, de modo que $X^2 + Y^2 = A^2$, que es la ecuación de una circunferencia de radio $A$.
-
-\section{Conclusión}
-
-% TODO: completar con los valores numéricos obtenidos.
-
-\begin{enumerate}
-  \item Los tres métodos de medida del osciloscopio (rejilla, cursores y automático) proporcionan valores de frecuencia compatibles entre sí dentro de sus incertidumbres para todas las frecuencias estudiadas. La medida automática es la más precisa, pero asumir como incertidumbre su última cifra significativa puede ser insuficiente a frecuencias bajas donde el número de ciclos promediados es reducido.
-
-  \item La amplitud de la señal se mantiene aproximadamente constante al variar la frecuencia en el rango estudiado, lo que confirma que los generadores son fuentes de tensión con buena regulación en banda.
-
-  \item Se han observado figuras de Lissajous estables para las relaciones $1:1$, $1:2$, $1:3$ y $2:3$, verificando que la forma de cada figura depende tanto de la relación de frecuencias como del desfase $\phi$, que evoluciona lentamente al no estar sincronizados los dos generadores.
-
-  \item La figura de Lissajous es una circunferencia cuando $\nu_1 = \nu_2$, $A = B$ y $\phi = \pi/2$.
-\end{enumerate}
+Durante el barrido se observó también si la amplitud visible en el eje Y permanecía constante o variaba con la frecuencia nominal. Terminada la parte X--T, se conectó un generador a cada canal del osciloscopio, se activó el modo X--Y y se buscaron figuras de Lissajous asociadas a relaciones de frecuencias $1:1$, $1:2$, $1:3$ y $2:3$, anotando para cada figura los valores de frecuencia usados y la forma observada.
 
 \end{multicols}
 
-\printbibliography
+\section{Datos experimentales}
+
+Los datos numéricos medidos no están completos en el material actual, por lo que se deja preparada la hoja de resultados con el formato correcto para completar valores, incertidumbres y cálculos sin introducir resultados inventados.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\caption{Medidas principales: rejilla, cursores y medida automática.}
+\begin{tabular}{cccccccccc}
+\toprule
+$f_{nom}$ & $\delta f_{nom}$ & $T_{rej}$ & $\delta T_{rej}$ & $V_{pp}$ & $\delta V_{pp}$ & $f_{rej}=1/T$ & $\delta f_{rej}$ & $f_{cur}$ & $f_{auto}$ \\
+(Hz) & (Hz) & (s) & (s) & (V) & (V) & (Hz) & (Hz) & (Hz) & (Hz) \\
+\midrule
+50   & \pend & \pend & \pend & \pend & \pend & \pend & \pend & \pend & \pend \\
+100  & \pend & \pend & \pend & \pend & \pend & \pend & \pend & \pend & \pend \\
+200  & \pend & \pend & \pend & \pend & \pend & \pend & \pend & \pend & \pend \\
+800  & \pend & \pend & \pend & \pend & \pend & \pend & \pend & \pend & \pend \\
+3000 & \pend & \pend & \pend & \pend & \pend & \pend & \pend & \pend & \pend \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{4.4pt}
+\caption{Cálculo de $V_p$ y $V_{ef}$ con incertidumbres propagadas.}
+\begin{tabular}{ccccccc}
+\toprule
+$f_{nom}$ (Hz) & $V_{pp}$ (V) & $\delta V_{pp}$ (V) & $V_p$ (V) & $\delta V_p$ (V) & $V_{ef}$ (V) & $\delta V_{ef}$ (V) \\
+\midrule
+50   & \pend & \pend & \pend & \pend & \pend & \pend \\
+100  & \pend & \pend & \pend & \pend & \pend & \pend \\
+200  & \pend & \pend & \pend & \pend & \pend & \pend \\
+800  & \pend & \pend & \pend & \pend & \pend & \pend \\
+3000 & \pend & \pend & \pend & \pend & \pend & \pend \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.3pt}
+\caption{Comparación de frecuencias y contraste con la frecuencia nominal.}
+\begin{tabular}{ccccccc}
+\toprule
+$f_{nom}$ (Hz) & $f_{rej}\pm\delta f_{rej}$ & $f_{cur}\pm\delta f_{cur}$ & $f_{auto}\pm\delta f_{auto}$ & $|f_{nom}-f_{rej}|$ & $|f_{nom}-f_{cur}|$ & $|f_{nom}-f_{auto}|$ \\
+\midrule
+50   & \pend & \pend & \pend & \pend & \pend & \pend \\
+100  & \pend & \pend & \pend & \pend & \pend & \pend \\
+200  & \pend & \pend & \pend & \pend & \pend & \pend \\
+800  & \pend & \pend & \pend & \pend & \pend & \pend \\
+3000 & \pend & \pend & \pend & \pend & \pend & \pend \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Variación cualitativa de amplitud al cambiar la frecuencia.}
+\begin{tabular}{ccc}
+\toprule
+$f_{nom}$ (Hz) & Amplitud observada en pantalla (eje Y) & Observación \\
+\midrule
+50   & \pend & \pend \\
+100  & \pend & \pend \\
+200  & \pend & \pend \\
+800  & \pend & \pend \\
+3000 & \pend & \pend \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Registro mínimo de ocho figuras de Lissajous.}
+\begin{tabular}{cccccc}
+\toprule
+Figura & Relación esperada & $f_X$ (Hz) & $f_Y$ (Hz) & Relación experimental & Forma observada \\
+\midrule
+1 & $1:1$ & \pend & \pend & \pend & \pend \\
+2 & $1:1$ & \pend & \pend & \pend & \pend \\
+3 & $1:2$ & \pend & \pend & \pend & \pend \\
+4 & $1:2$ & \pend & \pend & \pend & \pend \\
+5 & $1:3$ & \pend & \pend & \pend & \pend \\
+6 & $1:3$ & \pend & \pend & \pend & \pend \\
+7 & $2:3$ & \pend & \pend & \pend & \pend \\
+8 & $2:3$ & \pend & \pend & \pend & \pend \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{figuras/figura_1.pdf}
+\caption{Plantilla gráfica para comparar frecuencia nominal y frecuencias medidas con barras de error.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\textwidth]{figuras/figura_2.pdf}
+\caption{Ejemplo teórico de figura de Lissajous para una relación de frecuencias 2:3.}
+\end{figure}
+
+\begin{multicols}{2}
+
+\section{Análisis y discusión de datos}
+
+El tratamiento numérico debe seguir una secuencia fija para garantizar coherencia metrológica. En primer lugar, se calcula $f_{rej}$ a partir de $T_{rej}$ usando \eqref{eq:frec_def} y su incertidumbre mediante \eqref{eq:df_desdeT}. En segundo lugar, los valores de $V_p$ y $V_{ef}$ se obtienen con \eqref{eq:vp_def} y \eqref{eq:vef_def}, propagando con \eqref{eq:dvp} y \eqref{eq:dvef}. En tercer lugar, las tres frecuencias medidas se comparan con la frecuencia nominal y entre sí para comprobar compatibilidad dentro de incertidumbres.
+
+Una forma robusta de contraste entre dos valores $f_i$ y $f_j$ es el estadístico de compatibilidad
+\begin{equation}
+C_{ij}=\frac{|f_i-f_j|}{\sqrt{(\delta f_i)^2+(\delta f_j)^2}}.
+\label{eq:compat}
+\end{equation}
+Se considera compatibilidad experimental razonable cuando $C_{ij}\leq 1$. Si de forma sistemática $C_{ij}>1$ para la medida automática frente a los otros métodos, la hipótesis de tomar $\delta f_{auto}$ igual a la última cifra mostrada por el instrumento resulta demasiado optimista y debe revisarse.
+
+En el contraste entre métodos conviene interpretar el origen físico de las discrepancias. La lectura por rejilla está limitada por la resolución visual de divisiones y sub-divisiones; los cursores reducen la subjetividad de lectura, pero dependen del posicionamiento manual; la medida automática usa algoritmos sobre umbrales y puede verse afectada por ruido, forma de onda no ideal o falta de ciclos completos. Por ello, la comparación debe hacerse siempre con incertidumbre asociada a cada método y no por diferencia absoluta aislada.
+
+En el bloque X--Y, la discusión debe centrarse en la correspondencia entre relación esperada y figura observada, diferenciando inestabilidad por desfase variable de errores de ajuste de frecuencia. Cuando los generadores no comparten referencia de fase, el desfase relativo puede evolucionar con el tiempo y la figura rotar o cambiar de orientación aun manteniéndose la razón de frecuencias.
+
+Con la información disponible actualmente faltan valores medidos en casi todas las tablas, por lo que no es posible emitir todavía una discusión cuantitativa final sin completar la hoja de resultados en laboratorio.
+
+\section{Conclusiones}
+
+El informe queda estructurado para obtener conclusiones trazables y reproducibles una vez se incorporen los datos experimentales. En la parte X--T, la conclusión principal deberá establecer qué método de frecuencia presenta menor dispersión y mejor compatibilidad con la frecuencia nominal, justificándolo con el criterio \eqref{eq:compat}. En la parte de amplitud, deberá confirmarse si $V_{pp}$ se mantiene aproximadamente constante en el barrido o si existe deriva apreciable atribuible al generador, al canal de medida o al ajuste de escala.
+
+En la parte X--Y, la conclusión deberá indicar si las figuras observadas corresponden de forma consistente a las razones $1:1$, $1:2$, $1:3$ y $2:3$, y si se lograron las condiciones de circunferencia (igual frecuencia, igual amplitud efectiva y desfase de cuadratura). Esta formulación evita inferencias no sustentadas y permite cerrar el informe sin ambigüedades cuando se rellenen las tablas con las medidas reales.
+
+\end{multicols}
+
+\appendix
+
+\section{Cuestionario}
+
+Espacio reservado para responder el cuestionario oficial de la práctica una vez cerrados los cálculos con datos completos.
+
+\section{Ejemplo de cálculo (plantilla)}
+
+Para $f_{nom}=\SI{100}{\hertz}$:
+\begin{equation*}
+T_{rej}=\text{valor}\pm\text{incertidumbre}\;\si{\second},
+\end{equation*}
+\begin{equation*}
+f_{rej}=\frac{1}{T_{rej}},\qquad
+\delta f_{rej}=\frac{\delta T_{rej}}{T_{rej}^{2}},
+\end{equation*}
+\begin{equation*}
+V_p=\frac{V_{pp}}{2},\qquad
+\delta V_p=\frac{\delta V_{pp}}{2},
+\end{equation*}
+\begin{equation*}
+V_{ef}=\frac{V_{pp}}{2\sqrt{2}},\qquad
+\delta V_{ef}=\frac{\delta V_{pp}}{2\sqrt{2}}.
+\end{equation*}
+
+\section{Fuentes en línea utilizadas}
+
+\begin{itemize}
+\item NIST Technical Note 1297 (evaluación y expresión de incertidumbre): \url{https://www.nist.gov/pml/nist-technical-note-1297}.
+\item NIST TN 1297, Appendix A (ley de propagación): \url{https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-law-propagation-uncertainty}.
+\item Tektronix, \textit{XYZs of Oscilloscopes Primer}: \url{https://www.tek.com/en/documents/primer/xyzs-oscilloscopes-primer}.
+\item Keysight FlexDCA, medida de frecuencia en modo osciloscopio: \url{https://helpfiles.keysight.com/scopes/FlexDCA-UG/Content/Topics/Oscilloscope-Mode/Time-Measurements/frequency.htm}.
+\item OpenStax University Physics Vol. 2, relación RMS para senoides: \url{https://openstax.org/books/university-physics-volume-2/pages/15-2-simple-ac-circuits}.
+\item Wolfram MathWorld, \textit{Lissajous Curve}: \url{https://mathworld.wolfram.com/LissajousCurve.html}.
+\item Encyclopaedia Britannica, \textit{Lissajous figure}: \url{https://www.britannica.com/science/Lissajous-figure}.
+\item Pico Technology, modo XY y usos en osciloscopio: \url{https://www.picotech.com/library/knowledge-bases/oscilloscopes/xy-display-mode}.
+\end{itemize}
 
 \end{document}

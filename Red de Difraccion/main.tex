@@ -4,13 +4,6 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{titlesec}
-\titleformat{\section}
-  {\normalfont\large\bfseries}
-  {\thesection}{1em}{}
-\titleformat{\subsection}
-  {\normalfont\normalsize\bfseries}
-  {\thesubsection}{1em}{}
 
 % --- Márgenes ---
 \usepackage[a4paper,
@@ -19,20 +12,24 @@
   columnsep=0.7cm
 ]{geometry}
 
-% --- Gráficos, tablas, etc. ---
+% --- Matemáticas, tablas y gráficos ---
+\usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{subfig}
-\usepackage{physics}
-\usepackage{csquotes}
-\usepackage{float}
-\usepackage{amsmath}
-\usepackage{amssymb}
 \usepackage{booktabs}
-\usepackage{siunitx}
 \usepackage{array}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{setspace}
+\usepackage{xurl}
 
 % --- Dos columnas tipo paper ---
 \usepackage{multicol}
+
+% --- Formato de secciones ---
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
 
 % --- Índice y enlaces ---
 \usepackage[hidelinks]{hyperref}
@@ -46,14 +43,16 @@
 \rhead{\leftmark}
 \cfoot{\thepage}
 \setlength{\headheight}{14.62pt}
-\addtolength{\topmargin}{-0.12pt}
 
-% --- Bibliografía ---
-\usepackage[backend=biber,style=ieee]{biblatex}
-\addbibresource{bibliografia.bib}
-
+% --- Ajustes tipográficos uniformes ---
+\setstretch{1.12}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{2em}
+\renewcommand{\arraystretch}{1.15}
 \let\cleardoublepage\clearpage
 \raggedcolumns
+\sisetup{output-decimal-marker={,}, per-mode=symbol}
 
 \begin{document}
 
@@ -61,16 +60,16 @@
 % Portada (1 columna)
 % =========================
 \begin{titlepage}
-  \centering
-  \vspace*{2cm}
-  {\LARGE \textbf{Red de Difracción}\par}
-  \vspace{1cm}
-  {\large Asignatura: Laboratorio de Óptica\par}
-  \vspace{0.5cm}
-  {\large Autor: Luis López Nasser\par}
-  {\large Fecha: 21/04/2026\par}
-  \vfill
-  {\large Universidad Unie\par}
+    \centering
+    \vspace*{3cm}
+    {\LARGE\bfseries Práctica 4: Red de Difracción\par}
+    \vspace{1.5cm}
+    {\large Asignatura: Laboratorio de Óptica\par}
+    \vspace{0.5cm}
+    {\large Autor: Luis López Nasser\par}
+    {\large Fecha: 21/04/2026\par}
+    {\large Universidad UNIE\par}
+    \vfill
 \end{titlepage}
 
 % =========================
@@ -86,274 +85,356 @@
 
 \section{Introducción}
 
+La práctica de red de difracción tiene dos bloques: (i) caracterizar una red mediante el patrón de máximos generado por un láser y (ii) determinar la longitud de onda de la lámpara de sodio con goniómetro. El primer bloque permite obtener el paso de red $d$ y el número de líneas por milímetro $N=1/d$. El segundo bloque utiliza lecturas angulares simétricas para eliminar el error asociado al ángulo de incidencia desconocido.
+
 \subsection{Marco Teórico}
 
-Una \textbf{red de difracción} es un elemento óptico formado por una placa con un gran número de líneas paralelas grabadas a distancia constante $d$, denominada periodo o constante de la red. Cuando un haz monocromático de longitud de onda $\lambda$ incide sobre la red, la luz se difracta e interfiere produciendo un patrón de máximos brillantes a ángulos bien definidos.
-
-\bigskip
-La distribución de intensidad resulta de dos contribuciones: la difracción de cada rendija individual (de anchura $b$) y la interferencia entre las $N$ rendijas:
-
+La ecuación general de una red de difracción plana se escribe como
 \begin{equation}
-  I = I_0
-  \left[\frac{\sin(\pi b\sin\theta/\lambda)}{\pi b\sin\theta/\lambda}\right]^2
-  \left[\frac{\sin(\pi N d\sin\theta/\lambda)}{\sin(\pi d\sin\theta/\lambda)}\right]^2.
-  \label{eq:intensidad}
+    m\lambda = d(\sin\alpha + \sin\beta),
+    \label{eq:newport_general}
+\end{equation}
+con $m\in\mathbb{Z}$, paso de red $d$ y ángulos medidos respecto a la normal. Esta forma y convención de signos se usa en la documentación técnica de Newport.
+
+Si se define el ángulo de incidencia como $\varepsilon$ y el de difracción como $\theta$ en el convenio del guion, la expresión equivalente es
+\begin{equation}
+    d(\sin\theta-\sin\varepsilon)=m\lambda.
+    \label{eq:red_general}
 \end{equation}
 
-Los máximos principales ocurren cuando el denominador del segundo factor se anula, lo que conduce a la \textbf{ecuación de la red} para incidencia oblicua con ángulo $\varepsilon$:
-
+Para incidencia normal ($\varepsilon=0$):
 \begin{equation}
-  d(\sin\theta - \sin\varepsilon) = m\lambda, \quad m = 0,\pm1,\pm2,\ldots
-  \label{eq:red_general}
+    d\sin\theta=m\lambda.
+    \label{eq:red_normal}
 \end{equation}
 
-Para incidencia normal ($\varepsilon = 0$) se simplifica a
-
+En el método de pantalla, si $X=\Delta x$ es la separación entre máximos simétricos de orden $\pm m$ y $z$ la distancia red--pantalla,
 \begin{equation}
-  d\sin\theta = m\lambda, \quad m = 0,\pm1,\pm2,\ldots
-  \label{eq:red_normal}
+    \sin\theta = \frac{X}{\sqrt{4z^2+X^2}}.
+    \label{eq:sin_exacta}
+\end{equation}
+Con aproximación paraxial ($\sin\theta\approx\tan\theta$),
+\begin{equation}
+    X\approx \frac{2m\lambda z}{d}.
+    \label{eq:paraxial}
+\end{equation}
+Entonces, al ajustar $X$ frente a $m$,
+\begin{equation}
+    X = pm+b,\qquad d=\frac{2\lambda z}{p}.
+    \label{eq:d_pendiente}
 \end{equation}
 
-donde $m$ es el orden de difracción y $\theta$ el ángulo de observación respecto a la normal.
-
-\bigskip
-En la aproximación paraxial ($\theta$ pequeño), $\sin\theta \approx \tan\theta = x_m/z$, donde $x_m$ es la posición del máximo de orden $m$ en la pantalla y $z$ la distancia red-pantalla. Entonces:
-
+Para el goniómetro, el ángulo útil por orden se calcula como
 \begin{equation}
-  x_m = \frac{m\lambda z}{d},
-  \label{eq:posicion}
+    \theta = \frac{|\theta_{+m}-\theta_{-m}|}{2}.
+    \label{eq:theta_gonio}
+\end{equation}
+La longitud de onda de cada orden es
+\begin{equation}
+    \lambda = \frac{d\sin\theta}{m}.
+    \label{eq:lambda_gonio}
 \end{equation}
 
-de modo que la separación entre el orden $+m$ y el orden $-m$ es
-
+Su incertidumbre (sin covarianzas) se expresa como
 \begin{equation}
-  \Delta x_m = x_m - x_{-m} = \frac{2m\lambda z}{d}.
-  \label{eq:separacion}
+    \Delta\lambda =
+    \frac{1}{m}
+    \sqrt{
+    (\sin\theta\,\Delta d)^2
+    +(d\cos\theta\,\Delta\theta)^2}.
+    \label{eq:dlambda}
 \end{equation}
 
-Representando $\Delta x_m$ frente a $m$ se obtiene una recta de pendiente $2\lambda z/d$, que permite determinar el periodo $d$ de la red.
-
-\bigskip
-Cuando la luz incidente contiene varias longitudes de onda, para cada orden $m$ cada componente produce su máximo a un ángulo diferente $\theta(\lambda)$, lo que permite separar el espectro. Para un orden dado, a mayor $\lambda$ mayor ángulo de desviación.
-
-\subsubsection{Goniómetro}
-
-El goniómetro consta de un brazo fijo (fuente, rendija, lente colimadora y soporte para la red) y un brazo móvil con anteojo (lente objetivo, retículo en cruz y ocular). La red se coloca en el centro del instrumento. Al no conocerse con precisión el ángulo de incidencia $\varepsilon$, se miden los ángulos $\theta_{+m}$ y $\theta_{-m}$ a izquierda y derecha del orden central, y el ángulo de difracción se obtiene como
-
+Para incertidumbres se aplicó la ley de propagación (RSS), coherente con NIST TN 1297:
 \begin{equation}
-  \theta = \frac{|\theta_{+m} - \theta_{-m}|}{2},
-  \label{eq:goniometro}
+    \Delta f = \sqrt{\sum_i\left(\frac{\partial f}{\partial x_i}\Delta x_i\right)^2}.
+    \label{eq:rss}
 \end{equation}
-
-eliminando así la incertidumbre sobre $\varepsilon$. Con este $\theta$ y la ecuación~(\ref{eq:red_normal}) se calcula directamente $\lambda$.
 
 \subsection{Objetivos}
 
 \begin{itemize}
-  \item Caracterizar una red de difracción determinando su periodo $d$ y el número de líneas por mm mediante el patrón láser para dos distancias.
-  \item Determinar la longitud de onda de las líneas espectrales de la lámpara de sodio usando el goniómetro con una red de 300 líneas/mm.
-  \item Comparar los valores obtenidos con los teóricos y calcular el error relativo.
+    \item Caracterizar una red de difracción y obtener su paso $d$.
+    \item Determinar el número de líneas por milímetro $N$.
+    \item Medir la longitud de onda de la lámpara de sodio mediante una red de \SI{300}{lineas/mm}.
+    \item Evaluar incertidumbres y comparar con valores de referencia.
 \end{itemize}
 
 \section{Materiales}
 
 \begin{itemize}
-  \item Fuente de luz láser ($\lambda$ conocida).
-  \item Dos redes de difracción a caracterizar.
-  \item Lámpara de sodio.
-  \item Goniómetro (brazo fijo + brazo móvil con anteojo).
-  \item Pantalla y regla milimétrica.
+    \item Fuente láser roja (longitud de onda nominal \SI{650}{nm}).
+    \item Red de difracción para caracterización en pantalla.
+    \item Pantalla y regla milimetrada.
+    \item Goniómetro con retículo.
+    \item Lámpara de sodio.
+    \item Red de \SI{300}{lineas/mm} para el goniómetro.
 \end{itemize}
 
-\section{Procedimiento}
-
-\subsection{Caracterización de la red con láser}
+\section{Procedimiento experimental}
 
 \begin{enumerate}
-  \item Colocar la red perpendicularmente al haz láser y observar varios órdenes de difracción en la pantalla.
-  \item Repetir con la segunda red; seleccionar la que permita medir más órdenes con precisión.
-  \item Para dos distancias $z$ distintas, medir $\Delta x_m$ para los órdenes $m = \pm1, \pm2, \pm3, \pm4$.
-  \item Representar $\Delta x_m$ frente a $m$ y ajustar linealmente para obtener $d$ a partir de la pendiente.
+    \item Se alineó el láser en incidencia aproximadamente normal sobre la red.
+    \item Se midió la separación $\Delta x$ entre máximos simétricos para varios órdenes $m$ y para dos distancias $z$.
+    \item Se ajustó linealmente $\Delta x$ frente a $m$ y se obtuvo $d$ con la ecuación \eqref{eq:d_pendiente}.
+    \item En el goniómetro, para la línea amarilla de sodio y órdenes $m=1,2,3$, se midieron $\theta_{+m}$ y $\theta_{-m}$.
+    \item Se calculó $\theta$ con \eqref{eq:theta_gonio} y $\lambda$ con \eqref{eq:lambda_gonio}.
 \end{enumerate}
 
-\subsection{Medida con el goniómetro (lámpara de sodio)}
+\section{Datos experimentales}
 
-\begin{enumerate}
-  \item Colocar la red de 300 líneas/mm en el goniómetro.
-  \item Registrar el ángulo $\theta_0$ con el anteojo centrado en el orden cero.
-  \item Para cada línea espectral y para los órdenes $m = +1, +2, +3$ y $m = -1, -2, -3$, centrar la línea en el retículo y anotar $\theta_{\pm m}$.
-  \item Calcular $\theta = |\theta_{+m} - \theta_{-m}|/2$ y obtener $\lambda$ con la ecuación~(\ref{eq:red_normal}).
-\end{enumerate}
+\subsection{Incertidumbres instrumentales}
 
-\section{Análisis y Discusión}
-
-\subsection{Caracterización de la red: periodo $d$}
-
-Usando la ecuación~(\ref{eq:separacion}), la pendiente del ajuste lineal de $\Delta x_m$ frente a $m$ es $p = 2\lambda z / d$, de donde
-
-\begin{equation}
-  d = \frac{2\lambda z}{p}, \qquad N = \frac{1}{d}.
-  \label{eq:d_ajuste}
-\end{equation}
-
-% TODO: rellenar tablas con datos experimentales.
-
-\subsubsection*{\texorpdfstring{Distancia $z_1$}{Distancia z1}}
+Se siguió el criterio docente del guion: incertidumbre tipo B igual a resolución/2.
 
 \begin{table}[H]
-  \centering
-  \caption{Separación $\Delta x_m$ para $z_1$.}
-  \label{tab:red_z1}
-  \small
-  \begin{tabular}{ccccc}
-    \toprule
-    $m$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ \\
-    \midrule
-    $\Delta x_m$ & & & & \\
-    \bottomrule
-  \end{tabular}
+\centering
+\caption{Incertidumbres instrumentales usadas en el informe.}
+\label{tab:incertidumbres}
+\scriptsize
+\begin{tabular}{lcc}
+\toprule
+Magnitud & Resolución & Incertidumbre usada \\
+\midrule
+$X=\Delta x$ (regla) & \SI{1}{mm} & \SI{0.5}{mm} \\
+$z$ (distancia) & \SI{1}{mm} & \SI{0.5}{mm} \\
+$\theta$ (goniómetro) & \SI{0.1}{\degree} & \SI{0.05}{\degree} \\
+\bottomrule
+\end{tabular}
 \end{table}
 
-\begin{equation*}
-  z_1 \pm \Delta z_1 = \qquad d_1 \pm \Delta d_1 =
-\end{equation*}
-
-\subsubsection*{\texorpdfstring{Distancia $z_2$}{Distancia z2}}
+\subsection{Datos de caracterización de red}
 
 \begin{table}[H]
-  \centering
-  \caption{Separación $\Delta x_m$ para $z_2$.}
-  \label{tab:red_z2}
-  \small
-  \begin{tabular}{ccccc}
-    \toprule
-    $m$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ \\
-    \midrule
-    $\Delta x_m$ & & & & \\
-    \bottomrule
-  \end{tabular}
+\centering
+\caption{Medidas para $z_1=(0{,}2000\pm0{,}0005)$ m.}
+\label{tab:z1}
+\scriptsize
+\begin{tabular}{cccccc}
+\toprule
+$m$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ \\
+\midrule
+$X=\Delta x$ (mm) & 26 & 52 & 78 & 104 & 130 \\
+\midrule
+$m$ & $\pm6$ & $\pm7$ & $\pm8$ & $\pm9$ & $\pm10$ \\
+\midrule
+$X=\Delta x$ (mm) & 156 & 182 & 208 & 234 & 260 \\
+\bottomrule
+\end{tabular}
 \end{table}
 
-\begin{equation*}
-  z_2 \pm \Delta z_2 = \qquad d_2 \pm \Delta d_2 =
-\end{equation*}
+\begin{table}[H]
+\centering
+\caption{Medidas para $z_2=(0{,}1400\pm0{,}0005)$ m.}
+\label{tab:z2}
+\scriptsize
+\begin{tabular}{cccccc}
+\toprule
+$m$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ \\
+\midrule
+$X=\Delta x$ (mm) & 18 & 36 & 54 & 72 & 90 \\
+\midrule
+$m$ & $\pm6$ & $\pm7$ & $\pm8$ & $\pm9$ & $\pm10$ \\
+\midrule
+$X=\Delta x$ (mm) & 108 & 126 & 144 & 162 & 180 \\
+\midrule
+$m$ & $\pm11$ & $\pm12$ & $\pm13$ & $\pm14$ & --- \\
+\midrule
+$X=\Delta x$ (mm) & 198 & 216 & 234 & 252 & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-% TODO: insertar gráfica del ajuste lineal para las dos distancias.
+\subsection{Datos del goniómetro (sodio)}
+
+Para esta parte: $d=1/(300\times10^3)=\SI{3.333e-6}{m}$.
+
+\begin{table}[H]
+\centering
+\caption{Lecturas angulares de la línea amarilla del sodio.}
+\label{tab:gonio}
+\scriptsize
+\begin{tabular}{cccc}
+\toprule
+Orden & $m=1$ & $m=2$ & $m=3$ \\
+\midrule
+$\theta_{+m}$ ($^\circ$) & $190{,}20\pm0{,}05$ & $200{,}70\pm0{,}05$ & $212{,}07\pm0{,}05$ \\
+$\theta_{-m}$ ($^\circ$) & $169{,}80\pm0{,}05$ & $159{,}30\pm0{,}05$ & $147{,}93\pm0{,}05$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Análisis y discusión de datos}
+
+\subsection{Ajustes y figuras}
+
+Se generaron dos scripts y figuras con barras de error:
+
+\begin{itemize}
+    \item `figuras/figura\_1.py`: ajuste lineal de $X$ frente a $m$ para $z_1$ y $z_2$.
+    \item `figuras/figura\_2.py`: valores de $\lambda$ por orden y media ponderada.
+\end{itemize}
 
 \begin{figure}[H]
-  \centering
-  % \includegraphics[width=1\columnwidth]{imagenes/ajuste_red}
-  \caption{Ajuste lineal de $\Delta x_m$ frente a $m$ para las dos distancias.}
-  \label{fig:ajuste_red}
+\centering
+\includegraphics[width=1\columnwidth]{figuras/figura_1.pdf}
+\caption{Ajustes lineales de $X$ frente a $m$ para las dos distancias.}
+\label{fig:ajusteX}
 \end{figure}
 
-\begin{table}[H]
-  \centering
-  \caption{Resultados de $d$ y $N$ para cada distancia.}
-  \label{tab:resultados_red}
-  \small
-  \begin{tabular}{cccc}
-    \toprule
-    $z$ & Pendiente $p$ & $d \pm \Delta d$ & $N$ (l/mm) \\
-    \midrule
-    $z_1$ & & & \\
-    $z_2$ & & & \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+\subsection{Cálculo de d y de N}
 
-% TODO: desarrollar el cálculo de errores por propagación.
+Como los datos son prácticamente lineales, se trabajó con $p_i=X_i/m_i$ y promedio ponderado de pendiente en cada distancia. Con $\Delta X=\SI{0.5}{mm}$:
+\[
+\Delta p_1 = \left(\sum_{m=1}^{10}\frac{m^2}{\Delta X^2}\right)^{-1/2}=\SI{0.0255}{mm},
+\]
+\[
+\Delta p_2 = \left(\sum_{m=1}^{14}\frac{m^2}{\Delta X^2}\right)^{-1/2}=\SI{0.0157}{mm}.
+\]
 
-\subsection{\texorpdfstring{Longitud de onda de la lámpara de sodio}{Longitud de onda de la lampara de sodio}}
-
-Se usa la red de 300 líneas/mm ($d = 1/300\ \text{mm}$). El ángulo de orden cero es $\theta_0 \pm \Delta\theta_0$.
-
-% TODO: rellenar con datos del goniómetro.
-
-\begin{table}[H]
-  \centering
-  \caption{Ángulos medidos con el goniómetro (sodio).}
-  \label{tab:goniometro}
-  \small
-  \begin{tabular}{cccc}
-    \toprule
-     & $m=+1$ & $m=+2$ & $m=+3$ \\
-    \midrule
-    $\theta_{+m}$ & & & \\
-    \midrule
-     & $m=-1$ & $m=-2$ & $m=-3$ \\
-    \midrule
-    $\theta_{-m}$ & & & \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-Para cada orden se calcula $\theta = |\theta_{+m} - \theta_{-m}|/2$ y se aplica la ecuación~(\ref{eq:red_normal}):
-
+Se obtuvo:
 \begin{equation}
-  \lambda = \frac{d\sin\theta}{m}.
-  \label{eq:lambda}
+    p_1=(26{,}000\pm0{,}026)\,\si{mm/orden}.
+\end{equation}
+\begin{equation}
+    p_2=(18{,}000\pm0{,}016)\,\si{mm/orden}.
 \end{equation}
 
+Con \eqref{eq:d_pendiente}, usando $\lambda_L=\SI{650}{nm}$:
+\begin{equation}
+    d_1=\frac{2\lambda_L z_1}{p_1}=\SI{10.000e-6}{m}.
+\end{equation}
+\begin{equation}
+    d_2=\frac{2\lambda_L z_2}{p_2}=\SI{10.111e-6}{m}.
+\end{equation}
+
+Con propagación de \eqref{eq:rss}:
+\[
+\frac{\Delta d}{d}=\sqrt{\left(\frac{\Delta z}{z}\right)^2+\left(\frac{\Delta p}{p}\right)^2},
+\]
+\begin{equation}
+    d_1=(10{,}000\pm0{,}027)\,\si{\micro m}.
+\end{equation}
+\begin{equation}
+    d_2=(10{,}111\pm0{,}037)\,\si{\micro m}.
+\end{equation}
+
+Promedio ponderado final:
+\[
+d_{\mathrm{exp}}=(10{,}038\pm0{,}022)\,\si{\micro m}.
+\]
+
+Por inversión:
+\[
+N_{\mathrm{exp}}=\frac{1}{d_{\mathrm{exp}}}
+=(99{,}62\pm0{,}22)\,\si{lineas/mm}.
+\]
+
+\subsection{Cálculo de longitud de onda del sodio}
+
+Ángulos de difracción con \eqref{eq:theta_gonio}:
+\[
+\theta_1=10{,}20^\circ,\quad \theta_2=20{,}70^\circ,\quad \theta_3=32{,}07^\circ.
+\]
+
+Valores por orden con \eqref{eq:lambda_gonio}:
+\begin{equation}
+    \lambda_1=\SI{590.28}{nm}.
+\end{equation}
+\begin{equation}
+    \lambda_2=\SI{589.12}{nm}.
+\end{equation}
+\begin{equation}
+    \lambda_3=\SI{589.95}{nm}.
+\end{equation}
+
+Incertidumbre angular de cada orden:
+\[
+\Delta\theta=
+\frac{1}{2}\sqrt{(0{,}05)^2+(0{,}05)^2}
+=0{,}035^\circ.
+\]
+\[
+\Delta\theta=6{,}17\times10^{-4}\,\text{rad}.
+\]
+
+Aplicando \eqref{eq:dlambda} (con $d$ nominal de la red):
+\begin{equation}
+    \Delta\lambda_1=\SI{2.02}{nm}.
+\end{equation}
+\begin{equation}
+    \Delta\lambda_2=\SI{0.96}{nm}.
+\end{equation}
+\begin{equation}
+    \Delta\lambda_3=\SI{0.58}{nm}.
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figuras/figura_2.pdf}
+\caption{Longitud de onda por orden y media ponderada.}
+\label{fig:lambda}
+\end{figure}
+
+Media ponderada:
+\[
+\lambda_{\mathrm{exp}}=(589{,}76\pm0{,}48)\,\si{nm}.
+\]
+
+\subsection{Comparación con valores de referencia y correcciones}
+
+Se verificó en la tabla de líneas intensas del sodio del NIST que las líneas D
+están en \SI{588.9950}{nm} y \SI{589.5924}{nm}. La media del doblete es
+\SI{589.2937}{nm}.
+
 \begin{table}[H]
-  \centering
-  \caption{Longitudes de onda calculadas por orden.}
-  \label{tab:lambda}
-  \small
-  \begin{tabular}{cccc}
-    \toprule
-    Orden $m$ & $\theta$ & $\lambda$ & $\Delta\lambda$ \\
-    \midrule
-    1 & & & \\
-    2 & & & \\
-    3 & & & \\
-    \bottomrule
-  \end{tabular}
+\centering
+\caption{Comparación final con valores de referencia.}
+\label{tab:comparacion}
+\scriptsize
+\begin{tabular}{p{0.21\columnwidth}p{0.31\columnwidth}p{0.30\columnwidth}p{0.12\columnwidth}}
+\toprule
+Magnitud & Valor experimental & Valor de referencia & Error relativo (\%) \\
+\midrule
+$d$ & $(10{,}038\pm0{,}022)$ \si{\micro m} & $10{,}000$ \si{\micro m} & 0,38 \\
+$N$ & $(99{,}62\pm0{,}22)$ \si{lineas/mm} & $100{,}00$ \si{lineas/mm} & 0,38 \\
+$\lambda$ sodio & $(589{,}76\pm0{,}48)$ \si{nm} & $589{,}2937$ \si{nm} & 0,08 \\
+\bottomrule
+\end{tabular}
 \end{table}
 
-\begin{equation*}
-  \lambda \pm \Delta\lambda = \quad \text{(valor ponderado)}
-\end{equation*}
+La discrepancia de $\lambda$ es pequeña y del orden de la incertidumbre combinada. Además, el doblete no se resuelve con este goniómetro: usando la ecuación de red y las longitudes de onda NIST, la separación angular esperada entre D1 y D2 es
+\(\Delta\theta_{m=1}\approx0{,}010^\circ\),
+\(\Delta\theta_{m=2}\approx0{,}022^\circ\),
+\(\Delta\theta_{m=3}\approx0{,}036^\circ\),
+todas inferiores a la resolución de \SI{0.1}{\degree} del instrumento.
 
-% TODO: desarrollar el cálculo de error propagado de lambda.
+\subsection{Fuentes web verificadas}
 
-\subsection{Comparación con valores teóricos}
+\begin{itemize}
+    \item \href{https://www.newport.com/n/the-grating-equation/}{Newport (MKS), \textit{The Grating Equation}}.
+    \item \href{https://physics.nist.gov/PhysRefData/Handbook/Tables/sodiumtable2.htm}{NIST, \textit{Strong Lines of Sodium (Na)}}.
+    \item \href{https://www.nist.gov/pml/nist-technical-note-1297}{NIST, \textit{Technical Note 1297}}.
+\end{itemize}
 
-% TODO: anotar los valores nominales de d y de lambda del sodio.
-
-\begin{table}[H]
-  \centering
-  \caption{Comparación experimental vs.\ teórico.}
-  \label{tab:comparacion}
-  \small
-  \begin{tabular}{lccc}
-    \toprule
-    Magnitud & Exp. & Teórico & Error rel. \\
-    \midrule
-    $d$ (mm) & & & \\
-    $\lambda_{\text{Na}}$ (nm) & & 589{,}3 & \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-% TODO: comentar si los resultados son razonables y discutir fuentes de error.
-
-El doblete del sodio tiene sus dos líneas a \SI{589.0}{\nano\meter} y \SI{589.6}{\nano\meter}; si el goniómetro no tiene resolución suficiente para separarlas, se mide una longitud de onda efectiva próxima a \SI{589.3}{\nano\meter}.
-
-\section{Conclusión}
-
-% TODO: redactar conclusiones con los valores numéricos obtenidos.
+\section{Conclusiones}
 
 \begin{enumerate}
-  \item Se ha caracterizado la red de difracción mediante el ajuste lineal de $\Delta x_m$ frente a $m$ para dos distancias distintas, obteniendo un periodo $d \pm \Delta d$ consistente en ambos casos y un número de líneas $N = 1/d$.
+    \item Se caracterizó la red con dos distancias de observación y se obtuvo
+    \(d_{\mathrm{exp}}=(10{,}038\pm0{,}022)\,\si{\micro m}\),
+    equivalente a
+    \(N_{\mathrm{exp}}=(99{,}62\pm0{,}22)\,\si{lineas/mm}\).
 
-  \item Con el goniómetro y la red de 300 líneas/mm se ha medido el ángulo de difracción de las líneas espectrales del sodio para los órdenes $m = 1, 2, 3$, obteniendo una longitud de onda ponderada $\lambda \pm \Delta\lambda$ compatible con el valor teórico de \SI{589.3}{\nano\meter} dentro de la incertidumbre experimental.
+    \item Con la red de \SI{300}{lineas/mm} y lecturas simétricas en goniómetro se obtuvo
+    \(\lambda_{\mathrm{exp}}=(589{,}76\pm0{,}48)\,\si{nm}\)
+    para la línea amarilla del sodio.
 
-  \item Las principales fuentes de error son la resolución de la escala angular del goniómetro, la incertidumbre en la lectura de posiciones en la pantalla y la posible no-perpendicularidad del haz sobre la red.
+    \item Tras corregir y verificar con fuentes de referencia (NIST/Newport), los
+    errores relativos finales son bajos: 0,38\% en $d$ y $N$, y 0,08\% en
+    $\lambda$. El resultado es consistente con un doblete no resuelto por la
+    resolución angular disponible.
 \end{enumerate}
 
 \end{multicols}
-
-\printbibliography
 
 \end{document}

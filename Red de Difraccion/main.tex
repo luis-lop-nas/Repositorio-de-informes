@@ -95,40 +95,38 @@
 
 En esta práctica estudiaremos la teoría y funcionamiento de una red de difracción y pondremos a prueba la teoría vista anteriormente en clase. Para ello sabemos que una red de difracción está formada por un número de rendijas paralelas, todas ellas separadas entre sí por por una distancia constante que se llama paso de red. La teoría nos dice que cuando un haz de luz coherente incide sobre dicha red, cada rendija actúa como una fuente de onda secundaria de acuerdo al principio de Huygens. La luz al pasar por cada rendija es difractada e interfiere con el resto de las rendijas que hay en la red, dando así un resultado de máximos y mínimos de intensidad que serán los que mediremos.
 
+
+
 \subsection{Marco Teórico}
 
-La ecuación general de una red de difracción plana se escribe como
+Partimos de la ecuación de la red de difracción:
+
 \begin{equation}
     m\lambda = d(\sin\alpha + \sin\beta),
     \label{eq:newport_general}
 \end{equation}
-con $m\in\mathbb{Z}$, paso de red $d$ y ángulos medidos respecto a la normal. Esta forma y convención de signos se usa en la documentación técnica de Newport.
 
-Si se define el ángulo de incidencia como $\varepsilon$ y el de difracción como $\theta$ en el convenio del guion, la expresión equivalente es
-\begin{equation}
-    d(\sin\theta-\sin\varepsilon)=m\lambda.
-    \label{eq:red_general}
-\end{equation}
+donde $m$ es el orden de difracción, $\lambda$ la longitud de onda, $d$ el paso de red y $\alpha$ y $\beta$ los ángulos de incidencia y difracción.
 
-Para incidencia normal ($\varepsilon=0$):
+Para incidencia normal ($\beta=0$):
 \begin{equation}
-    d\sin\theta=m\lambda.
+    d\sin\alpha=m\lambda.
     \label{eq:red_normal}
 \end{equation}
 
-En el método de pantalla, si $X=\Delta x$ es la separación entre máximos simétricos de orden $\pm m$ y $z$ la distancia red--pantalla,
+Si $\Delta x$ es la separación entre máximos de orden $\pm m$ y es $z$ la distancia a la pared en nuestro caso,
 \begin{equation}
-    \sin\theta = \frac{X}{\sqrt{4z^2+X^2}}.
+    \sin\alpha = \frac{\Delta x}{\sqrt{4z^2+(\Delta x)^2}}.
     \label{eq:sin_exacta}
 \end{equation}
-Con aproximación paraxial ($\sin\theta\approx\tan\theta$),
+Tomando la siguiente aproximación para ángulos pequeños ($\sin\alpha\approx\tan\alpha$) nos queda que la distancia entre máximos es,
 \begin{equation}
-    X\approx \frac{2m\lambda z}{d}.
+    \Delta x\approx \frac{2m\lambda z}{d}.
     \label{eq:paraxial}
 \end{equation}
-Entonces, al ajustar $X$ frente a $m$,
+Entonces, al ajustar $\Delta x$ frente a $m$ la ecuación resultante va a ser,
 \begin{equation}
-    X = pm+b,\qquad d=\frac{2\lambda z}{p}.
+    \Delta x = pm+b,\qquad d=\frac{2\lambda z}{p}.
     \label{eq:d_pendiente}
 \end{equation}
 
@@ -143,7 +141,7 @@ La longitud de onda de cada orden es
     \label{eq:lambda_gonio}
 \end{equation}
 
-Su incertidumbre (sin covarianzas) se expresa como
+Y su error se expresará como,
 \begin{equation}
     \Delta\lambda =
     \frac{1}{m}
@@ -153,7 +151,7 @@ Su incertidumbre (sin covarianzas) se expresa como
     \label{eq:dlambda}
 \end{equation}
 
-Para incertidumbres se aplicó la ley de propagación (RSS), coherente con NIST TN 1297:
+Para incertidumbres se aplicó la regla de propagación de errores,
 \begin{equation}
     \Delta f = \sqrt{\sum_i\left(\frac{\partial f}{\partial x_i}\Delta x_i\right)^2}.
     \label{eq:rss}
@@ -168,85 +166,102 @@ En la segunda parte determinaremos la longitud de onda emitida por una fuente de
 \section{Materiales}
 
 \begin{itemize}
-    \item Fuente láser roja (longitud de onda nominal \SI{650}{nm}).
-    \item Red de difracción para caracterización en pantalla.
-    \item Pantalla y regla milimetrada.
-    \item Goniómetro con retículo.
+    \item Fuente de luz láser roja.
+    \item Red de difracción a caracterizar.
+    \item Papel milimetrado.
+    \item Goniómetro.
     \item Lámpara de sodio.
-    \item Red de \SI{300}{lineas/mm} para el goniómetro.
 \end{itemize}
 
 \section{Procedimiento experimental}
 
-\begin{enumerate}
-    \item Se alineó el láser en incidencia aproximadamente normal sobre la red.
-    \item Se midió la separación $\Delta x$ entre máximos simétricos para varios órdenes $m$ y para dos distancias $z$.
-    \item Se ajustó linealmente $\Delta x$ frente a $m$ y se obtuvo $d$ con la ecuación \eqref{eq:d_pendiente}.
-    \item En el goniómetro, para la línea amarilla de sodio y órdenes $m=1,2,3$, se midieron $\theta_{+m}$ y $\theta_{-m}$.
-    \item Se calculó $\theta$ con \eqref{eq:theta_gonio} y $\lambda$ con \eqref{eq:lambda_gonio}.
-\end{enumerate}
+Para la primera parte de la práctica, lo que se hizo fue colocar el láser de tal forma que incidiese de la forma más perpendicular a la red de difracción posible. Luego se midió la distancia entre máximos a tres distancias z conocidas y diferentes para posteriormente observar el cambio de distancia entré los propios máximos.
+
+Para la segunda parte, con ayuda del goniómetro se midieron los ángulos de difracción debido a la lámpara de sodio al pasar por la red.
 
 \section{Datos experimentales}
 
 \subsection{Incertidumbres instrumentales}
 
-Se siguió el criterio docente del guion: incertidumbre tipo B igual a resolución/2.
+Para el cálculo de las incertidumbres al tratarse de medidas con aparatos analógicos se tomó la mitad de la resolución del instrumento.
 
 \begin{table}[H]
 \centering
 \caption{Incertidumbres instrumentales usadas en el informe.}
 \label{tab:incertidumbres}
-\small
+\vspace{0.3cm}
 \begin{tabular}{lcc}
 \toprule
 Magnitud & Resolución & $\delta x$ \\
 \midrule
-$X=\Delta x$ (regla) & \SI{1}{mm} & \SI{0,5}{mm} \\
-$z$ (distancia) & \SI{1}{mm} & \SI{0,5}{mm} \\
+$\Delta x$ (papel) & \SI{1}{mm} & \SI{0,5}{mm} \\
+$z$ (metro) & \SI{1}{mm} & \SI{0,5}{mm} \\
 $\theta$ (goniómetro) & \SI{0,1}{\degree} & \SI{0,05}{\degree} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Datos de caracterización de red}
+\subsection{Datos de la red de difracción}
+
+A continuación se muestran los datos obtenidos para las distancias $z_1$ y $z_2$:
 
 \begin{table}[H]
 \centering
-\caption{Medidas para $z_1=(0{,}2000\pm0{,}0005)$ m.}
+\caption{Medidas para $z_1=(2{,}0000\pm0{,}0005)$ m.}
 \label{tab:z1}
+\vspace{0.3cm}
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{ccccccccccc}
 \toprule
 $m$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ & $\pm6$ & $\pm7$ & $\pm8$ & $\pm9$ & $\pm10$ \\
 \midrule
 $\Delta x$ (mm) & 26 & 52 & 78 & 104 & 130 & 156 & 182 & 208 & 234 & 260 \\
+$\Delta(\Delta x)$ (mm) & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
 \begin{table}[H]
 \centering
-\caption{Medidas para $z_2=(0{,}1400\pm0{,}0005)$ m.}
+\caption{Medidas para $z_2=(1{,}3200\pm0{,}0005)$ m.}
 \label{tab:z2}
+\vspace{0.3cm}
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{ccccccccccccccc}
+\begin{tabular}{ccccccccccc}
 \toprule
-$m$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ & $\pm6$ & $\pm7$ & $\pm8$ & $\pm9$ & $\pm10$ & $\pm11$ & $\pm12$ & $\pm13$ & $\pm14$ \\
+$m$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ & $\pm6$ & $\pm7$ & $\pm8$ & $\pm9$ & $\pm10$ \\
 \midrule
-$\Delta x$ (mm) & 18 & 36 & 54 & 72 & 90 & 108 & 126 & 144 & 162 & 180 & 198 & 216 & 234 & 252 \\
+$\Delta x$ (mm) & 18 & 36 & 54 & 72 & 90 & 108 & 126 & 144 & 162 & 180 \\
+$\Delta(\Delta x)$ (mm) & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
-\subsection{Datos del goniómetro (sodio)}
+\begin{table}[H]
+\centering
+\caption{Medidas para $z_3=(1{,}7000\pm0{,}0005)$ m.}
+\label{tab:z3}
+\vspace{0.3cm}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{ccccccccccc}
+\toprule
+$m$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ & $\pm6$ & $\pm7$ & $\pm8$ & $\pm9$ & $\pm10$ \\
+\midrule
+$\Delta x$ (mm) & 22 & 44 & 66 & 88 & 110 & 132 & 154 & 176 & 198 & 220 \\
+$\Delta(\Delta x)$ (mm) & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 \\
+\bottomrule
+\end{tabular}}
+\end{table}
 
-Para esta parte: $d=1/(300\times10^3)=\SI{3.333e-6}{m}$.
+\subsection{Datos del goniómetro}
+
+Para esta parte tenemos que: $d=\SI{3.333e-6}{m}$.
 
 \begin{table}[H]
 \centering
 \caption{Lecturas angulares de la línea amarilla del sodio.}
 \label{tab:gonio}
-\small
+\vspace{0.3cm}
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{cccc}
 \toprule

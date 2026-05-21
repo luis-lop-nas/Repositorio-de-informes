@@ -203,7 +203,7 @@ $\theta$ (goniómetro) & \SI{0,1}{\degree} & \SI{0,05}{\degree} \\
 
 \subsection{Datos de la red de difracción}
 
-A continuación se muestran los datos obtenidos para las distancias $z_1$ y $z_2$:
+A continuación se muestran los datos obtenidos para las distancias $z_1$, $z_2$ y $z_3$.
 
 \begin{table}[H]
 \centering
@@ -277,7 +277,7 @@ $\theta_{-m}$ ($^\circ$) & $169{,}80\pm0{,}05$ & $159{,}30\pm0{,}05$ & $147{,}93
 
 \subsection{Ajustes y figuras}
 
-Se generaron dos scripts y figuras con barras de error:
+A continuación se ha hecho una regresión lineal para poder comparar los datos de la primera parte de la práctica.
 
 \begin{itemize}
     \item `figuras/figura\_1.py`: ajuste lineal de $X$ frente a $m$ para $z_1$ y $z_2$.
@@ -286,14 +286,20 @@ Se generaron dos scripts y figuras con barras de error:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\columnwidth]{figuras/figura_1.pdf}
+\includegraphics[width=1\columnwidth]{figuras/regresion_red.png}
 \caption{Ajustes lineales de $X$ frente a $m$ para las dos distancias.}
 \label{fig:ajusteX}
 \end{figure}
 
+En la gráfica se representan la distancia entre máximos frente a $z$ para cada orden. 
+
+Observamos que los datos son prácticamente lineales y muy exactos con una separación constante entre ellos dando un $R^2 = 1$ esto se debe a que se tomaron la medidas de los máximos en un papel milimetrado aproximando cada máximo a un cuadro en concreto para poder contar bien la distancia entre ellos.
+
+
 \subsection{Cálculo de d y de N}
 
-Como los datos son prácticamente lineales, se trabajó con $p_i=X_i/m_i$ y promedio ponderado de pendiente en cada distancia. Con $\Delta X=\SI{0.5}{mm}$:
+Desarrollando la propagación de errores a partir de nuestros datos y los errores directos tenemos
+
 \[
 \Delta p_1 = \left(\sum_{m=1}^{10}\frac{m^2}{\Delta X^2}\right)^{-1/2}=\SI{0.0255}{mm},
 \]
@@ -341,12 +347,12 @@ N_{\mathrm{exp}}=\frac{1}{d_{\mathrm{exp}}}
 
 \subsection{Cálculo de longitud de onda del sodio}
 
-Ángulos de difracción con \eqref{eq:theta_gonio}:
+Para la siguiente parte, la longitud de onda de la lámpara de sodio, observamos la difracción en los siguientes ángulos.
 \[
 \theta_1=10{,}20^\circ,\quad \theta_2=20{,}70^\circ,\quad \theta_3=32{,}07^\circ.
 \]
 
-Valores por orden con \eqref{eq:lambda_gonio}:
+Lo que nos da unas longitudes de onda experimentales
 \begin{equation}
     \lambda_1=\SI{590.28}{nm}.
 \end{equation}
@@ -357,7 +363,7 @@ Valores por orden con \eqref{eq:lambda_gonio}:
     \lambda_3=\SI{589.95}{nm}.
 \end{equation}
 
-Incertidumbre angular de cada orden:
+Si aplicamos la propagación de errores
 \[
 \Delta\theta=
 \frac{1}{2}\sqrt{(0{,}05)^2+(0{,}05)^2}
@@ -385,21 +391,20 @@ Aplicando \eqref{eq:dlambda} (con $d$ nominal de la red):
 \label{fig:lambda}
 \end{figure}
 
-Media ponderada:
+Obteniendo así la longitud de onda media 
 \[
 \lambda_{\mathrm{exp}}=(589{,}76\pm0{,}48)\,\si{nm}.
 \]
 
 \subsection{Comparación con valores de referencia y correcciones}
 
-Se verificó en la tabla de líneas intensas del sodio del NIST que las líneas D
-están en \SI{588.9950}{nm} y \SI{589.5924}{nm}. La media del doblete es
-\SI{589.2937}{nm}.
+Comparando las medidas experimentales de la lámpara de sodio con respecto al valor real teórico observamos que estamos muy cerca del valor teórico y dentro del margen de error debido a las incertidumbres del experimento 
 
 \begin{table}[H]
 \centering
 \caption{Comparación final con valores de referencia.}
 \label{tab:comparacion}
+\vspace{0.3cm}
 \footnotesize
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{lccc}
@@ -413,11 +418,7 @@ $\lambda_\text{Na}$ & $(589{,}76\pm0{,}48)$ nm         & 589,294 nm             
 \end{tabular}}
 \end{table}
 
-La discrepancia de $\lambda$ es pequeña y del orden de la incertidumbre combinada. Además, el doblete no se resuelve con este goniómetro: usando la ecuación de red y las longitudes de onda NIST, la separación angular esperada entre D1 y D2 es
-\(\Delta\theta_{m=1}\approx0{,}010^\circ\),
-\(\Delta\theta_{m=2}\approx0{,}022^\circ\),
-\(\Delta\theta_{m=3}\approx0{,}036^\circ\),
-todas inferiores a la resolución de \SI{0.1}{\degree} del instrumento.
+Con esto podemos decir que esta parte del experimento ha salido bastante bien ya que nuestra longitud de onda experimental se encuentra en el mismo orden y muy cerca del valor teórico
 
 \section{Conclusiones}
 
@@ -431,7 +432,7 @@ todas inferiores a la resolución de \SI{0.1}{\degree} del instrumento.
     \(\lambda_{\mathrm{exp}}=(589{,}76\pm0{,}48)\,\si{nm}\)
     para la línea amarilla del sodio.
 
-    \item Tras corregir y verificar con fuentes de referencia (NIST/Newport), los
+    \item Los
     errores relativos finales son bajos: 0,38\% en $d$ y $N$, y 0,08\% en
     $\lambda$. El resultado es consistente con un doblete no resuelto por la
     resolución angular disponible.

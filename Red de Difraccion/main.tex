@@ -1,7 +1,7 @@
 \documentclass[12pt,a4paper]{article}
 
-% --- Idioma y codificación ---
-\usepackage[spanish]{babel}
+% --- Idioma y codificacion ---
+\usepackage[spanish,es-nodecimaldot]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
@@ -12,16 +12,15 @@
   columnsep=0.7cm
 ]{geometry}
 
-% --- Matemáticas, tablas y gráficos ---
+% --- Matematicas, tablas y graficos ---
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
-\usepackage{subfig}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{tabularx}
 \usepackage{float}
 \usepackage{siunitx}
 \usepackage{setspace}
-\usepackage{xurl}
 
 % --- Dos columnas tipo paper ---
 \usepackage{multicol}
@@ -30,26 +29,33 @@
 \usepackage{titlesec}
 \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titlespacing*{\section}{0pt}{6pt}{2pt}
+\titlespacing*{\subsection}{0pt}{4pt}{1pt}
 
 % --- Índice y enlaces ---
 \usepackage[hidelinks]{hyperref}
 \addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
 
 % --- Encabezados y pies ---
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{Red de Difracción}
-\rhead{\leftmark}
+\lhead{Práctica 4: Red de Difracción}
+\rhead{Laboratorio de Óptica}
 \cfoot{\thepage}
 \setlength{\headheight}{14.62pt}
 
-% --- Ajustes tipográficos uniformes ---
-\setstretch{1.12}
+% --- Ajustes tipograficos uniformes ---
+\setstretch{1.15}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
-\setlength{\emergencystretch}{2em}
-\renewcommand{\arraystretch}{1.15}
+\setlength{\parskip}{6pt}
+\renewcommand{\arraystretch}{1.25}
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{3pt}
+\setlength{\emergencystretch}{3em}
 \let\cleardoublepage\clearpage
 \raggedcolumns
 \sisetup{output-decimal-marker={,}, per-mode=symbol}
@@ -63,11 +69,13 @@
     \centering
     \vspace*{3cm}
     {\LARGE\bfseries Práctica 4: Red de Difracción\par}
-    \vspace{1.5cm}
+    \vspace{1.2cm}
     {\large Asignatura: Laboratorio de Óptica\par}
-    \vspace{0.5cm}
+    \vspace{0.4cm}
     {\large Autor: Luis López Nasser\par}
+    \vspace{0.2cm}
     {\large Fecha: 21/04/2026\par}
+    \vspace{0.2cm}
     {\large Universidad UNIE\par}
     \vfill
 \end{titlepage}
@@ -191,14 +199,14 @@ Se siguió el criterio docente del guion: incertidumbre tipo B igual a resoluci�
 \centering
 \caption{Incertidumbres instrumentales usadas en el informe.}
 \label{tab:incertidumbres}
-\scriptsize
+\small
 \begin{tabular}{lcc}
 \toprule
-Magnitud & Resolución & Incertidumbre usada \\
+Magnitud & Resolución & $\delta x$ \\
 \midrule
-$X=\Delta x$ (regla) & \SI{1}{mm} & \SI{0.5}{mm} \\
-$z$ (distancia) & \SI{1}{mm} & \SI{0.5}{mm} \\
-$\theta$ (goniómetro) & \SI{0.1}{\degree} & \SI{0.05}{\degree} \\
+$X=\Delta x$ (regla) & \SI{1}{mm} & \SI{0,5}{mm} \\
+$z$ (distancia) & \SI{1}{mm} & \SI{0,5}{mm} \\
+$\theta$ (goniómetro) & \SI{0,1}{\degree} & \SI{0,05}{\degree} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -209,40 +217,28 @@ $\theta$ (goniómetro) & \SI{0.1}{\degree} & \SI{0.05}{\degree} \\
 \centering
 \caption{Medidas para $z_1=(0{,}2000\pm0{,}0005)$ m.}
 \label{tab:z1}
-\scriptsize
-\begin{tabular}{cccccc}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{ccccccccccc}
 \toprule
-$m$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ \\
+$m$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ & $\pm6$ & $\pm7$ & $\pm8$ & $\pm9$ & $\pm10$ \\
 \midrule
-$X=\Delta x$ (mm) & 26 & 52 & 78 & 104 & 130 \\
-\midrule
-$m$ & $\pm6$ & $\pm7$ & $\pm8$ & $\pm9$ & $\pm10$ \\
-\midrule
-$X=\Delta x$ (mm) & 156 & 182 & 208 & 234 & 260 \\
+$\Delta x$ (mm) & 26 & 52 & 78 & 104 & 130 & 156 & 182 & 208 & 234 & 260 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 \begin{table}[H]
 \centering
 \caption{Medidas para $z_2=(0{,}1400\pm0{,}0005)$ m.}
 \label{tab:z2}
-\scriptsize
-\begin{tabular}{cccccc}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{ccccccccccccccc}
 \toprule
-$m$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ \\
+$m$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ & $\pm6$ & $\pm7$ & $\pm8$ & $\pm9$ & $\pm10$ & $\pm11$ & $\pm12$ & $\pm13$ & $\pm14$ \\
 \midrule
-$X=\Delta x$ (mm) & 18 & 36 & 54 & 72 & 90 \\
-\midrule
-$m$ & $\pm6$ & $\pm7$ & $\pm8$ & $\pm9$ & $\pm10$ \\
-\midrule
-$X=\Delta x$ (mm) & 108 & 126 & 144 & 162 & 180 \\
-\midrule
-$m$ & $\pm11$ & $\pm12$ & $\pm13$ & $\pm14$ & --- \\
-\midrule
-$X=\Delta x$ (mm) & 198 & 216 & 234 & 252 & --- \\
+$\Delta x$ (mm) & 18 & 36 & 54 & 72 & 90 & 108 & 126 & 144 & 162 & 180 & 198 & 216 & 234 & 252 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 \subsection{Datos del goniómetro (sodio)}
@@ -253,7 +249,8 @@ Para esta parte: $d=1/(300\times10^3)=\SI{3.333e-6}{m}$.
 \centering
 \caption{Lecturas angulares de la línea amarilla del sodio.}
 \label{tab:gonio}
-\scriptsize
+\small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{cccc}
 \toprule
 Orden & $m=1$ & $m=2$ & $m=3$ \\
@@ -261,7 +258,7 @@ Orden & $m=1$ & $m=2$ & $m=3$ \\
 $\theta_{+m}$ ($^\circ$) & $190{,}20\pm0{,}05$ & $200{,}70\pm0{,}05$ & $212{,}07\pm0{,}05$ \\
 $\theta_{-m}$ ($^\circ$) & $169{,}80\pm0{,}05$ & $159{,}30\pm0{,}05$ & $147{,}93\pm0{,}05$ \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 \section{Análisis y discusión de datos}
@@ -391,16 +388,17 @@ están en \SI{588.9950}{nm} y \SI{589.5924}{nm}. La media del doblete es
 \centering
 \caption{Comparación final con valores de referencia.}
 \label{tab:comparacion}
-\scriptsize
-\begin{tabular}{p{0.21\columnwidth}p{0.31\columnwidth}p{0.30\columnwidth}p{0.12\columnwidth}}
+\footnotesize
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccc}
 \toprule
-Magnitud & Valor experimental & Valor de referencia & Error relativo (\%) \\
+Magnitud & Valor experimental & Valor de referencia & Error (\%) \\
 \midrule
-$d$ & $(10{,}038\pm0{,}022)$ \si{\micro m} & $10{,}000$ \si{\micro m} & 0,38 \\
-$N$ & $(99{,}62\pm0{,}22)$ \si{lineas/mm} & $100{,}00$ \si{lineas/mm} & 0,38 \\
-$\lambda$ sodio & $(589{,}76\pm0{,}48)$ \si{nm} & $589{,}2937$ \si{nm} & 0,08 \\
+$d$              & $(10{,}038\pm0{,}022)\ \mu\text{m}$ & $10{,}000\ \mu\text{m}$ & 0,38 \\
+$N$              & $(99{,}62\pm0{,}22)$ líneas/mm      & 100,00 líneas/mm        & 0,38 \\
+$\lambda_\text{Na}$ & $(589{,}76\pm0{,}48)$ nm         & 589,294 nm              & 0,08 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 La discrepancia de $\lambda$ es pequeña y del orden de la incertidumbre combinada. Además, el doblete no se resuelve con este goniómetro: usando la ecuación de red y las longitudes de onda NIST, la separación angular esperada entre D1 y D2 es
@@ -408,14 +406,6 @@ La discrepancia de $\lambda$ es pequeña y del orden de la incertidumbre combina
 \(\Delta\theta_{m=2}\approx0{,}022^\circ\),
 \(\Delta\theta_{m=3}\approx0{,}036^\circ\),
 todas inferiores a la resolución de \SI{0.1}{\degree} del instrumento.
-
-\subsection{Fuentes web verificadas}
-
-\begin{itemize}
-    \item \href{https://www.newport.com/n/the-grating-equation/}{Newport (MKS), \textit{The Grating Equation}}.
-    \item \href{https://physics.nist.gov/PhysRefData/Handbook/Tables/sodiumtable2.htm}{NIST, \textit{Strong Lines of Sodium (Na)}}.
-    \item \href{https://www.nist.gov/pml/nist-technical-note-1297}{NIST, \textit{Technical Note 1297}}.
-\end{itemize}
 
 \section{Conclusiones}
 

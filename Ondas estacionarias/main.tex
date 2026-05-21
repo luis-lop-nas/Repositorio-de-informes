@@ -45,6 +45,9 @@
 \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\normalfont\normalsize\itshape}{\thesubsubsection}{1em}{}
+\titlespacing*{\section}{0pt}{6pt}{2pt}
+\titlespacing*{\subsection}{0pt}{4pt}{1pt}
+\titlespacing*{\subsubsection}{0pt}{4pt}{1pt}
 
 % --- Dos columnas ---
 \usepackage{multicol}
@@ -296,6 +299,7 @@ donde $\delta m = \SI{0.05e-3}{\kilogram}$ corresponde a la apreciación de la b
   \centering
   \caption{Masas colgantes y tensiones aplicadas.}
   \label{tab:tensiones}
+  \vspace{0.3cm}
   \small
   \setlength{\tabcolsep}{3pt}
   \begin{tabular}{lccc}
@@ -312,43 +316,41 @@ donde $\delta m = \SI{0.05e-3}{\kilogram}$ corresponde a la apreciación de la b
 
 \subsection{Frecuencias de resonancia medidas}
 
-Para cada valor de tensión se identificaron visualmente los modos normales correspondientes a $n = 3$ hasta $n = 8$, anotando la frecuencia del generador en cada resonancia. Los modos $n = 1$ y $n = 2$ no pudieron observarse con claridad en las condiciones del montaje, posiblemente debido a que sus frecuencias propias son inferiores a la frecuencia mínima estable del generador y a que la amplitud de la lengüeta vibrante no es suficiente para excitarlos de manera nítida a esas frecuencias tan bajas.
+Para cada valor de tensión se identificaron visualmente los modos normales correspondientes a $n = 3$ hasta $n = 8$, anotando la frecuencia del generador en cada resonancia. Los modos $n = 1$ y $n = 2$ no pudieron observarse con claridad en las condiciones del montaje, posiblemente debido a que sus frecuencias propias eran demasiado bajas para obtener un patrón estacionario suficientemente estable y nítido.
 
-La incertidumbre de la frecuencia medida se estima como $\delta f = \SI{0.5}{\hertz}$, equivalente a la mitad de la resolución del generador de funciones en el rango de trabajo.
+La incertidumbre de la frecuencia medida se estima como $\delta f = \SI{0.5}{\hertz}$, equivalente a la mitad de la resolución del generador de funciones en el rango de trabajo. Esta incertidumbre, común a todas las medidas, se recoge en la última columna de la Tabla~\ref{tab:frecuencias}.
 
 \begin{table}[H]
   \centering
-  \caption{Frecuencias de resonancia $f_n$ (Hz) medidas.}
+  \caption{Frecuencias de resonancia $f_n$ medidas. La incertidumbre asociada a cada frecuencia es $\delta f = \SI{0.5}{\hertz}$.}
   \label{tab:frecuencias}
+  \vspace{0.3cm}
   \small
-  \begin{tabular}{ccccc}
+  \begin{tabular}{cccccc}
     \toprule
-    $n$ & $T_0$ & $T_1$ & $T_2$ & $T_3$ \\
+    $n$ & $T_0$ & $T_1$ & $T_2$ & $T_3$ & $\delta f$ \\
     \midrule
-    3 & \num{8.709}  & ---           & \num{12.509} & \num{14.509} \\
-    4 & \num{11.709} & \num{12.709}  & \num{16.709} & \num{18.809} \\
-    5 & \num{14.709} & \num{16.409}  & \num{22.609} & \num{24.309} \\
-    6 & \num{17.109} & \num{22.809}  & \num{26.909} & \num{28.809} \\
-    7 & \num{23.009} & \num{26.409}  & \num{31.309} & \num{33.909} \\
-    8 & \num{25.009} & \num{28.709}  & \num{35.009} & \num{38.309} \\
+    3 & \num{8.7}  & ---          & \num{12.5} & \num{14.5} & \num{0.5} \\
+    4 & \num{11.7} & \num{12.7}  & \num{16.7} & \num{18.8} & \num{0.5} \\
+    5 & \num{14.7} & \num{16.4}  & \num{22.6} & \num{24.3} & \num{0.5} \\
+    6 & \num{17.1} & \num{22.8}  & \num{26.9} & \num{28.8} & \num{0.5} \\
+    7 & \num{23.0} & \num{26.4}  & \num{31.3} & \num{33.9} & \num{0.5} \\
+    8 & \num{25.0} & \num{28.7}  & \num{35.0} & \num{38.3} & \num{0.5} \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-La ausencia de dato para $T_1$, $n=3$ se debe a que en esa configuración el patrón de tres vientres no pudo estabilizarse de forma clara, lo que se interpreta como un efecto del bajo amortiguamiento del generador a baja frecuencia para esa tensión particular.
+La ausencia de dato para $T_1$, $n=3$ se debe a que en esa configuración el patrón de tres vientres no pudo estabilizarse de forma clara. Por ello, se decidió no incluir una frecuencia para este punto, evitando introducir un dato poco fiable en los cálculos posteriores.
 
 Se observa que, para cada tensión fija, las frecuencias aumentan aproximadamente de forma proporcional a $n$, en acuerdo con la predicción teórica de la ecuación~\eqref{eq:modos}. Asimismo, para un modo dado, la frecuencia de resonancia aumenta claramente al incrementar la tensión, lo cual refleja el aumento de la velocidad de propagación con $\sqrt{T}$.
 
-\subsection{Velocidad de fase calculada directamente}
-
-Aplicando la ecuación~\eqref{eq:v_directa} con $L = \Lutil$ y la propagación de incertidumbre~\eqref{eq:deltav}, se obtiene una estimación de la velocidad de fase para cada par $(n, T_i)$. Con $\delta L = \SI{0.5e-3}{\metre}$ y $\delta f = \SI{0.5}{\hertz}$, la incertidumbre $\delta v$ depende del modo $n$ pero no de la tensión, ya que el término dominante es $L\,\delta f$ (el término $f_n\,\delta L$ es despreciable).
-
 \begin{table}[H]
   \centering
-  \caption{Velocidades de fase $v_{n,i}$ (\si{\metre\per\second}) con su incertidumbre $\delta v$ (\si{\metre\per\second}).}
+  \caption{Velocidades de fase $v_{n,i}$, en \si{\metre\per\second}, calculadas directamente a partir de $v = 2Lf_n/n$.}
   \label{tab:velocidades}
+  \vspace{0.2cm}
   \small
-  \setlength{\tabcolsep}{3pt}
+  \setlength{\tabcolsep}{2.5pt}
   \begin{tabular}{cccccc}
     \toprule
     $n$ & $\delta v$ & $T_0$ & $T_1$ & $T_2$ & $T_3$ \\
@@ -360,12 +362,13 @@ Aplicando la ecuación~\eqref{eq:v_directa} con $L = \Lutil$ y la propagación d
     7 & \num{0.019} & \num{0.865} & \num{0.992} & \num{1.176} & \num{1.274} \\
     8 & \num{0.017} & \num{0.822} & \num{0.944} & \num{1.151} & \num{1.259} \\
     \midrule
-    $\bar{v}$ & & \num{0.791} & \num{0.927} & \num{1.149} & \num{1.264} \\
+    $\bar{v}$ & -- & \num{0.791} & \num{0.927} & \num{1.149} & \num{1.264} \\
+    $s_v$     & -- & \num{0.044} & \num{0.075} & \num{0.041} & \num{0.015} \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-Los valores de $v$ obtenidos para diferentes modos bajo la misma tensión son bastante consistentes entre sí, con dispersiones del orden del 10\,\% o menores, lo que indica que el modelo lineal es una descripción razonablemente buena del sistema. Las ligeras variaciones entre modos pueden atribuirse a la dificultad de identificar exactamente la resonancia, a la elasticidad no ideal de la cuerda y a posibles variaciones de la longitud efectiva durante la medida.
+En las dos últimas filas se muestran la velocidad media $\bar{v}$ para cada tensión y la desviación típica $s_v$ de los valores obtenidos para los distintos modos. Se ha elegido la desviación típica, y no únicamente la incertidumbre instrumental propagada, porque las diferencias entre modos reflejan también efectos experimentales sistemáticos, como la dificultad de identificar exactamente la resonancia, la elasticidad no ideal de la cuerda o pequeñas variaciones de la longitud efectiva.
 
 \subsection{Ajuste lineal de frecuencia frente a modo}
 

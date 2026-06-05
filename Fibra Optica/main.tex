@@ -116,7 +116,7 @@
 
 \subsection{Marco teórico}
 
-La fibra óptica es una guía dieléctrica en la que la luz se confina en el núcleo gracias a la diferencia de índice de refracción entre núcleo ($n_1$) y revestimiento ($n_2$), con $n_1>n_2$. Su funcionamiento se basa en la reflexión interna total, que ocurre cuando la luz incide sobre la frontera núcleo-revestimiento con un ángulo mayor al ángulo crítico. La condición física de guiado se deriva de la ley de Snell:
+La fibra optica es una guia dieléctrica en la que la luz se confina en el núcleo gracias a la diferencia de índice de refracción entre núcleo ($n_1$) y revestimiento ($n_2$), con $n_1>n_2$. Su funcionamiento se basa en la reflexión interna total, que ocurre cuando la luz incide sobre la frontera núcleo-revestimiento con un angulo mayor al ángulo crítico. La condición física de guiado se deriva de la ley de Snell:
 \begin{equation}
 n_1\sin\theta_1 = n_2\sin\theta_2.
 \label{eq:snell}
@@ -132,9 +132,9 @@ Para fibras de índice escalonado, la apertura numérica (NA) cuantifica el cono
 \mathrm{NA}=n_0\sin\theta_{\max}\approx\sqrt{n_1^2-n_2^2},
 \label{eq:na}
 \end{equation}
-donde $n_0\approx 1$ en aire. La señal óptica se atenúa principalmente por tres mecanismos. Las \textbf{pérdidas intrínsecas} son causadas por la absorción de impurezas y la dispersión de Rayleigh del propio material. Las \textbf{pérdidas por curvatura} aparecen cuando la fibra se dobla más allá de un radio crítico, situación en la que los rayos inciden sobre la interfaz núcleo-revestimiento con un ángulo inferior al crítico y escapan de la guía. Las \textbf{pérdidas por acoplamiento}, por su parte, se deben a desalineación lateral, separación longitudinal (hueco de aire) o suciedad en los conectores.
+donde $n_0\approx 1$ en aire. La señal óptica se atenúa principalmente por tres mecanismos. Las \textbf{perdidas intrínsecas} son causadas por la absorción de impurezas y la dispersión de Rayleigh del propio material. Las \textbf{pérdidas por curvatura} aparecen cuando la fibra se dobla más allá de un radio crítico, situación en la que los rayos inciden sobre la interfaz núcleo-revestimiento con un ángulo inferior al crítico y escapan de la guía. Las \textbf{pérdidas por acoplamiento}, por su parte, se deben a desalineación lateral, separación longitudinal (hueco de aire) o suciedad en los conectores.
 
-En ingeniería de comunicaciones la pérdida se cuantifica en decibelios (dB), escala logarítmica adecuada a la degradación exponencial de la potencia. La atenuación se define como:
+En injeniería de comunicaciones la pérdida se cuantifica en decibelios (dB), escala logaritmica adecuada a la degradación exponencial de la potencia. La atenuación se define como:
 \begin{equation}
 A\,(\mathrm{dB}) = 10\log_{10}\!\left(\frac{V_x}{V_0}\right),
 \label{eq:atenuacion}
@@ -154,13 +154,13 @@ donde $R_{\lambda}$ es la responsividad del fotodetector e $i_n$ representa el r
 
 \subsection{Objetivos}
 
-Esta práctica persigue tres objetivos principales. En primer lugar, medir la atenuación en la señal producida por torsiones en una fibra óptica. En segundo lugar, demostrar el principio de transmisión en sensores de fibra óptica mediante el análisis de las pérdidas por separación longitudinal entre terminales. Finalmente, realizar la transferencia de una señal de audio a través del enlace óptico y describir la cadena de conversión completa.
+Esta práctica persigue tres objetivos principales. En primer lugar, medir la atenuacion en la señal producida por torsiones en una fibra optica. En segundo lugar, demostrar el principio de transmisión en sensores de fibra óptica mediante el análisis de las pérdidas por separación longitudinal entre terminales. Finalmente, realizar la transferencia de una señal de audio a través del enlace óptico y describir la cadena de conversión completa.
 
 % ------------------------------------------------------------
 \section{Materiales}
 % ------------------------------------------------------------
 
-Para la realización de los ensayos se emplearon los paneles principales de generación y recepción de señales, concretamente el transmisor analógico (ANAL.TX) y el receptor analógico (ANAL.RX), junto con el módulo potenciómetro (POT), el módulo micrófono amplificado (MIC.AMP) y el amplificador de baja frecuencia (LF.AMP). Como elementos ópticos y mecánicos se utilizaron fibras ópticas de distintas longitudes, un cilindro auxiliar de torsión y un calibre para medir la separación entre terminales. La lectura de tensiones se realizó con un multímetro digital. Las incertidumbres tipo B empleadas en el análisis se recogen en la Tabla~\ref{tab:incertidumbres}.
+Para la realización de los ensayos se emplearon los paneles principales de generación y recepción de señales, concretamente el transmisor analógico (ANAL.TX) y el receptor analógico (ANAL.RX), junto con el módulo potenciómetro (POT), el módulo micrófono amplificado (MIC.AMP) y el amplificador de baja frecuencia (LF.AMP). Como elementos ópticos y mecánicos se utilizaron fibras ópticas de distintas longitudes, un cilindro auxiliar de torsión y un calibre para medir la separación entre terminales. La lectura de tensiones se realizó con un multímetro digital. Las incertidumbres tipo B empleadas en el analisis se recogen en la Tabla~\ref{tab:incertidumbres}.
 
 \begin{table}[H]
 \centering
@@ -184,11 +184,11 @@ Separación $l$ (calibre) & \SI{0.1}{mm} & $\pm$\SI{0.05}{mm} \\
 
 \subsection{Ensayo 1: atenuación por torsión}
 
-Se configuró el transmisor con el módulo POT en el Slot~2 y el panel ANAL.TX en el Slot~3, y el receptor con ANAL.RX en el Slot~3, conectando la salida del potenciómetro a la entrada del transmisor analógico. Con la fibra lo más recta posible ($N=0$ vueltas), se ajustó el potenciómetro hasta obtener una lectura estable, que se anotó como tensión de referencia $V_0$. A continuación se enrolló progresivamente la fibra alrededor del cilindro auxiliar, incrementando el número de vueltas de 1 a 5, y se registró la tensión de salida del receptor en cada paso sin modificar el resto del montaje.
+Se configuró el transmisor con el modulo POT en el Slot~2 y el panel ANAL.TX en el Slot~3, y el receptor con ANAL.RX en el Slot~3, conectando la salida del potenciómetro a la entrada del transmisor analógico. Con la fibra lo más recta posible ($N=0$ vueltas), se ajustó el potenciometro hasta obtener una lectura estable, que se anotó como tensión de referencia $V_0$. A continuación se enrolló progresivamente la fibra alrededor del cilindro auxiliar, incrementando el número de vueltas de 1 a 5, y se registró la tensión de salida del receptor en cada paso sin modificar el resto del montaje.
 
 \subsection{Ensayo 2: atenuación por separación}
 
-Se alinearon coaxialmente los dos terminales de fibra en el calibre. El guion indicaba registrar la tensión de referencia con los terminales en contacto ($l=0$\,mm), pero este valor no quedó anotado en la hoja de datos, por lo que no se emplea en el análisis cuantitativo. Partiendo de $l=1$\,mm, se fue aumentando la separación hasta $l=10$\,mm en incrementos de \SI{1}{mm}, anotando la tensión en cada posición.
+Se alinearon coaxialmente los dos terminales de fibra en el calibre. El guion indicaba registrar la tensión de referencia con los terminales en contacto ($l=0$\,mm), pero este valor no lo apuntamos en la hoja de datos, por lo que no se emplea en el análisis cuantitativo. Partiendo de $l=1$\,mm, se fue aumentando la separación hasta $l=10$\,mm en incrementos de \SI{1}{mm}, anotando la tensión en cada posición.
 
 \subsection{Ensayo 3: transmisión de audio}
 
@@ -281,7 +281,7 @@ El ajuste lineal de $A$ frente a $N$ proporciona:
 A(N)=(-1{,}000\pm0{,}091)\,N + (-0{,}172\pm0{,}276)\;\mathrm{dB},
 \label{eq:fit_torsion}
 \end{equation}
-con $R^2=0{,}968$. La pérdida media es de aproximadamente \SI{1}{dB} por vuelta, consistente con las pérdidas por macrocurvatura [F3, F4].
+con $R^2=0{,}968$. La pérdida media es de aproximadamente \SI{1}{dB} por vuelta, consistente con las perdidas por macrocurvatura [F3, F4].
 
 \begin{figure}[H]
 \centering
@@ -293,7 +293,7 @@ con $R^2=0{,}968$. La pérdida media es de aproximadamente \SI{1}{dB} por vuelta
 \subsection{Atenuación por separación entre terminales}
 \label{sec:sep}
 
-El guion de prácticas indica registrar $V_0$ con los terminales en contacto ($l=0$\,mm) como referencia absoluta. Al no haberse anotado ese valor, no es posible calcular la atenuación absoluta $A=10\log(V/V_0)$. Se emplean dos enfoques alternativos trazables:
+El guion de practicas indica registrar $V_0$ con los terminales en contacto ($l=0$\,mm) como referencia absoluta. Al no haberse anotado ese valor, no es posible calcular la atenuacion absoluta $A=10\log(V/V_0)$. Se emplean dos enfoques alternativos trazables:
 
 \subsubsection{Ajuste exponencial de la tensión}
 
@@ -302,7 +302,7 @@ Se ajusta el modelo $\ln V = kl + b$ a los datos medidos:
 \ln V(l)=(-0{,}1132\pm0{,}0047)\,l + (3{,}498\pm0{,}029),
 \label{eq:lnfit_sep}
 \end{equation}
-con $R^2=0{,}987$. La pendiente negativa confirma la caída exponencial de la potencia con la separación, coherente con la divergencia cónica del haz en el hueco de aire [F5].
+con $R^2=0{,}987$. La pendiente negativa confirma la caida exponencial de la potencia con la separación, coherente con la divergencia cónica del haz en el hueco de aire [F5].
 
 \subsubsection{Atenuación relativa respecto a $l=1$\,mm}
 
@@ -345,7 +345,7 @@ El ajuste lineal de $A_{\mathrm{rel}}$ frente a $l$:
 A_{\mathrm{rel}}(l)=(-0{,}492\pm0{,}020)\,l + (0{,}321\pm0{,}125)\;\mathrm{dB},
 \label{eq:fit_sep_rel}
 \end{equation}
-con $R^2=0{,}987$. La pendiente negativa confirma que la separación incrementa sistemáticamente la pérdida de acoplamiento [F5].
+con $R^2=0{,}987$. La pendiente negativa confirma que la separacion incrementa sistemáticamente la pérdida de acoplamiento [F5].
 
 \begin{figure}[H]
 \centering
@@ -356,13 +356,13 @@ con $R^2=0{,}987$. La pendiente negativa confirma que la separación incrementa 
 
 \subsection{Transmisión de señal de audio}
 
-Se sustituyó el potenciómetro por el micrófono MIC.AMP y se conectó la salida del receptor al amplificador LF.AMP. Al hablar frente al micrófono, la voz se reconocía con claridad en el altavoz, verificando la cadena completa acústico $\to$ eléctrico $\to$ óptico $\to$ eléctrico $\to$ acústico. La inteligibilidad era buena con los terminales bien alineados y la fibra recta. Al introducir vueltas en la fibra o desalinear intencionalmente los terminales, el volumen disminuía notablemente y aparecía ruido de fondo, reproduciendo de forma cualitativa los efectos medidos en los ensayos anteriores. No se apreciaron distorsiones por compresión de amplitud, lo que indica que el LED operó dentro de su zona lineal durante la prueba.
+Se sustituyó el potenciómetro por el micrófono MIC.AMP y se conectó la salida del receptor al amplificador LF.AMP. Al hablar frente al micrófono, la voz se reconocía con claridad en el altavoz, verificando la cadena completa acústico $\to$ eléctrico $\to$ óptico $\to$ eléctrico $\to$ acústico. La inteligibilidad era buena con los terminales bien alineados y la fibra recta. Al introducir vueltas en la fibra o desalinear intencionalmente los terminales, el volumen disminuía notablemente y aparecía ruido de fondo, lo que reproducia de forma cualitativa los efectos medidos en los ensayos anteriores, aunque la comparación es solo visual y no cuantitativa. No se apreciaron distorsiones por compresión de amplitud, lo que indica que el LED operó dentro de su zona lineal durante la prueba.
 
 % ------------------------------------------------------------
 \section{Conclusiones}
 % ------------------------------------------------------------
 
-La atenuación por torsión aumenta de forma lineal con el número de vueltas, con una pendiente de $(-1{,}000\pm0{,}091)$\,dB/vuelta ($R^2=0{,}968$) y una pérdida acumulada de \SI{5.15}{dB} entre 0 y 5 vueltas, en acuerdo con el mecanismo de macrocurvatura. En cuanto a la separación entre terminales, la tensión recibida sigue una caída exponencial: $\ln V=(-0{,}1132\pm0{,}0047)\,l+(3{,}498\pm0{,}029)$ con $R^2=0{,}987$; al no haberse registrado $V_0$ en contacto, la atenuación relativa respecto a $l=1$\,mm da una pendiente de $(-0{,}492\pm0{,}020)$\,dB/mm, y para futuros ensayos conviene anotar explícitamente la medida en $l=0$\,mm tal como indica el guion. Por último, la transmisión de audio demostró de forma directa el principio de sensor óptico de intensidad: la voz fue inteligible a través del enlace y el sistema mostró sensibilidad visible ante variaciones de curvatura y alineación, validando cualitativamente los resultados de los dos ensayos anteriores.
+La atenuacion por torsion aumenta de forma lineal con el número de vueltas, con una pendiente de $(-1{,}000\pm0{,}091)$\,dB/vuelta ($R^2=0{,}968$) y una pérdida acumulada de \SI{5.15}{dB} entre 0 y 5 vueltas, en acuerdo con el mecanismo de macrocurvatura. En cuanto a la separacion entre terminales, la tensión recibida sigue una caída exponencial: $\ln V=(-0{,}1132\pm0{,}0047)\,l+(3{,}498\pm0{,}029)$ con $R^2=0{,}987$; al no haberse registrado $V_0$ en contacto, la atenuación relativa respecto a $l=1$\,mm da una pendiente de $(-0{,}492\pm0{,}020)$\,dB/mm, y para futuros ensayos conviene anotar explícitamente la medida en $l=0$\,mm tal como indica el guion. Por último, la transmisión de audio demostró de forma directa el principio de sensor óptico de intensidad: la voz fue inteligible a través del enlace y el sistema mostró sensibilidad visible ante variaciones de curvatura y alineación, validando cualitativamente los resultados de los dos ensayos anteriores.
 
 \section*{Fuentes consultadas}
 

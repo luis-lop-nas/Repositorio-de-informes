@@ -194,9 +194,9 @@ Para el cálculo de las incertidumbres al tratarse de medidas con aparatos anal�
 \toprule
 Magnitud & Resolución & $\delta x$ \\
 \midrule
-$\Delta x$ (papel) & \SI{1}{mm} & \SI{0,5}{mm} \\
-$z$ (metro) & \SI{1}{mm} & \SI{0,5}{mm} \\
-$\theta$ (goniómetro) & \SI{0,1}{\degree} & \SI{0,05}{\degree} \\
+$\Delta x$ (papel) & \SI{1}{mm}          & \SI{0,5}{mm} \\
+$z$ (metro)        & \SI{1}{mm}          & \SI{0,5}{mm} \\
+$\theta$ (goniómetro) & \SI{1}{\arcminute} & \SI{15}{\arcsecond} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -257,6 +257,7 @@ $\Delta(\Delta x)$ (mm) & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 & 0{,}5 
 
 Para esta parte tenemos que: $d=\SI{3.333e-6}{m}$.
 
+$\theta_0 \pm \Delta\theta_0 = (177{,}350 \pm 0{,}004)^\circ$
 \begin{table}[H]
 \centering
 \caption{Lecturas angulares de la línea amarilla del sodio.}
@@ -267,8 +268,8 @@ Para esta parte tenemos que: $d=\SI{3.333e-6}{m}$.
 \toprule
 Orden & $m=1$ & $m=2$ & $m=3$ \\
 \midrule
-$\theta_{+m}$ ($^\circ$) & $190{,}20\pm0{,}05$ & $200{,}70\pm0{,}05$ & $212{,}07\pm0{,}05$ \\
-$\theta_{-m}$ ($^\circ$) & $169{,}80\pm0{,}05$ & $159{,}30\pm0{,}05$ & $147{,}93\pm0{,}05$ \\
+$\theta_{+m}$ ($^\circ$) & $167{,}017\pm0{,}004$ & $156{,}450\pm0{,}004$ & $145{,}100\pm0{,}004$ \\
+$\theta_{-m}$ ($^\circ$) & $187{,}400\pm0{,}004$ & $198{,}333\pm0{,}004$ & $209{,}467\pm0{,}004$ \\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -317,10 +318,10 @@ Se obtuvo:
 
 Con \eqref{eq:d_pendiente}, usando $\lambda_L=\SI{650}{nm}$:
 \begin{equation}
-    d_1=\frac{2\lambda_L z_1}{p_1}=\SI{10.000e-6}{m}.
+    d_1=\frac{2\lambda_L z_1}{p_1}=\SI{100.000e-6}{m}.
 \end{equation}
 \begin{equation}
-    d_2=\frac{2\lambda_L z_2}{p_2}=\SI{10.111e-6}{m}.
+    d_2=\frac{2\lambda_L z_2}{p_2}=\SI{95.333e-6}{m}.
 \end{equation}
 
 Con propagación de \eqref{eq:rss}:
@@ -328,72 +329,66 @@ Con propagación de \eqref{eq:rss}:
 \frac{\Delta d}{d}=\sqrt{\left(\frac{\Delta z}{z}\right)^2+\left(\frac{\Delta p}{p}\right)^2},
 \]
 \begin{equation}
-    d_1=(10{,}000\pm0{,}027)\,\si{\micro m}.
+    d_1=(100{,}000\pm0{,}101)\,\si{\micro m}.
 \end{equation}
 \begin{equation}
-    d_2=(10{,}111\pm0{,}037)\,\si{\micro m}.
+    d_2=(95{,}333\pm0{,}091)\,\si{\micro m}.
 \end{equation}
 
 Promedio ponderado final:
 \[
-d_{\mathrm{exp}}=(10{,}038\pm0{,}022)\,\si{\micro m}.
+d_{\mathrm{exp}}=(97{,}43\pm0{,}07)\,\si{\micro m}.
 \]
 
 Por inversión:
 \[
 N_{\mathrm{exp}}=\frac{1}{d_{\mathrm{exp}}}
-=(99{,}62\pm0{,}22)\,\si{lineas/mm}.
+=(10{,}26\pm0{,}01)\,\si{lineas/mm}.
 \]
 
 \subsection{Cálculo de longitud de onda del sodio}
 
-Para la siguiente parte, la longitud de onda de la lámpara de sodio, observamos la difracción en los siguientes ángulos.
+Para la siguiente parte, la longitud de onda de la lámpara de sodio, se observa la
+difracción en los siguientes ángulos:
 \[
-\theta_1=10{,}20^\circ,\quad \theta_2=20{,}70^\circ,\quad \theta_3=32{,}07^\circ.
+\theta_1=10{,}19^\circ,\quad \theta_2=20{,}94^\circ,\quad \theta_3=32{,}18^\circ.
 \]
+Calculamos la longitud de onda para cada orden con $\lambda = \frac{\theta}{m}$:
+\begin{equation}
+    \lambda_1=\SI{589.81}{nm}.
+\end{equation}
+\begin{equation}
+    \lambda_2=\SI{595.69}{nm}.
+\end{equation}
+\begin{equation}
+    \lambda_3=\SI{591.81}{nm}.
+\end{equation}
+El valor de $\lambda_2$ se aparta notablemente de los otros dos órdenes en unos
+\SI{6}{nm}, lo que puede deberse a que no se centró el gionómetro correctamente y por tanto el ángulo difiere con el real, no obstante la medida no se aleja mucho de la teórica por lo que vamos a darla por buena.
 
-Lo que nos da unas longitudes de onda experimentales
-\begin{equation}
-    \lambda_1=\SI{590.28}{nm}.
-\end{equation}
-\begin{equation}
-    \lambda_2=\SI{589.12}{nm}.
-\end{equation}
-\begin{equation}
-    \lambda_3=\SI{589.95}{nm}.
-\end{equation}
-
-Si aplicamos la propagación de errores
+Calculamos los errores correspondientes a cada medida a partir de la propagación de errores con $\Delta_\mathrm{lect}=15''=0{,}0042^\circ$:
 \[
 \Delta\theta=
-\frac{1}{2}\sqrt{(0{,}05)^2+(0{,}05)^2}
-=0{,}035^\circ.
+\frac{1}{2}\sqrt{(0{,}0042)^2+(0{,}0042)^2}
+=0{,}0029^\circ.
 \]
 \[
-\Delta\theta=6{,}17\times10^{-4}\,\text{rad}.
+\Delta\theta=5{,}14\times10^{-5}\,\text{rad}.
 \]
-
 Aplicando \eqref{eq:dlambda} (con $d$ nominal de la red):
 \begin{equation}
-    \Delta\lambda_1=\SI{2.02}{nm}.
+    \Delta\lambda_1=\SI{0.17}{nm}.
 \end{equation}
 \begin{equation}
-    \Delta\lambda_2=\SI{0.96}{nm}.
+    \Delta\lambda_2=\SI{0.08}{nm}.
 \end{equation}
 \begin{equation}
-    \Delta\lambda_3=\SI{0.58}{nm}.
+    \Delta\lambda_3=\SI{0.05}{nm}.
 \end{equation}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\columnwidth]{figuras/figura_2.pdf}
-\caption{Longitud de onda por orden y media ponderada.}
-\label{fig:lambda}
-\end{figure}
-
-Obteniendo así la longitud de onda media 
+Obteniendo así la longitud de onda media ponderada
 \[
-\lambda_{\mathrm{exp}}=(589{,}76\pm0{,}48)\,\si{nm}.
+\lambda_{\mathrm{exp}}=(592{,}63\pm0{,}04)\,\si{nm}.
 \]
 
 \subsection{Comparación con valores de referencia y correcciones}
@@ -411,31 +406,36 @@ Comparando las medidas experimentales de la lámpara de sodio con respecto al va
 \toprule
 Magnitud & Valor experimental & Valor de referencia & Error (\%) \\
 \midrule
-$d$              & $(10{,}038\pm0{,}022)\ \mu\text{m}$ & $10{,}000\ \mu\text{m}$ & 0,38 \\
-$N$              & $(99{,}62\pm0{,}22)$ líneas/mm      & 100,00 líneas/mm        & 0,38 \\
-$\lambda_\text{Na}$ & $(589{,}76\pm0{,}48)$ nm         & 589,294 nm              & 0,08 \\
+$d$              & $(97{,}43\pm0{,}07)\ \mu\text{m}$ & $100{,}0\ \mu\text{m}$ & 2,6 \\
+$N$              & $(10{,}26\pm0{,}01)$ líneas/mm      & 10,00 líneas/mm        & 2,6 \\
+$\lambda_\text{Na}$ & $(592{,}8\pm1{,}4)$ nm           & 589,294 nm              & 0,59 \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
-Con esto podemos decir que esta parte del experimento ha salido bastante bien ya que nuestra longitud de onda experimental se encuentra en el mismo orden y muy cerca del valor teórico
+Con esto podemos decir que esta parte del experimento ha salido bastante bien ya que nuestra longitud de onda experimental se encuentra en el mismo orden y muy cerca del valor teórico aunque este no entre dentro del margen de error, vemos que el error relativo es bastante bajo, lo que nos indica que el resultado es bastante bueno.
 
 \section{Conclusiones}
 
 \begin{enumerate}
     \item Se caracterizó la red con dos distancias de observación y se obtuvo
-    \(d_{\mathrm{exp}}=(10{,}038\pm0{,}022)\,\si{\micro m}\),
+\(d_{\mathrm{exp}}=(97{,}43\pm0{,}07)\,\si{\micro m}\),
     equivalente a
-    \(N_{\mathrm{exp}}=(99{,}62\pm0{,}22)\,\si{lineas/mm}\).
-
-    \item Con la red de \SI{300}{lineas/mm} y lecturas simétricas en goniómetro se obtuvo
-    \(\lambda_{\mathrm{exp}}=(589{,}76\pm0{,}48)\,\si{nm}\)
-    para la línea amarilla del sodio.
-
-    \item Los
-    errores relativos finales son bajos: 0,38\% en $d$ y $N$, y 0,08\% en
-    $\lambda$. El resultado es consistente con un doblete no resuelto por la
-    resolución angular disponible.
+\(N_{\mathrm{exp}}=(10{,}26\pm0{,}01)\,\si{lineas/mm}\).
+    El error relativo respecto al valor nominal es del 2{,}6\,\%, atribuible
+    principalmente al redondeo de $\Delta x$ al milímetro más próximo en el
+    papel milimetrado; usando solo $z_1$ se recupera $d=(100{,}0\pm0{,}1)\,\si{\micro m}$
+    con un error del 0{,}0\,\%.
+    \item Con la red de \SI{300}{lineas/mm} y lecturas simétricas en goniómetro
+    se obtuvo, mediante regresión lineal sin intercepto,
+\(\lambda_{\mathrm{exp}}=(592{,}8\pm1{,}4)\,\si{nm}\)
+    para la línea amarilla del sodio, con un error relativo del 0{,}59\,\%
+    respecto al valor tabulado de \SI{589{,}294}{nm}.
+    \item La incertidumbre en $\lambda$ está dominada por la dispersión entre
+    órdenes, especialmente el orden $m=2$, cuyo residuo del ajuste es
+    significativamente mayor que los demás, lo que sugiere un error de centrado
+    del retículo en esa medida. El resultado es consistente con un doblete no
+    resuelto por la resolución angular disponible.
 \end{enumerate}
 
 \end{multicols}

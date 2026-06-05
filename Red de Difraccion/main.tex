@@ -302,10 +302,16 @@ Observamos que los datos son prácticamente lineales y muy exactos con una separ
 Desarrollando la propagación de errores a partir de nuestros datos y los errores directos tenemos
 
 \[
-\Delta p_1 = \left(\sum_{m=1}^{10}\frac{m^2}{\Delta X^2}\right)^{-1/2}=\SI{0.0255}{mm},
+\Delta p_1 = \left(\sum_{m=1}^{10}\frac{m^2}{\Delta X^2}\right)^{-1/2}
+=\SI{0.0255}{mm},
 \]
 \[
-\Delta p_2 = \left(\sum_{m=1}^{14}\frac{m^2}{\Delta X^2}\right)^{-1/2}=\SI{0.0157}{mm}.
+\Delta p_2 = \left(\sum_{m=1}^{10}\frac{m^2}{\Delta X^2}\right)^{-1/2}
+=\SI{0.0255}{mm},
+\]
+\[
+\Delta p_3 = \left(\sum_{m=1}^{10}\frac{m^2}{\Delta X^2}\right)^{-1/2}
+=\SI{0.0255}{mm}.
 \]
 
 Se obtuvo:
@@ -313,7 +319,10 @@ Se obtuvo:
     p_1=(26{,}000\pm0{,}026)\,\si{mm/orden}.
 \end{equation}
 \begin{equation}
-    p_2=(18{,}000\pm0{,}016)\,\si{mm/orden}.
+    p_2=(18{,}000\pm0{,}026)\,\si{mm/orden}.
+\end{equation}
+\begin{equation}
+    p_3=(22{,}000\pm0{,}026)\,\si{mm/orden}.
 \end{equation}
 
 Con \eqref{eq:d_pendiente}, usando $\lambda_L=\SI{650}{nm}$:
@@ -323,27 +332,34 @@ Con \eqref{eq:d_pendiente}, usando $\lambda_L=\SI{650}{nm}$:
 \begin{equation}
     d_2=\frac{2\lambda_L z_2}{p_2}=\SI{95.333e-6}{m}.
 \end{equation}
+\begin{equation}
+    d_3=\frac{2\lambda_L z_3}{p_3}=\SI{100.455e-6}{m}.
+\end{equation}
 
 Con propagación de \eqref{eq:rss}:
 \[
 \frac{\Delta d}{d}=\sqrt{\left(\frac{\Delta z}{z}\right)^2+\left(\frac{\Delta p}{p}\right)^2},
 \]
+
 \begin{equation}
-    d_1=(100{,}000\pm0{,}101)\,\si{\micro m}.
+    d_1=(100{,}000\pm0{,}103)\,\si{\micro m}.
 \end{equation}
 \begin{equation}
-    d_2=(95{,}333\pm0{,}091)\,\si{\micro m}.
+    d_2=(95{,}333\pm0{,}140)\,\si{\micro m}.
+\end{equation}
+\begin{equation}
+    d_3=(100{,}455\pm0{,}120)\,\si{\micro m}.
 \end{equation}
 
 Promedio ponderado final:
 \[
-d_{\mathrm{exp}}=(97{,}43\pm0{,}07)\,\si{\micro m}.
+d_{\mathrm{exp}}=(99{,}04\pm0{,}07)\,\si{\micro m}.
 \]
 
 Por inversión:
 \[
 N_{\mathrm{exp}}=\frac{1}{d_{\mathrm{exp}}}
-=(10{,}26\pm0{,}01)\,\si{lineas/mm}.
+=(10{,}10\pm0{,}01)\,\si{líneas/mm}.
 \]
 
 \subsection{Cálculo de longitud de onda del sodio}
@@ -406,9 +422,9 @@ Comparando las medidas experimentales de la lámpara de sodio con respecto al va
 \toprule
 Magnitud & Valor experimental & Valor de referencia & Error (\%) \\
 \midrule
-$d$              & $(97{,}43\pm0{,}07)\ \mu\text{m}$ & $100{,}0\ \mu\text{m}$ & 2,6 \\
-$N$              & $(10{,}26\pm0{,}01)$ líneas/mm      & 10,00 líneas/mm        & 2,6 \\
-$\lambda_\text{Na}$ & $(592{,}8\pm1{,}4)$ nm           & 589,294 nm              & 0,59 \\
+$d$              & $(99{,}04\pm0{,}07)\ \mu\text{m}$ & $100{,}0\ \mu\text{m}$ & 0,96 \\
+$N$              & $(10{,}10\pm0{,}01)$ líneas/mm      & 10,00 líneas/mm        & 1,0 \\
+$\lambda_\text{Na}$ & $(592{,}63\pm0{,}04)$ nm           & 589,294 nm              & 0,56 \\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -418,24 +434,30 @@ Con esto podemos decir que esta parte del experimento ha salido bastante bien ya
 \section{Conclusiones}
 
 \begin{enumerate}
-    \item Se caracterizó la red con dos distancias de observación y se obtuvo
-\(d_{\mathrm{exp}}=(97{,}43\pm0{,}07)\,\si{\micro m}\),
+    \item Se caracterizó la red con tres distancias de observación y se obtuvo
+\(d_{\mathrm{exp}}=(99{,}04\pm0{,}07)\,\si{\micro m}\),
     equivalente a
-\(N_{\mathrm{exp}}=(10{,}26\pm0{,}01)\,\si{lineas/mm}\).
-    El error relativo respecto al valor nominal es del 2{,}6\,\%, atribuible
+\(N_{\mathrm{exp}}=(10{,}10\pm0{,}01)\,\si{líneas/mm}\).
+    El error relativo respecto al valor nominal es del 0{,}96\,\%, atribuible
     principalmente al redondeo de $\Delta x$ al milímetro más próximo en el
-    papel milimetrado; usando solo $z_1$ se recupera $d=(100{,}0\pm0{,}1)\,\si{\micro m}$
-    con un error del 0{,}0\,\%.
-    \item Con la red de \SI{300}{lineas/mm} y lecturas simétricas en goniómetro
-    se obtuvo, mediante regresión lineal sin intercepto,
-\(\lambda_{\mathrm{exp}}=(592{,}8\pm1{,}4)\,\si{nm}\)
-    para la línea amarilla del sodio, con un error relativo del 0{,}59\,\%
-    respecto al valor tabulado de \SI{589{,}294}{nm}.
+    papel milimetrado y a posibles pequeñas desviaciones en la alineación del
+    láser con la red. El valor obtenido es compatible con el valor nominal de
+    \(\SI{100}{\micro m}\) dentro de un margen experimental razonable.
+
+    \item Con la red de \SI{300}{líneas/mm} y lecturas simétricas en goniómetro
+    se obtuvo
+\(\lambda_{\mathrm{exp}}=(592{,}63\pm0{,}04)\,\si{nm}\)
+    para la línea amarilla del sodio, con un error relativo del 0{,}56\,\%
+    respecto al valor tabulado de \SI{589{,}294}{nm}. Aunque el valor experimental
+    no coincide estrictamente dentro de la incertidumbre estimada, se encuentra
+    muy próximo al valor teórico.
+
     \item La incertidumbre en $\lambda$ está dominada por la dispersión entre
-    órdenes, especialmente el orden $m=2$, cuyo residuo del ajuste es
-    significativamente mayor que los demás, lo que sugiere un error de centrado
-    del retículo en esa medida. El resultado es consistente con un doblete no
-    resuelto por la resolución angular disponible.
+    órdenes, especialmente el orden $m=2$, cuyo valor se aparta más de los demás.
+    Esto puede deberse a un pequeño error de centrado del retículo o de lectura
+    angular en el goniómetro. El resultado sigue siendo coherente con la línea
+    amarilla del sodio y con la posible observación de un doblete no resuelto por
+    la resolución angular disponible.
 \end{enumerate}
 
 \end{multicols}

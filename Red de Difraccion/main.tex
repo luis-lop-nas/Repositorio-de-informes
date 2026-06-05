@@ -281,14 +281,14 @@ $\theta_{-m}$ ($^\circ$) & $187{,}400\pm0{,}004$ & $198{,}333\pm0{,}004$ & $209{
 A continuación se ha hecho una regresión lineal para poder comparar los datos de la primera parte de la práctica.
 
 \begin{itemize}
-    \item `figuras/figura\_1.py`: ajuste lineal de $X$ frente a $m$ para $z_1$ y $z_2$.
+    \item `figuras/figura\_1.py`: ajuste lineal de $X$ frente a $m$ para $z_1$, $z_2$ y $z_3$.
     \item `figuras/figura\_2.py`: valores de $\lambda$ por orden y media ponderada.
 \end{itemize}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{figuras/regresion_red.png}
-\caption{Ajustes lineales de $X$ frente a $m$ para las dos distancias.}
+\caption{Ajustes lineales de $X$ frente a $m$ para las tres distancias.}
 \label{fig:ajusteX}
 \end{figure}
 
@@ -369,7 +369,7 @@ difracción en los siguientes ángulos:
 \[
 \theta_1=10{,}19^\circ,\quad \theta_2=20{,}94^\circ,\quad \theta_3=32{,}18^\circ.
 \]
-Calculamos la longitud de onda para cada orden con $\lambda = \frac{\theta}{m}$:
+Calculamos la longitud de onda para cada orden con $\lambda = \frac{d\sin\theta}{m}$:
 \begin{equation}
     \lambda_1=\SI{589.81}{nm}.
 \end{equation}
@@ -380,7 +380,7 @@ Calculamos la longitud de onda para cada orden con $\lambda = \frac{\theta}{m}$:
     \lambda_3=\SI{591.81}{nm}.
 \end{equation}
 El valor de $\lambda_2$ se aparta notablemente de los otros dos órdenes en unos
-\SI{6}{nm}, lo que puede deberse a que no se centró el gionómetro correctamente y por tanto el ángulo difiere con el real, no obstante la medida no se aleja mucho de la teórica por lo que vamos a darla por buena.
+\SI{6}{nm}, lo que puede deberse a que no se centró el goniómetro correctamente y por tanto el ángulo difiere con el real, no obstante la medida no se aleja mucho de la teórica por lo que vamos a darla por buena.
 
 Calculamos los errores correspondientes a cada medida a partir de la propagación de errores con $\Delta_\mathrm{lect}=15''=0{,}0042^\circ$:
 \[
@@ -409,7 +409,7 @@ Obteniendo así la longitud de onda media ponderada
 
 \subsection{Comparación con valores de referencia y correcciones}
 
-Comparando las medidas experimentales de la lámpara de sodio con respecto al valor real teórico observamos que estamos muy cerca del valor teórico y dentro del margen de error debido a las incertidumbres del experimento 
+Comparando las medidas experimentales de la lámpara de sodio con respecto al valor real teórico observamos que estamos muy cerca del valor teórico pero un poco fuera del margen de error debido a las incertidumbres del experimento 
 
 \begin{table}[H]
 \centering

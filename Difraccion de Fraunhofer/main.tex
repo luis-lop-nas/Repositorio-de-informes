@@ -184,60 +184,169 @@ Representamos y ajustamos los datos linealmente para obtener $2a$.
 
 \section{Análisis y Discusión}
 
-\subsection{Errores y propagación}
+\subsection{\texorpdfstring{Determinación de la anchura de la rendija}{Determinación de la anchura de la rendija}}
 
 \noindent
-Para obtener las dimensiones de las aberturas se han usado ajustes lineales a partir de las posiciones de los mínimos. En los cálculos se ha tomado la longitud de onda del láser como
-
-\begin{equation*}
-  \lambda = \SI{532}{nm}.
-\end{equation*}
+En primer lugar se analizó el patrón de difracción producido por la rendija. En este caso los mínimos aparecen aproximadamente separados de forma regular, por lo que se representa $P_n-P_{-n}$ frente al orden $n$.
 
 \noindent
-La incertidumbre principal viene de la medida de la distancia entre la abertura y la pantalla, que se ha tomado como
-
-\begin{equation*}
-  \Delta z = \SI{0,005}{m}.
-\end{equation*}
-
-\noindent
-También se tiene en cuenta el error asociado a la pendiente del ajuste lineal. Si la dimensión de la abertura se obtiene a partir de una expresión del tipo
-
-\begin{equation*}
-  2a = \frac{2\lambda z}{m},
-\end{equation*}
-
-\noindent
-la incertidumbre se puede estimar mediante propagación de errores:
+Para una rendija de anchura $2a$, la condición de mínimos viene dada por
 
 \begin{equation}
-  \frac{\Delta(2a)}{2a} =
-  \sqrt{
-  \left(\frac{\Delta z}{z}\right)^2+
-  \left(\frac{\Delta m}{m}\right)^2
-  }.
+  2a\sin\theta = n\lambda.
 \end{equation}
 
 \noindent
-De esta forma se tienen en cuenta tanto el error al medir la distancia como la dispersión de los puntos respecto a la recta ajustada.
+Usando la aproximación de ángulos pequeños,
 
-\subsection{\texorpdfstring{Determinación de $2a$ del orificio circular}{Determinación de 2a del orificio circular}}
+\begin{equation*}
+  \sin\theta \simeq \frac{x_n}{z},
+\end{equation*}
 
 \noindent
-Primero se estudió el patrón de difracción producido por el orificio circular. En este caso los mínimos no aparecen separados de forma regular, sino que dependen de los valores $\alpha_n$ asociados al patrón circular.
+se obtiene
+
+\begin{equation}
+  x_n = \frac{n\lambda z}{2a}.
+\end{equation}
+
+\noindent
+Como experimentalmente se mide la distancia entre mínimos simétricos,
+
+\begin{equation*}
+  P_n-P_{-n}=2x_n,
+\end{equation*}
+
+\noindent
+queda
+
+\begin{equation}
+  P_n-P_{-n} = \frac{n\lambda z}{a}.
+\end{equation}
+
+\noindent
+Por tanto, al representar $P_n-P_{-n}$ frente a $n$, la pendiente del ajuste lineal cumple
+
+\begin{equation}
+  m = \frac{\lambda z}{a}.
+\end{equation}
+
+\noindent
+Despejando, se obtiene
+
+\begin{equation}
+  a = \frac{\lambda z}{m}.
+  \label{eq:anchura_rendija}
+\end{equation}
+
+\noindent
+Las medidas obtenidas para la rendija fueron:
+
+\begin{table}[H]
+  \centering
+  \caption{Medidas para la rendija con $z_1=(2{,}935\pm0{,}005)$ m.}
+  \label{tab:rendija_z1}
+  \scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{ccccccccc}
+    \toprule
+    $n$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ & $\pm6$ & $\pm7$ & $\pm8$ \\
+    \midrule
+    $P_n-P_{-n}$ (mm) & 28 & 56 & 86 & 114 & 146 & 174 & 202 & 232 \\
+    \bottomrule
+  \end{tabular}%
+  }
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Medidas para la rendija con $z_2=(1{,}235\pm0{,}005)$ m.}
+  \label{tab:rendija_z2}
+  \scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{ccccccccc}
+    \toprule
+    $n$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ & $\pm6$ & $\pm7$ & $\pm8$ \\
+    \midrule
+    $P_n-P_{-n}$ (mm) & 12 & 24 & 40 & 54 & 66 & 78 & 94 & 108 \\
+    \bottomrule
+  \end{tabular}%
+  }
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Medidas para la rendija con $z_3=(0{,}895\pm0{,}005)$ m.}
+  \label{tab:rendija_z3}
+  \scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{ccccccccc}
+    \toprule
+    $n$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ & $\pm6$ & $\pm7$ & $\pm8$ \\
+    \midrule
+    $P_n-P_{-n}$ (mm) & 8 & 18 & 26 & 34 & 40 & 50 & 58 & 66 \\
+    \bottomrule
+  \end{tabular}%
+  }
+\end{table}
+
+\noindent
+A partir de los ajustes lineales de $P_n-P_{-n}$ frente a $n$, se obtienen los siguientes resultados:
+
+\begin{table}[H]
+  \centering
+  \caption{Resultados obtenidos para la rendija.}
+  \label{tab:resultados_rendija}
+  \scriptsize
+  \setlength{\tabcolsep}{4pt}
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{ccc}
+    \toprule
+    $z \pm \Delta z$ (cm) & Pendiente $m$ (mm) & $a$ ($\mu$m) \\
+    \midrule
+    $293{,}5 \pm 0{,}5$ & $29{,}21 \pm 0{,}15$ & $53{,}4 \pm 0{,}3$ \\
+    $123{,}5 \pm 0{,}5$ & $13{,}67 \pm 0{,}19$ & $48{,}1 \pm 0{,}7$ \\
+    $89{,}5 \pm 0{,}5$ & $8{,}14 \pm 0{,}14$ & $58{,}5 \pm 1{,}0$ \\
+    \bottomrule
+  \end{tabular}%
+  }
+\end{table}
+
+\noindent
+La media ponderada de los tres valores obtenidos es
+
+\begin{equation*}
+  a_{\text{rendija}} = (53{,}0 \pm 0{,}3)\ \mu\text{m}.
+\end{equation*}
+
+\noindent
+Como en el marco teórico se ha definido la anchura total de la rendija como $2a$, el resultado final para la anchura es
+
+\begin{equation*}
+  2a_{\text{rendija}} = (106{,}0 \pm 0{,}6)\ \mu\text{m}.
+\end{equation*}
+
+\noindent
+Los tres valores individuales no coinciden exactamente entre sí, especialmente el resultado correspondiente a $z_2$. Esto indica que la incertidumbre real puede ser mayor que la obtenida únicamente por propagación de errores. La causa más probable es la dificultad para localizar con precisión los mínimos de intensidad, ya que el patrón de difracción no siempre se observaba con la misma nitidez.
+\subsection{\texorpdfstring{Determinación de $2a$ del orificio circular}{Determinación de 2a del orificio circular}}
+\noindent
+Después se estudió el patrón de difracción producido por el orificio circular. En este caso los mínimos no aparecen separados de forma regular, sino que dependen de los valores $\alpha_n$ asociados a los mínimos del patrón circular.
 
 \noindent
 La relación empleada es
 
 \begin{equation}
-  P_n-P_{-n} = \frac{\alpha_n \lambda z}{a}.
+  P_n-P_{-n} = \frac{2\alpha_n \lambda z}{2a}.
 \end{equation}
 
 \noindent
 Por tanto, al representar $P_n-P_{-n}$ frente a $\alpha_n$, se obtiene una recta cuya pendiente cumple
 
 \begin{equation}
-  m = \frac{\lambda z}{a}.
+  m = \frac{2\lambda z}{2a}.
 \end{equation}
 
 \noindent
@@ -249,222 +358,90 @@ De ahí se despeja el diámetro del orificio:
 \end{equation}
 
 \noindent
-Las medidas obtenidas para el orificio circular fueron:
+La medida obtenida para el orificio circular fue:
 
 \begin{table}[H]
   \centering
-  \caption{Medidas para el orificio circular con $z_1=(0{,}740\pm0{,}005)$ m.}
+  \caption{Medidas para el orificio circular con $z_1=(2{,}935\pm0{,}005)$ m.}
   \label{tab:orificio_z1}
-  \small
+  \scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \resizebox{\columnwidth}{!}{%
   \begin{tabular}{cccccc}
     \toprule
     $n$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ \\
     \midrule
-    $\alpha_n$ & 1{,}220 & 2{,}233 & 3{,}238 & 4{,}24 & 5{,}24 \\
-    $P_n-P_{-n}$ (mm) & 1{,}27 & 1{,}93 & 3{,}01 & 4{,}61 & 5{,}89 \\
+    $\alpha_n$ & 1{,}220 & 2{,}333 & 3{,}238 & 4{,}24 & 5{,}24 \\
+    $P_n-P_{-n}$ (mm) & 12 & 26 & 38 & 52 & 64 \\
     \bottomrule
-  \end{tabular}
-\end{table}
-
-\begin{table}[H]
-  \centering
-  \caption{Medidas para el orificio circular con $z_2=(0{,}940\pm0{,}005)$ m.}
-  \label{tab:orificio_z2}
-  \small
-  \begin{tabular}{cccc}
-    \toprule
-    $n$ & $\pm1$ & $\pm2$ & $\pm3$ \\
-    \midrule
-    $\alpha_n$ & 1{,}220 & 2{,}233 & 3{,}238 \\
-    $P_n-P_{-n}$ (mm) & 1{,}13 & 1{,}95 & 2{,}77 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\begin{table}[H]
-  \centering
-  \caption{Medidas para el orificio circular con $z_3=(1{,}155\pm0{,}005)$ m.}
-  \label{tab:orificio_z3}
-  \small
-  \begin{tabular}{ccc}
-    \toprule
-    $n$ & $\pm1$ & $\pm2$ \\
-    \midrule
-    $\alpha_n$ & 1{,}220 & 2{,}233 \\
-    $P_n-P_{-n}$ (mm) & 1{,}52 & 2{,}57 \\
-    \bottomrule
-  \end{tabular}
+  \end{tabular}%
+  }
 \end{table}
 
 \noindent
-A partir de los ajustes lineales se obtienen los siguientes resultados:
+A partir del ajuste lineal de $P_n-P_{-n}$ frente a $\alpha_n$, se obtiene:
 
 \begin{table}[H]
   \centering
-  \caption{Resultados obtenidos para el orificio circular.}
+  \caption{Resultado obtenido para el orificio circular.}
   \label{tab:resultados_orificio}
-  \small
+  \scriptsize
+  \setlength{\tabcolsep}{4pt}
+  \resizebox{\columnwidth}{!}{%
   \begin{tabular}{ccc}
     \toprule
     $z \pm \Delta z$ (cm) & Pendiente $m$ (mm) & $2a$ ($\mu$m) \\
     \midrule
-    $74{,}0 \pm 0{,}5$ & $1{,}186 \pm 0{,}098$ & $664 \pm 55$ \\
-    $94{,}0 \pm 0{,}5$ & $0{,}813 \pm 0{,}002$ & $1231 \pm 7$ \\
-    $115{,}5 \pm 0{,}5$ & $1{,}035$ & $1187 \pm 5$ \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\noindent
-Los dos últimos valores son bastante parecidos entre sí, ya que ambos están cerca de $1{,}2$ mm. Sin embargo, el resultado obtenido para $z_1$ se aleja mas. Esto puede deberse a que, en esa medida, los mínimos eran menos claros o mas dificiles de localizar. Aunque también podría ser que la distancia $z_1$ no se midió del todo bien, lo que tampoco se puede descartar con los datos disponibles.
-
-\noindent
-Al combinar los tres resultados mediante una media ponderada, se obtiene:
-
-\begin{equation*}
-  2a_{\text{orificio}} = (1199 \pm 4)\ \mu\text{m}.
-\end{equation*}
-
-\noindent
-Este será el valor experimental tomado para el diámetro del orificio circular, aunque hay que tener en cuenta que la incertidumbre real puede ser algo mayor por la diferencia entre la primera medida y las otras dos.
-
-\subsection{\texorpdfstring{Determinación de la anchura de la rendija}{Determinación de la anchura de la rendija}}
-
-\noindent
-Despues se analizó el patrón de difracción producido por la rendija. En este caso los mínimos se relacionan directamente con el orden $n$, por lo que se representa $p_n-p_{-n}$ frente a $n$.
-
-\noindent
-La expresión utilizada es
-
-\begin{equation}
-  p_n-p_{-n} = \frac{2n\lambda z}{a}.
-\end{equation}
-
-\noindent
-Así, la pendiente del ajuste lineal cumple
-
-\begin{equation}
-  m = \frac{2\lambda z}{a}.
-\end{equation}
-
-\noindent
-Despejando, la anchura de la rendija queda:
-
-\begin{equation}
-  a = \frac{2\lambda z}{m}.
-  \label{eq:anchura_rendija}
-\end{equation}
-
-\noindent
-Las medidas de la rendija fueron:
-
-\begin{table}[H]
-  \centering
-  \caption{Medidas para la rendija con $z_1=(0{,}580\pm0{,}005)$ m.}
-  \label{tab:rendija_z1}
-  \small
-  \resizebox{\columnwidth}{!}{%
-  \begin{tabular}{ccccccc}
-    \toprule
-    $n$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ & $\pm6$ \\
-    \midrule
-    $p_n-p_{-n}$ (mm) & 23{,}77 & 51{,}24 & 68{,}81 & 94{,}79 & 120{,}63 & 141{,}75 \\
+    $293{,}5 \pm 0{,}5$ & $12{,}00 \pm 0{,}24$ & $260 \pm 5$ \\
     \bottomrule
   \end{tabular}%
   }
 \end{table}
 
-\begin{table}[H]
-  \centering
-  \caption{Medidas para la rendija con $z_2=(0{,}780\pm0{,}005)$ m.}
-  \label{tab:rendija_z2}
-  \small
-  \resizebox{\columnwidth}{!}{%
-  \begin{tabular}{ccccccc}
-    \toprule
-    $n$ & $\pm1$ & $\pm2$ & $\pm3$ & $\pm4$ & $\pm5$ & $\pm6$ \\
-    \midrule
-    $p_n-p_{-n}$ (mm) & 10{,}11 & 21{,}00 & 30{,}02 & 39{,}20 & 51{,}80 & 60{,}51 \\
-    \bottomrule
-  \end{tabular}%
-  }
-\end{table}
-
-\begin{table}[H]
-  \centering
-  \caption{Medidas para la rendija con $z_3=(0{,}840\pm0{,}005)$ m.}
-  \label{tab:rendija_z3}
-  \small
-  \begin{tabular}{cccc}
-    \toprule
-    $n$ & $\pm1$ & $\pm2$ & $\pm3$ \\
-    \midrule
-    $p_n-p_{-n}$ (mm) & 17{,}51 & 34{,}88 & 52{,}99 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
 \noindent
-Los resultados de los ajustes lineales son:
-
-\begin{table}[H]
-  \centering
-  \caption{Resultados obtenidos para la rendija.}
-  \label{tab:resultados_rendija}
-  \small
-  \begin{tabular}{ccc}
-    \toprule
-    $z \pm \Delta z$ (cm) & Pendiente $m$ (mm) & $a$ ($\mu$m) \\
-    \midrule
-    $58{,}0 \pm 0{,}5$ & $23{,}54 \pm 0{,}57$ & $26{,}2 \pm 0{,}7$ \\
-    $78{,}0 \pm 0{,}5$ & $10{,}10 \pm 0{,}23$ & $82{,}2 \pm 2{,}0$ \\
-    $84{,}0 \pm 0{,}5$ & $17{,}74 \pm 0{,}22$ & $50{,}4 \pm 0{,}7$ \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\noindent
-La media ponderada da:
+Como solo se tomó una distancia para el orificio circular, no se puede realizar una media ponderada entre varias medidas. Por tanto, el valor experimental obtenido para el diámetro del orificio es
 
 \begin{equation*}
-  a_{\text{rendija}} = (40{,}5 \pm 0{,}5)\ \mu\text{m}.
+  2a_{\text{orificio}} = (260 \pm 5)\ \mu\text{m}.
 \end{equation*}
 
 \noindent
-Como en el marco teórico se ha escrito la anchura como $2a$, tambien se puede expresar como:
-
-\begin{equation*}
-  2a_{\text{rendija}} = (81{,}0 \pm 1{,}0)\ \mu\text{m}.
-\end{equation*}
-
-\noindent
-En este caso los tres resultados individuales no coinciden bien entre sí. Por eso, aunque la media ponderada dé un error pequeño, el resultado debe tomarse con cuidado. La causa mas probable es que el patron de la rendija no se midió con la misma claridad que el del orificio, y por tanto fue mas dificil marcar bien los mínimos.
+Este resultado debe tomarse con cierta precaución, ya que al disponer de una sola distancia no se puede comprobar la repetibilidad de la medida ni comparar con otros valores obtenidos para distintas posiciones de la pantalla.
 
 \subsection{Comparación con valores teóricos}
 
 \noindent
-Con los resultados anteriores se puede hacer una comparación entre las dimensiones obtenidas experimentalmente y los valores teoricos o nominales. Sin embargo, no se dispone del valor nominal exacto de la rendija ni del orificio circular, por lo que no se puede calcular el error relativo de forma completa.
+Con los resultados anteriores se puede hacer una comparación entre las dimensiones obtenidas experimentalmente y los valores teóricos o nominales. Sin embargo, no se dispone del valor nominal exacto de la rendija ni del orificio circular, por lo que no se puede calcular el error relativo de forma completa.
 
 \begin{table}[H]
   \centering
   \caption{Comparación entre valores experimentales y teóricos.}
   \label{tab:comparacion}
-  \small
+  \scriptsize
+  \setlength{\tabcolsep}{4pt}
+  \resizebox{\columnwidth}{!}{%
   \begin{tabular}{lcc}
     \toprule
     Abertura & Valor experimental & Valor teórico \\
     \midrule
-    Rendija & $2a = (81{,}0 \pm 1{,}0)\ \mu$m & No indicado \\
-    Orificio circular & $2a = (1199 \pm 4)\ \mu$m & No indicado \\
+    Rendija & $2a = (106{,}0 \pm 0{,}6)\ \mu$m & No indicado \\
+    Orificio circular & $2a = (260 \pm 5)\ \mu$m & No indicado \\
     \bottomrule
-  \end{tabular}
+  \end{tabular}%
+  }
 \end{table}
 
 \noindent
-Aunque no se pueda cerrar la comparación numéricamente, los resultados muestran el comportamiento esperado. En el orificio circular, las medidas de $z_2$ y $z_3$ son bastante compatibles entre sí. La de $z_1$ se separa más, probablemente por la dificultad de localizar los mínimos en esa toma.
+Aunque no se pueda realizar una comparación numérica completa con los valores nominales, los resultados obtenidos son coherentes con el procedimiento seguido. En el caso de la rendija, se han utilizado tres distancias distintas entre la abertura y la pantalla, lo que permite obtener tres valores experimentales y combinarlos mediante una media ponderada.
 
 \noindent
-En la rendija hay una dispersión mayor entre las tres medidas. Esto indica que el error real no viene solo de la distancia $z$ o de la pendiente del ajuste, sino también de cómo se midió el patrón. Pequeños errores al marcar los mínimos pueden cambiar mucho el resultado final.
+Los valores individuales obtenidos para la rendija presentan cierta dispersión entre sí. Esto indica que la incertidumbre real puede ser mayor que la obtenida únicamente a partir de la propagación de errores. La causa más probable es la dificultad para localizar con precisión los mínimos de intensidad, ya que pequeños errores al marcar sus posiciones afectan directamente a la pendiente del ajuste lineal y, por tanto, al valor calculado de la anchura.
+
+\noindent
+En el caso del orificio circular solo se dispone de una medida, correspondiente a la distancia $z_1=(2{,}935\pm0{,}005)$ m. Por este motivo, no se puede realizar una media ponderada ni comprobar la repetibilidad del resultado para distintas distancias. El valor obtenido debe tomarse como una estimación experimental del diámetro del orificio, con una incertidumbre asociada al ajuste lineal y a la medida de la distancia $z$.
+
+\noindent
+En conjunto, el análisis permite determinar de forma aproximada las dimensiones de ambas aberturas a partir de sus patrones de difracción. No obstante, la ausencia de valores nominales impide valorar cuantitativamente la exactitud de los resultados mediante un error relativo.
 
 \subsection{Principio de Babinet}
 
@@ -480,28 +457,28 @@ De forma cualitativa, lo observado es compatible con este principio, ya que los 
 \section{Conclusión}
 
 \begin{enumerate}
-  \item En esta práctica se ha estudiado la difracción de Fraunhofer para una rendija y para un orificio circular. A partir de las posiciones de los mínimos se han podido obtener sus dimensiones de forma experimental.
-
-  \item Para el orificio circular se obtuvo:
-  \[
-    2a_{\text{orificio}} = (1199 \pm 4)\ \mu\text{m}.
-  \]
-  Este resultado es bastante razonable, sobre todo teniendo en cuenta que dos de las tres medidas dan valores muy próximos entre si, lo que da mas confianza al resultado.
+  \item En esta práctica se ha estudiado la difracción de Fraunhofer para una rendija y para un orificio circular. A partir de las posiciones de los mínimos de intensidad se han podido obtener sus dimensiones de forma experimental.
 
   \item Para la rendija se obtuvo:
   \[
-    a_{\text{rendija}} = (40{,}5 \pm 0{,}5)\ \mu\text{m}.
+    a_{\text{rendija}} = (53{,}0 \pm 0{,}3)\ \mu\text{m}.
   \]
-  Expresado como anchura completa:
+  Como en el desarrollo teórico la anchura de la rendija se expresa como $2a$, el resultado final para la anchura completa es:
   \[
-    2a_{\text{rendija}} = (81{,}0 \pm 1{,}0)\ \mu\text{m}.
+    2a_{\text{rendija}} = (106{,}0 \pm 0{,}6)\ \mu\text{m}.
   \]
 
-  \item El resultado de la rendija presenta más dispersión que el del orificio. Por eso, aunque el cálculo da una incertidumbre pequeña, hay que considerar que el error real puede ser mayor.
+  \item Los tres valores individuales obtenidos para la rendija presentan cierta dispersión entre sí. Por tanto, aunque la media ponderada da una incertidumbre pequeña, el error real puede ser algo mayor. Esta diferencia puede deberse a la dificultad para localizar con precisión los mínimos del patrón de difracción.
 
-  \item No se ha podido calcular el error relativo respecto a los valores teóricos porque no se conocen los valores nominales de las aberturas.
+  \item Para el orificio circular se obtuvo, usando una única distancia de medida:
+  \[
+    2a_{\text{orificio}} = (260 \pm 5)\ \mu\text{m}.
+  \]
+  Al disponer solo de una medida para el orificio, este resultado debe tomarse como una estimación experimental, ya que no se puede comprobar la repetibilidad ni realizar una media ponderada con otras distancias.
 
-  \item La comparación con los obstáculos complementarios es coherente con el principio de Babinet, ya que se observan patrones parecidos en forma y en la posición de los mínimos.
+  \item No se ha podido calcular el error relativo respecto a los valores teóricos porque no se conocen los valores nominales exactos de la rendija ni del orificio circular.
+
+  \item La comparación cualitativa con los obstáculos complementarios es coherente con el principio de Babinet, ya que se observaron patrones de difracción similares en forma y en la posición de los mínimos.
 \end{enumerate}
 
 \end{multicols}
